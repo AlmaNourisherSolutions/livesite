@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration>
+
+	<appender name="Console" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-7p %d [%t] %c %x - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="File" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${log-path}/resources/logger/AlmaNourisher.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd-HH" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MMM-dd HH:mm:ss,SSS} [%t] %c %x%n  %-5p %m%n" />
+		</layout>
+	</appender>
+
+
+	<!-- Dynamic values are setted in the Alma controller to the System variable and accessed here -->
+	
+	
+	<appender name="DB" class="org.apache.log4j.jdbc.JDBCAppender">
+		  <param name="URL" value="jdbc:mysql://198.1.106.132:3306/almablr_production" />
+		<param name="driver" value="com.mysql.jdbc.Driver" />
+		<param name="user" value="almablr_main" />
+		<param name="password" value="gm)xKw[Gz]v1" />
+		
+	<!--	<param name="URL" value="jdbc:mysql://localhost:3306/almanourisher" />
+		<param name="driver" value="com.mysql.jdbc.Driver" />
+		<param name="user" value="root" />
+		<param name="password" value="" />-->
+		
+		
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="INSERT INTO logs VALUES('%x',now(),'%c','%p','%m')" /> 
+		</layout>
+	</appender>
+
+	<appender name="DB-async" class="org.apache.log4j.AsyncAppender">
+         <param name="BufferSize" value="1"/>
+         <appender-ref ref="DB"/>
+    </appender>
+
+	<logger name="com.alma">
+        <level value="debug"/> 
+        <appender-ref ref="DB-async"/>
+    </logger> 
+    
+    <logger name="org.apache.tomcat">
+    	<level value="debug"/>
+	</logger>
+	
+	<root>
+		<level value="error"/>
+		<appender-ref ref="Console" />
+		<appender-ref ref="File" />
+		<!-- <appender-ref ref="DB"/> -->
+	</root>
+
+</log4j:configuration>
+
