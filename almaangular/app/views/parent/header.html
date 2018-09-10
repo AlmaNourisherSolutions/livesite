@@ -1,0 +1,126 @@
+<header class="clearfix">
+
+  <!-- Branding -->
+  <div class="branding {{main.settings.brandingColor}}">
+    <a class="brand" ui-sref="app.dashboard">
+      <span><strong>Alma</strong>Nourisher</span>
+    </a>
+  </div>
+  <!-- Branding end -->
+
+
+  <!-- Right-side navigation -->
+  <ul class="nav-right pull-right list-inline">
+	<!-- Notification starts -->
+   <!-- <li class="dropdown notifications" uib-dropdown>
+
+      <a href class="dropdown-toggle" uib-dropdown-toggle>
+        <fa name="bell"></fa>
+        <span class="badge bg-lightred">3</span>
+      </a>
+
+      <div class="dropdown-menu pull-right with-arrow panel panel-default animated littleFadeInLeft" role="menu">
+
+        <div class="panel-heading">
+          You have <strong>3</strong> notifications
+        </div>
+
+        <ul class="list-group">
+
+          <li class="list-group-item">
+            <a href="javascript:;" class="media">
+              <div class="media-left">
+                <span class="media-object media-icon bg-danger">
+                  <fa name="ban"></fa>
+                </span>
+              </div>
+              <div class="media-body">
+                <span class="block">User Imrich cancelled account</span>
+                <small class="text-muted">6 minutes ago</small>
+              </div>
+            </a>
+          </li>
+
+          <li class="list-group-item">
+            <a href="javascript:;" class="media">
+              <div class="media-left">
+                <span class="media-object media-icon bg-primary">
+                  <fa name="bolt"></fa>
+                </span>
+              </div>
+              <div class="media-body">
+                <span class="block">New user registered</span>
+                <small class="text-muted">12 minutes ago</small>
+              </div>
+            </a>
+          </li>
+
+          <li class="list-group-item">
+            <a href="javascript:;" class="media">
+              <div class="media-left">
+                <span class=" media-object media-icon bg-greensea">
+                  <fa name="lock"></fa>
+                </span>
+              </div>
+              <div class="media-body">
+                <span class="block">User Robert locked account</span>
+                <small class="text-muted">18 minutes ago</small>
+              </div>
+            </a>
+          </li>
+
+        </ul>
+
+        <div class="panel-footer">
+          <a href="javascript:;">Show all notifications <fa name="angle-right" class="pull-right"></fa></a>
+        </div>
+
+      </div>
+
+    </li> -->
+<!-- Notification ends -->
+<!-- admin user icon starts -->
+    <li class="dropdown nav-profile" uib-dropdown>
+
+      <a href class="dropdown-toggle" uib-dropdown-toggle>
+        <img src="images/profile-photo.jpg" alt="" class="img-circle size-30x30">
+        <span>Parent <fa name="angle-down"></fa></span>
+      </a>
+
+      <ul class="dropdown-menu animated littleFadeInRight" role="menu">
+
+        <li>
+          <a href="#">
+            <span class="badge bg-greensea pull-right">86%</span>
+            <fa name="user"></fa>Profile
+          </a>
+        </li>
+        <li>
+          <a ui-sref="schoolUrl.parentarea.settings">
+            <fa name="cog"></fa>Settings
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a href="#" ng-click="logout()">
+            <fa name="sign-out"></fa>Logout
+          </a>
+        </li>
+
+      </ul>
+    </li>
+
+<!-- admin user icon ends -->
+    
+
+    <li class="toggle-right-sidebar" style="visibility:hidden;">
+      <a href="javascript:;" ng-click="main.settings.rightbarShow = !main.settings.rightbarShow">
+        <fa name="comments"></fa>
+      </a>
+    </li>
+  </ul>
+  <!-- Right-side navigation end -->
+
+
+
+</header>

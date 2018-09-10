@@ -1,0 +1,110 @@
+<div class="page page-datatables">
+
+  <!-- page header -->
+  <div class="pageheader">
+
+    <h2>{{page.title}} <span>// {{page.subtitle}}</span></h2>
+
+    <div class="page-bar">
+
+      <ul class="page-breadcrumb">
+        <li>
+          <a ui-sref="administrator.dashboard"><i class="fa fa-home"></i> {{main.title}}</a>
+        </li>
+        <li>
+          <a href="javascript:;">Manage Student</a>
+        </li>
+        <li>
+          <a ui-sref="administrator.manageStudent.viewStudentList">{{page.title}}</a>
+        </li>
+      </ul>
+
+      <div ng-controller="DaterangepickerCtrl" class="page-toolbar">
+        <a href="javascript:;" class="btn btn-lightred no-border">
+          <i class="fa fa-calendar"></i>&nbsp;&nbsp;<span>{{today}}</span>&nbsp;&nbsp;
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+  <!-- /page header -->
+
+  <!-- page content -->
+  <div class="pagecontent">
+
+
+    <!-- row -->
+    <div class="row">
+      <!-- col -->
+      <div class="col-md-12">
+
+
+        <!-- tile -->
+        <section class="tile" fullscreen="isFullscreen03">
+
+          <!-- tile header -->
+          <div class="tile-header dvd dvd-btm">
+            <h1 class="custom-font"><strong>Student </strong>List</h1>
+            <ul class="controls">
+              <li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+
+                <a href uib-dropdown-toggle class="dropdown-toggle settings"><i class="fa fa-cog"></i></a>
+
+                <ul class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+                  <li>
+                    <a href tile-control-toggle>
+                      <span class="minimize"><fa name="angle-down"></fa>&nbsp;&nbsp;&nbsp;Minimize</span>
+                      <span class="expand"><fa name="angle-up"></fa>&nbsp;&nbsp;&nbsp;Expand</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href tile-control-refresh ng-click="ajaxFaker()">
+                      <fa name="refresh"></fa> Refresh
+                    </a>
+                  </li>
+                  <li>
+                    <a href tile-control-fullscreen ng-click="isFullscreen03 = !isFullscreen03">
+                      <fa name="expand"></fa> Fullscreen
+                    </a>
+                  </li>
+                  <li>
+                    <a href tile-control-lightbox>
+                      <fa name="magnet"></fa> Open in Lightbox
+                    </a>
+                  </li>
+
+                </ul>
+
+              </li>
+            </ul>
+          </div>
+          <!-- /tile header -->
+
+          <!-- tile body -->
+          <div class="tile-body"  ng-controller="ViewStudentListDataCtrl as showCase">
+
+            <table datatable="" dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" class="table table-custom"></table>
+
+          </div>
+          <!-- /tile body -->
+
+        </section>
+        <!-- /tile -->
+
+
+
+      </div>
+      <!-- /col -->
+    </div>
+    <!-- /row -->
+
+
+
+  </div>
+  <!-- /page content -->
+
+
+
+
+</div>

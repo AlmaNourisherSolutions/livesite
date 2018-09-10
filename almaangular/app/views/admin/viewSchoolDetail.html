@@ -1,0 +1,295 @@
+<div class="page page-widgets">
+
+
+
+
+    <!-- page header -->
+    <div class="pageheader">
+
+      <h2>{{page.title}} <span>// {{page.subtitle}}</span></h2>
+
+      <div class="page-bar">
+
+        <ul class="page-breadcrumb">
+          <li>
+            <a ui-sref="administrator.dashboard"><i class="fa fa-home"></i> {{main.title}}</a>
+          </li>
+          <li>
+            <a href="javascript:;">Manage School</a>
+          </li>
+          <li>
+            <a ui-sref="administrator.manageSchool.viewSchoolDetail">{{page.title}}</a>
+          </li>
+        </ul>
+
+        <div ng-controller="DaterangepickerCtrl" class="page-toolbar">
+          <a href="javascript:;" class="btn btn-lightred no-border">
+            <i class="fa fa-calendar"></i>&nbsp;&nbsp;<span>{{today}}</span>&nbsp;&nbsp;
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+    <!-- /page header -->
+
+
+
+
+
+
+    <!-- page content -->
+    <div class="pagecontent">
+
+
+      <!-- row -->
+      <div class="row">
+
+
+        <!-- col -->
+        <div class="col-md-9">
+          <!-- tile -->
+          <section class="tile" fullscreen="isFullscreen07">
+
+            <!-- tile header -->
+            <div class="tile-header dvd dvd-btm">
+              <h1 class="custom-font"><strong>School </strong>Detail</h1>
+              <ul class="controls">
+                <li>
+
+                  <a ui-sref="administrator.manageSchool.addSchoolBranch({schoolName: page.schoolName, schoolId: page.schoolId})" class="settings"><i class="fa fa-plus"></i> Add Branch</a>
+
+                </li>
+                <li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+
+                  <a href uib-dropdown-toggle class="dropdown-toggle settings"><i class="fa fa-cog"></i></a>
+
+                  <ul class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+                    <li>
+                      <a href tile-control-toggle>
+                        <span class="minimize"><fa name="angle-down"></fa>&nbsp;&nbsp;&nbsp;Minimize</span>
+                        <span class="expand"><fa name="angle-up"></fa>&nbsp;&nbsp;&nbsp;Expand</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href tile-control-refresh ng-click="ajaxFaker()">
+                        <fa name="refresh"></fa> Refresh
+                      </a>
+                    </li>
+                    <li>
+                      <a href tile-control-fullscreen ng-click="isFullscreen07 = !isFullscreen07">
+                        <fa name="expand"></fa> Fullscreen
+                      </a>
+                    </li>
+                    <li>
+                      <a href tile-control-lightbox>
+                        <fa name="magnet"></fa> Open in Lightbox
+                      </a>
+                    </li>
+
+                  </ul>
+
+                </li>
+              </ul>
+            </div>
+            <!-- /tile header -->
+
+            <!-- tile widget -->
+            <div class="tile-widget">
+
+              <!-- row -->
+              <div class="row">
+                <!-- col -->
+                <div class="col-md-4">
+                  <div class="media mb-20">
+                    <div class="pull-left thumb">
+                      <img class="media-object img-circle" src="assets/images/school/{{page.schoolLogo}}" alt="">
+                    </div>
+                    <div class="media-body">
+                      <h4 class="media-heading mb-0"><strong>{{page.schoolName}}</strong></h4>
+                      <div class="col-md-8" style="padding:0;">
+                        <small class="text-lightred">{{page.schoolAddress}}</small>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- /row -->
+                </div>
+                <!-- /col -->
+                <!-- col -->
+                <div class="col-md-4">
+                  <dl class="dl-horizontal text-sm">
+                    <dt style="width: 60px;">Contact Person: </dt>
+                    <dd style="margin-left: 70px;">{{page.schoolContactPerson}}</dd>
+                    <dt style="width: 60px;">Phone No.: </dt>
+                    <dd style="margin-left: 70px;">{{page.mobileNumber}}</dd>
+                    <dt style="width: 60px;">Email Id: </dt>
+                    <dd style="margin-left: 70px;">{{page.schoolEmail}}</dd>
+                    <dt style="width: 60px;">Status: </dt>
+                    <dd style="margin-left: 70px;">{{page.schoolActive}}</dd>
+                  </dl>
+                </div>
+                <div class="col-md-4">
+                
+                <a class="btn btn-success" ui-sref="administrator.manageSchool.editSchool({school:jsonSchool})">
+                 <i class="fa fa-pencil"></i>Edit</a>&nbsp;
+                 <a class="btn btn-danger" ng-click='deleteSchool(page.schoolId)'>
+                 <i class="fa fa-close"></i>Delete</a>
+                </div>
+                <!-- /col -->
+              </div>
+              <!-- /row -->
+
+            </div>
+            <!-- /tile widget -->
+
+
+            <!-- tile body -->
+            <div class="tile-body p-0">
+
+
+              <uib-tabset class="tabs-dark">
+
+                <uib-tab heading="Branch List">
+                  <section class="tile " fullscreen="isFullscreen03">
+
+                    <!-- tile body -->
+                    <div class="tile-body"  ng-controller="ViewSchoolBranchListDataCtrl as showCase">
+
+                      <table datatable="" dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" class="table table-custom row"></table>
+
+                    </div>
+                    <!-- /tile body -->
+
+                  </section>
+                  <!-- /tile -->
+
+                </uib-tab>
+
+              </uib-tabset>
+            </div>
+            <!-- /tile body -->
+
+          </section>
+          <!-- /tile -->
+
+        </div>
+        <!-- /col -->
+        <!-- col -->
+        <div class="col-md-3">
+
+          <!-- tile -->
+          <section class="tile widget-todo" fullscreen="isFullscreen04" ng-controller="TodoWidgetCtrl">
+
+            <!-- tile header -->
+            <div class="tile-header dvd dvd-btm">
+              <h1 class="custom-font"><strong>Instruction </strong>List</h1>
+              <ul class="controls">
+                <li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+
+                  <a href uib-dropdown-toggle class="dropdown-toggle settings"><i class="fa fa-cog"></i></a>
+
+                  <ul class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+                    <li>
+                      <a href tile-control-toggle>
+                        <span class="minimize"><fa name="angle-down"></fa>&nbsp;&nbsp;&nbsp;Minimize</span>
+                        <span class="expand"><fa name="angle-up"></fa>&nbsp;&nbsp;&nbsp;Expand</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href tile-control-refresh ng-click="ajaxFaker()">
+                        <fa name="refresh"></fa> Refresh
+                      </a>
+                    </li>
+                    <li>
+                      <a href tile-control-fullscreen ng-click="isFullscreen04 = !isFullscreen04">
+                        <fa name="expand"></fa> Fullscreen
+                      </a>
+                    </li>
+                    <li>
+                      <a href tile-control-lightbox>
+                        <fa name="magnet"></fa> Open in Lightbox
+                      </a>
+                    </li>
+
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <!-- /tile header -->
+
+            <!-- tile body -->
+            <div class="tile-body lined-paper">
+
+              <ul class="todo-list list-unstyled">
+                <li class="ng-scope">
+
+                  <div class="view">
+                    <label class="checkbox checkbox-custom m-0 text-muted inline">
+                      <i>1.</i>
+                    </label>
+                    <span class="ng-binding">Release update</span>
+
+                  </div>
+
+                </li>
+                <li class="ng-scope">
+
+                  <div class="view">
+                    <label class="checkbox checkbox-custom m-0 text-muted inline">
+                      <i>2.</i>
+                    </label>
+                    <span class="ng-binding">Release update 2</span>
+
+                  </div>
+
+                </li>
+                <li class="ng-scope">
+
+                  <div class="view">
+                    <label class="checkbox checkbox-custom m-0 text-muted inline">
+                      <i>3.</i>
+                    </label>
+                    <span class="ng-binding">Release update 3</span>
+
+                  </div>
+
+                </li>
+                <li class="ng-scope">
+
+                  <div class="view">
+                    <label class="checkbox checkbox-custom m-0 text-muted inline">
+                      <i>4.</i>
+                    </label>
+                    <span class="ng-binding">Release update 4</span>
+
+                  </div>
+
+                </li>
+
+              </ul>
+
+            </div>
+            <!-- /tile body -->
+
+          </section>
+          <!-- /tile -->
+
+
+
+        </div>
+        <!-- /col -->
+
+      </div>
+      <!-- /row -->
+
+
+    </div>
+    <!-- /page content -->
+
+  </div>
+<style>
+  .checkbox-custom > i, .checkbox-custom-alt > i{
+    border: 0px;
+  }
+</style>

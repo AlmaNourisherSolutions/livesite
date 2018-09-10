@@ -1,0 +1,18 @@
+
+<section  ng-controller="HeaderCtrl" header user="'Parent'" ng-include="'views/parent/header.html'" id="header" class="{{main.settings.navbarHeaderColor}}"></section>
+<!-- <section ng-controller="GuestHeaderCtrl" ng-include="'views/guest/header.html'" id="header" class="transparent-header dark webheader"></section> -->
+
+<div id="controls">
+
+  <aside ng-include="'views/parent/nav.html'" id="sidebar" class="{{main.settings.sidebarColor}}" ng-class="{'aside-fixed':main.settings.asideFixed}"></aside>
+
+<!--<aside ng-include="'views/parent/rightbar.html'" id="rightbar"></aside>-->
+
+</div>
+<div class="view-container" ui-view-container>
+
+	<section ui-view id="content" autoscroll="false"></section>
+  
+</div>
+
+	<section ng-include="views/guest/footer.html" id="footer"></section>

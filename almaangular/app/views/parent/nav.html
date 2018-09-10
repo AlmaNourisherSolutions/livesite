@@ -1,0 +1,146 @@
+<div id="sidebar-wrap" ng-controller="NavCtrl">
+  <uib-accordion close-others="oneAtTime" slimscroll="{height: '100%'}">
+
+    <uib-accordion-group is-open="status.isFirstOpen">
+      <uib-accordion-heading>
+        Navigation <i class="pull-right fa" ng-class="{'fa-angle-up': status.isFirstOpen, 'fa-angle-down': !status.isFirstOpen}"></i>
+      </uib-accordion-heading>
+      <ul id="navigation" nav-collapse ripple>
+        <li>
+        	<a ui-sref="app.home"><span>{{ 'Home' | translate }}</span></a>
+        </li>
+		<li ui-sref-active="active">
+        	<a ui-sref="schoolUrl.parentarea.dashboard"><span>{{ 'Dashboard' | translate }}</span></a>
+        </li>
+
+        <li ui-sref-active="active" ng-class="{'open':$state.includes('schoolUrl.parentarea.questionnaireP')}">
+          <a ui-sref="schoolUrl.parentarea.questionnaireP"> <span>{{ 'Questionnaire' | translate }}</span></a>
+        </li>
+		
+        <li ui-sref-active="active" ng-class="{'open':$state.includes('schoolUrl.parentarea.postQueryP')}">
+          <a ui-sref="schoolUrl.parentarea.postQueryP"> <span>{{ 'Post a Query' | translate }}</span></a>
+        </li>
+		
+        <li>
+        	<a target="_blank" href="http://my.setmore.com/bookingpage/7477472b-01cb-484c-8979-cdaf89e2f648"><span>{{ 'Book An Appointment' | translate }}</span></a>
+        </li>
+        
+        <li ui-sref-active="active" ng-class="{'open':$state.includes('schoolUrl.parentarea.articleList')}">
+          <a ui-sref="schoolUrl.parentarea.articleList({'tag':'noFilter'})"> <span>{{ 'Articles' | translate }}</span></a>
+        </li>
+        
+        <li ui-sref-active="active" ng-class="{'open':$state.includes('schoolUrl.parentarea.recipeList')}">
+          <a ui-sref="schoolUrl.parentarea.recipeList({'tag':'noFilter'})"><span>{{ 'Recipes' | translate }}</span></a>
+        </li>
+        
+        
+        <!--<li ui-sref-active="active" ng-class="{'open':$state.includes('parentarea.recipesListP')}">
+          <a ui-sref="schoolUrl.parentarea.recipesListP"><fa name="university"></fa> <span>{{ 'Recipes' | translate }}</span></a>
+        </li>
+
+        <li ui-sref-active="active" ng-class="{'open':$state.includes('parentarea.newslettersP')}">
+          <a ui-sref="schoolUrl.parentarea.newslettersP"><fa name="child"></fa> <span>{{ 'Newsletters' | translate }}</span></a>
+        </li>
+
+        <li ui-sref-active="active" ng-class="{'open':$state.includes('parentarea.nutritional_product_reviewsP')}">
+          <a ui-sref="schoolUrl.parentarea.nutritional_product_reviewsP"><fa name="users"></fa> <span>{{ 'Nutritional Product Reviews' | translate }}</span></a>
+        </li>-->
+      </ul>
+    </uib-accordion-group>
+
+  </uib-accordion>
+</div>
+<div class="page-toolbar action_status">
+    <p class="error_msg text-center" ng-if="errormessage">
+        <i class="fa fa-check"></i><span>{{errormessage}}</span>
+ 	</p>
+ 	<p class="success_msg text-center" ng-if="successmessage">
+        <i class="fa fa-check"></i><span>{{successmessage}}</span>
+ 	</p>
+</div>
+<style>
+	@media (max-width: 768px) and (max-width: 991px) {
+		.appWrapper.aside-fixed #sidebar {
+			bottom: initial;
+			width: 100%;
+		}
+		#sidebar uib-accordion .panel-group .panel > .panel-heading .panel-title > a {
+			font-size: 16px;
+			line-height: 1.5;
+			color: #000;
+		}
+		#navigation {
+			background-color: #fff;
+		}
+		#sidebar uib-accordion .panel-group .panel:not(.panel-open) > .panel-heading .panel-title > a,
+		#sidebar uib-accordion .panel-group .panel:not(.panel-open) > .panel-heading .panel-title > a:hover,
+		#sidebar uib-accordion .panel-group .panel > .panel-heading .panel-title > a:hover,
+		#sidebar uib-accordion .panel-group .panel:not(.panel-open) > .panel-heading {
+			color: #000;
+			background-color: #fff;
+		}
+		#sidebar uib-accordion .panel-group .panel > .panel-heading + .panel-collapse > .panel-body {
+				border-top: 1px solid #ddd;
+		}
+		#sidebar-wrap .panel-body {
+			padding : 0 20px;
+		}
+		.appWrapper.header-fixed.aside-fixed:not(.sidebar-sm):not(.sidebar-xs) #content {
+			left: 0px;
+		}
+		.page-bar .page-toolbar .btn {
+			display:none;
+		}
+		.custom-font {
+			font-size:15px;
+		}
+		#content .content-wrap {
+			position: relative;
+			padding: 40px 0 60px;
+		}
+
+	}
+	@media (max-width: 767px) {
+		.page {
+			<!-- padding: 20px 0; -->
+		}
+		.pageheader .page-bar .page-breadcrumb > li {
+			padding:7px 15px;
+		}
+		#header .branding a.brand {
+			font-family: "Dosis", "Arial", sans-serif;
+			font-size: 18px;
+			font-weight: 300;
+			color: white;
+			padding-left: 0px;
+		}
+		.appWrapper:not(.sidebar-sm):not(.sidebar-xs) #header .branding .brand {
+			margin-left: 0px;
+		}
+		.appWrapper:not(.sidebar-sm):not(.sidebar-xs) #header .branding {
+			width: auto;
+		}
+		.pageheader h2 {
+			display: inline-block;
+			color: #4a555b;
+			font-size: 22px;
+		}
+		.mob_padding_space {
+			padding:0px;
+		}
+		.appWrapper:not(.sidebar-sm):not(.sidebar-xs) #header .branding .brand > span {
+			display: block;
+		}
+		#header .branding a.brand {
+			background: none;
+		}
+		.article_title_link {
+			font-size:16px;
+		}
+		h2, .h2 {
+			font-size: 22px;
+		}
+		
+
+	}
+</style>

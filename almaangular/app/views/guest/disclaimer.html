@@ -1,0 +1,58 @@
+<!-- ============================================
+        =================== Content =====================
+        ============================================= -->
+
+<section id="content">
+
+    <div class="content-wrap">
+
+        <!-- ============ faq ============ -->
+        <div class="container clearfix">
+
+            <div class="heading-block">
+                <h3 class="text-capitalize">Disclaimer</h3>
+            </div>
+            <div class="col-md-12 col-sm-12 panel panel-faq active">
+                <div class="panel-collapse">
+                    <div class="panel-body text-justify">
+                        The information contained in this website is for general information purposes only. The information is provided by AlmaNourisher Solutions Pvt Ltd and we put in all our efforts to update the complete and right information in our website. The information provided on this site is made available on the understanding that users exercise their own skill and care with respect to its use. This content includes, but is not limited to, the design, layout, look, appearance, graphics, and all written, video and audio materials. None of the contents of this website may be copied other than for non-commercial individual reference, and only if all copyright or other proprietary notices are retained. Any reliance placed on such information is strictly at your own risk. AlmaNourisher Solutions Pvt Ltd will not be liable for any loss or damage including without limitation, indirect or consequential loss or damage or any loss or damage whatsoever arising from the loss of data or profits arising out of, or in connection with, the use of this website. This website may contain information related to health, wellness, nutrition and diet etc. Such information is for educative purposes mainly and most of which is obtained from relevant study, publications and authentic source. This information is not intended to be a substitute for the advice of a healthcare professional, consultant or a recommendation for any particular treatment plan. It is important to make use of the advice of a healthcare professional to employ good clinical judgment for the specific conditions of individual patients. Please always consult your physician before switching to any new diet after nutrition/diet consultations, in case of the child having symptoms of allergy/ intolerance to any foods or lifestyle practice. This website may contain links or references to other websites. Through this website you are able to link to other websites which are not under the control of AlmaNourisher Solutions Pvt ltd. We have no control over the nature, content and availability of those sites. The inclusion of any links does not necessarily imply a recommendation or endorsement of the views expressed within them. Every effort is made to keep the website up and running smoothly. However, AlmaNourisher Solutions Pvt Ltd takes no responsibility for, and will not be liable for, the website being temporarily unavailable due to technical issues beyond our control.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /faq -->
+
+    </div>
+</section>
+<!-- #content end -->
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        // MINOVATE.documentOnReady.init();
+        setTimeout(function() { // You might need this timeout to be sure its run after DOM render.
+            console.log("in directive");
+            MINOVATE.documentOnReady.init();
+            //MINOVATE.documentOnLoad.init();
+        }, 1000);
+    });
+</script>
+<style>
+    #content {
+        position: relative !important;
+        overflow: hidden;
+        background-color: #FFF;
+        z-index: 9;
+        top: 0 !important;
+        right: 0;
+        bottom: 0;
+        width: auto;
+        left: 0 !important;
+        padding-left: 0;
+        padding-top: 0;
+        z-index: 1;
+    }    
+    #breadcrumbs.breadcrumbs-sm h1 + span {
+        display: block !important;
+    }
+</style>

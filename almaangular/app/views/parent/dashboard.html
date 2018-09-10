@@ -1,0 +1,864 @@
+<div class="page page-dashboard">
+  
+	<!-- Page Breadcrum starts -->
+	<div class="pageheader">
+		<h2>{{page.title}} <span>// {{page.subtitle}}</span></h2>
+        <div class="page-bar">
+			<ul class="page-breadcrumb">
+				<li>
+					<a ui-sref="schoolUrl.parentarea.dashboard"><i class="fa fa-home"></i> Dashboard</a>
+				</li>
+				<li>
+					 {{page.title}}
+				</li>
+			</ul>
+            <div ng-controller="DaterangepickerCtrl" class="page-toolbar">
+                <a href="javascript:;" class="btn btn-lightred no-border">
+                    <i class="fa fa-calendar"></i>&nbsp;&nbsp;<span>{{today}}</span>&nbsp;&nbsp;
+                </a>
+            </div>
+        </div>
+    
+	<!-- Page Breadcrum ends -->
+	
+	
+	<!-- child detail starts-->
+<div class="pagecontent">    
+<div class="row">    
+<div class="add-nav col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="nav-heading">
+            <h3>Health Report <strong class="text-greensea"></strong></h3>
+        </div>
+        <uib-tabset>
+			<uib-tab ng-repeat="child in children" heading="{{child.firstName}} {{child.lastName}}">                
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <!-- child related details Starts -->
+						<section class="tile time-simple">
+                            <div class="tile-body">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <img src="assets/images/student/{{child.profileImage}}" alt="{{child.firstName}}" class="thumb thumb-xl m-10 mb-20">
+                                        <h3 class="mb-0 text-custom text-strong">{{child.firstName}} {{child.lastName}}</h3>
+										<p class="text-default lt"></p>
+                                        <span class="controls">
+											<button class="btn btn-blue  mb-10" ng-click="openSplash(child,$event)" data-options="splash-2 splash-greensea splash-ef-13">Wellness Report</button>
+											<button class="btn btn-blue  mb-10" ng-click="openSplash1(child,$event)" data-options="splash-2 splash-greensea splash-ef-13">Food Frequency Report</button>
+										</span>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 b-r">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p-0">
+	                                        <p class="text-uppercase text-strong mb-10 ">
+	                                            Personal Detail
+	                                        </p>
+	                                        <ul class="list-unstyled text-default lt mb-20">
+	                                            <li class="main_space">
+													<span class="profile_title_head">Student Id: </span> 
+													<span class="profile_spcaing">{{child.studentRollId}}  </span> 
+												</li>
+	                                            <li class="main_space">
+													<span class="profile_title_head">Date of Birth: </span> 
+													<span class="profile_spcaing"> {{child.dob | date:'dd MMM yyyy'}} </span> 
+												</li>
+	                                            <li class="main_space">
+													<span class="profile_title_head">Age:</span> 
+													<span class="profile_spcaing">{{child.studentsHealth.ageYears}}Y {{child.studentsHealth.ageMonths}}M </span> 
+												</li>
+	                                            <li class="main_space">
+													<span class="profile_title_head">Gender: </span> 
+													<span class="profile_spcaing">{{child.gender}} </span> 
+												</li>
+	                                        </ul>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p-0">
+	                                        <p class="text-uppercase text-strong mb-10 ">
+	                                            School Detail
+	                                        </p>
+	                                        <ul class="list-unstyled text-default lt mb-20">
+	                                            <li class="main_space">
+													<span class="profile_title_head">School Name: </span> 
+													<span class="profile_spcaing">{{child.schoolName}}</span> 
+												</li>
+	                                            <li class="main_space">
+													<span class="profile_title_head">Branch Name: </span> 
+													<span class="profile_spcaing">{{child.branchName}}</span> 
+												</li>
+	                                            <li class="main_space">
+													<span class="profile_title_head">Class: </span> 
+													<span class="profile_spcaing">{{child.className}} </span> 
+												</li>
+	                                            <li class="main_space">
+													<span class="profile_title_head">Section: </span> 
+													<span class="profile_spcaing">{{child.sectionName}} </span> 
+												</li>
+	                                        </ul>
+	                                    </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <p class="text-uppercase text-strong mb-10 ">
+										Weight Status:  
+											<span class="text-cyan"> {{child.studentsHealth.category}} </span>
+										</p>
+                                        <ul class="list-unstyled text-default lt mb-20">
+                                            <li class="main_space">
+												<span class="profile_title_head">Height: </span> 
+												<span class="profile_spcaing">{{child.studentsHealth.height}} {{child.studentsHealth.heightUnit}}</span> 
+											</li>
+                                            <li class="main_space">
+												<span class="profile_title_head">Weight: </span> 
+												<span class="profile_spcaing">{{child.studentsHealth.weight}} {{child.studentsHealth.weightUnit}}</span> 
+											</li>
+                                            <li class="main_space">
+												<span class="profile_title_head">Body Mass Index (BMI): </span> 
+												<span class="profile_spcaing">{{child.studentsHealth.bmi}}</span> 
+											</li>
+                                            <li class="main_space">
+												<span class="profile_title_head">BMI Percentile: </span> 
+												<span class="profile_spcaing">{{child.studentsHealth.bmiPercentile}}</span> 
+											</li>
+                                            <li class="main_space">
+												<span class="profile_title_head">Ideal Body Weight (IBW): </span> 
+												<span class="profile_spcaing">{{child.studentsHealth.ibw}}</span> 
+											</li>
+                                        </ul>
+                                        <span class="controls">
+											<button class="btn btn-blue  mb-10" ng-hide="showForm" ng-click="showForm = true" data-options="splash-2 splash-greensea splash-ef-13">Update Latest Height & Weight</button>
+											<button class="btn btn-blue  mb-10" ng-hide="!showForm" ng-click="showForm = false" data-options="splash-2 splash-greensea splash-ef-13">Hide Height & Weight Form</button>
+										</span>
+                                    </div>
+                                </div>
+								<div class="row b-t pt-20">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                						<form name="updateHnWForm" ng-show="showForm" class="form-horizontal" ng-submit="submitUpdateHnWForm(updateHnWForm.$valid)" role="form" novalidate>
+                							<!-- tile body -->
+					                        <div class="tile-body form-validation row">
+					                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-lg-offSset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-0">
+														<div class="form-group" ng-class="{ 'has-error' : updateHnWForm.studentheight.$invalid && !updateHnWForm.studentheight.$pristine, 'has-success' : updateHnWForm.studentheight.$valid && !updateHnWForm.studentheight.$pristine}">
+					                                        <label class="col-sm-3 control-label">Height <sup class="alert_red_color"><strong>*</strong></sup></label>
+					                                        <div class="col-sm-9">
+					                                            <div class="col-xs-6">
+					                                                <input type="number" name="studentheight" id="studentheight" placeholder="100" class="form-control" ng-model="user.studentsHealth.height" ng-change="calculateBMI(child.dob, child.gender, child.studentsHealth.ageYears)">
+					                                            </div>
+					                                            <div class="col-xs-6">
+					                                                <select name="studentheightunit" id="studentheightunit" class="form-control mb-10" ng-change="calculateBMI(child.dob, child.gender, child.studentsHealth.ageYears)" ng-model="user.studentsHealth.heightUnit" ng-init="somethingHere = options[0]" required>
+					                                                    <option value="Centimeter" selected>Centimeter</option>
+					                                                    <option value="Inches">Inches</option>
+					                                                    <option value="Feet">Feet</option>
+					                                                </select>
+					
+					                                            </div>
+					                                            <p class="help-block">
+					                                                <span ng-show="updateHnWForm.studentheight.$invalid && !updateHnWForm.studentheight.$pristine || updateHnWForm.studentheight.$invalid && submitted">Height is required.</span>
+					                                            </p>
+					
+					                                        </div>
+					                                    </div>
+					
+					                                    <div class="form-group" ng-class="{ 'has-error' : updateHnWForm.studentweight.$invalid && !updateHnWForm.studentweight.$pristine, 'has-success' : updateHnWForm.studentweight.$valid && !updateHnWForm.studentweight.$pristine}">
+					                                        <label class="col-sm-3 control-label">Weight <sup class="alert_red_color"><strong>*</strong></sup></label>
+					                                        <div class="col-sm-9">
+					                                            <div class="col-xs-6">
+					                                                <input type="number" name="studentweight" id="studentweight" placeholder="100" class="form-control" ng-model="user.studentsHealth.weight" ng-change="calculateBMI(child.dob, child.gender, child.studentsHealth.ageYears)">
+					                                            </div>
+					                                            <div class="col-xs-6">
+					                                                <select name="studentweightunit" id="studentweightunit" class="form-control mb-10" ng-model="user.studentsHealth.weightUnit" ng-change="calculateBMI(child.dob, child.gender, child.studentsHealth.ageYears)" required>
+					                                                    <option value="Kilograms" selected>Kilograms</option>
+					                                                    <option value="LBS">LBS</option>
+					                                                </select>
+					                                            </div>
+					                                            <p class="help-block">
+					                                                <span ng-show="updateHnWForm.studentweight.$invalid && !updateHnWForm.studentweight.$pristine || updateHnWForm.studentweight.$invalid && submitted">Weight is required.</span>
+					                                            </p>
+					                                        </div>
+					                                    </div>
+					                                    
+					                                     <div class="form-group">
+					                                        <label class="col-sm-3 control-label">BMI</label>
+					                                        <div class="col-sm-9">
+					                                            <input type="text" name="studentbmi" id="studentbmi" class="form-control"  ng-model="user.studentsHealth.bmi" readonly>
+					                                        </div>
+					                                    </div>
+					
+					                                    <div class="form-group">
+					                                        <label class="col-sm-3 control-label">BMI Percentile</label>
+					                                        <div class="col-sm-9">
+					                                            <input type="text" name="studentbmipercentage" id="studentbmipercentage" class="form-control"  ng-model="user.studentsHealth.bmiPercentile" readonly>
+					                                        </div>
+					                                    </div>
+					
+					                                    <div class="form-group">
+					                                        <label class="col-sm-3 control-label">IBW</label>
+					                                        <div class="col-sm-9">
+					                                            <input type="text" name="studentibw" id="studentibw" class="form-control" placeholder="10" ng-model="user.studentsHealth.ibw" readonly>
+					                                        </div>
+					                                    </div>
+					                                    
+					                                     <button type="submit" class="btn btn-success pull-right" ng-disabled="updateHnWForm.$invalid">Submit</button>
+					                                     				
+					                            </div>
+					                        </div>
+					                        
+                						</form>
+                                    
+                                </div>
+                            </div>
+                        </section>
+						<!-- child related details ends -->
+                        <!-- BMI, Height, Weight Graph Starts -->
+                        <section class="tile time-simple b-t">
+                            <div class="tile-body">
+                                <div class="row">
+                                    <!-- BMI Graph Starts -->
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <h4>BMI Graph <strong class="text-greensea"></strong></h4>
+                                        <div class="tile-body" ng-controller="BMIChartCtrl" ng-init="init(child.gender,child.studentsHealth.bmi,child.studentsHealth.ageYears,child.studentsHealth.ageMonths,child.studentHealthHistory)">
+										    <flot dataset="dataset" options="options" height="500px"></flot>
+										</div>
+                                    </div>
+                                    <!-- /BMI Graph ends -->
+                                     <!-- Height Graph Starts -->
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <h4>Height Graph <strong class="text-greensea"></strong></h4>
+                                       <div class="tile-body" ng-controller="HeightChartCtrl" ng-init="init(child.gender,child.studentsHealth.height,child.studentsHealth.heightUnit,child.studentsHealth.ageYears,child.studentsHealth.ageMonths,child.studentHealthHistory)">
+										    <flot dataset="dataset" options="options" height="500px"></flot>
+										</div>
+                                    </div>
+                                    <!-- /Height Graph ends -->
+                                    <!-- Weight Graph Starts -->
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <h4>Weight Graph <strong class="text-greensea"></strong></h4>
+                                        <div class="tile-body" ng-controller="WeightChartCtrl" ng-init="init(child.gender,child.studentsHealth.weight,child.studentsHealth.weightUnit,child.studentsHealth.ageYears,child.studentsHealth.ageMonths,child.studentHealthHistory)">
+										    <flot dataset="dataset" options="options" height="500px"></flot>
+										</div>
+                                    </div>
+                                    <!-- Weight Graph ends -->
+                                   
+                                    <!-- health history starts -->
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="min-height:500px">
+		                                <div class="nav-heading">
+		                                    <h3>Health History <strong class="text-greensea"></strong></h3>
+		                                </div>
+		                                <div class="table-responsive">
+		                                    <table class="table table-hover table-striped">
+		                                        <thead>
+		                                            <tr>
+		                                                <th>SL. No.</th>
+		                                                <th>Date Measured</th>
+		                                                <th>Age</th>
+		                                                <th>Height</th>
+		                                                <th>Weight</th>
+		                                                <th>BMI</th>
+		                                                <th>BMI Percentile</th>
+		                                                <th>Health Status</th>
+		                                            </tr>
+		                                        </thead>
+		                                        <tbody>
+		                                            <tr ng-repeat="healthHistory in child.studentHealthHistory">
+		                                                <td>{{$index}}</td>
+		                                                <td>{{healthHistory.dateOfMeasurement | date:'dd MMM yyyy'}}</td>
+		                                                <td>{{healthHistory.age}}</td>
+		                                                <td>{{healthHistory.height}} {{healthHistory.heightUnit}}</td>
+		                                                <td>{{healthHistory.weight}} {{healthHistory.weightUnit}}</td>
+		                                                <td>{{healthHistory.bmi}}</td>
+		                                                <td>{{healthHistory.bmiPercentile}}</td>
+		                                                <td>{{healthHistory.healthStatus}}</td>
+		                                            </tr>
+		                                        </tbody>
+		                                    </table>
+		                                </div>
+									</div>
+                                    <!-- health history ends -->
+                                </div>
+                            </div>
+                        </section>
+                        <!-- BMI, Height, Weight Graph ends -->
+                        
+					</div>
+				</div>
+			</uib-tab>
+      </uib-tabset>
+    </div>
+    </div>
+	<!-- child details ends -->
+
+	
+    <div class="row">
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <!-- Latest Recipe starts -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 mob_padding_space">
+								
+			<section class="tile tile-simple">
+                <div class="tile-header">
+                    <h1 class=""><strong>Latest  </strong> Recipe</h1>
+                </div>
+                <div class="tile-body">
+                    <div class="media " ng-repeat="r in recRecipeList">
+                        <div class="pull-left thumb">
+                            <a class="pull-left" ui-sref="schoolUrl.parentarea.recipesDetailP({'recipeName':r.seoheading})">
+								<img class="media-object recipe_img" src="assets/images/document/{{r.icon}}" alt="Image ">
+							</a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading mb-10 mt-0">
+								<a ui-sref="schoolUrl.parentarea.recipesDetailP({'recipeName':r.seoheading})">{{r.heading}}</a>
+							</h4>
+							<p>{{ r.description | limitTo: 100 }}{{r.description.length > 100 ? '...' : ''}}<a ui-sref="schoolUrl.parentarea.recipesDetailP({'recipeName':r.seoheading})" class="text-sm color_link">Read more</a> </p>
+							<small class="text-lightred"><i class="fa fa-thumbs-up "></i>{{r.likes}} </small> 
+                            <small class="text-lightred ml-20"><a href="# "><i class="fa fa-eye "></i> {{r.views}}</a></small>
+                        </div>
+                    </div>
+                    <hr/>
+                </div>
+            </section>
+        </div>
+        <!-- Latest Recipe ends -->
+        <!-- Recent Articles starts -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 mob_padding_space">
+            <section class="tile tile-simple">
+                <div class="tile-header">
+                    <h1 class=""><strong>Latest </strong> Articles</h1>
+                </div>
+                <div class="tile-body">
+                    <div class="media " ng-repeat="r in recArticleList">
+                        <div class="pull-left thumb">
+                            <a class="pull-left" ui-sref="schoolUrl.parentarea.articleDetailP({'articleName':r.seoheading})">
+								<img class="media-object recipe_img" src="assets/images/document/{{r.icon}}" alt="Image ">
+							</a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading mb-10 mt-0">
+								<a ui-sref="schoolUrl.parentarea.articleDetailP({'articleName':r.seoheading})">{{r.heading}}</a>
+							</h4>
+							<p>{{ r.description | limitTo: 100 }}{{r.description.length > 100 ? '...' : ''}}<a ui-sref="schoolUrl.parentarea.article1({schoolUrl:'{{url}}'})" class="text-sm color_link">Read more</a> </p>
+                            <small class="text-lightred"><i class="fa fa-thumbs-up "></i>{{r.likes}} </small>
+                            <small class="text-lightred ml-20"><a href="# "><i class="fa fa-eye "></i> {{r.views}}</a></small>
+                        </div>
+                    </div>
+				<hr/>
+				 </div>
+            </section>
+        </div>
+        <!-- Recent Articles ends -->
+                    <!-- col -->
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 mob_padding_space">
+
+<section class="tile widget-chat" fullscreen="isFullscreen09">
+
+        <!-- tile header -->
+        <div class="tile-header dvd dvd-btm">
+          <h1 class="custom-font">Post a Queries to Nutrionist</h1>
+          <ul class="controls">
+            
+
+            <li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+
+              <a href uib-dropdown-toggle class="dropdown-toggle settings"><i class="fa fa-cog"></i></a>
+
+              <ul class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+                <li>
+                  <a href tile-control-toggle>
+                    <span class="minimize"><fa name="angle-down"></fa>&nbsp;&nbsp;&nbsp;Minimize</span>
+                    <span class="expand"><fa name="angle-up"></fa>&nbsp;&nbsp;&nbsp;Expand</span>
+                  </a>
+                </li>
+                <li>
+                  <a href tile-control-refresh ng-click="ajaxFaker()">
+                    <fa name="refresh"></fa> Refresh
+                  </a>
+                </li>
+                <li>
+                  <a href tile-control-fullscreen ng-click="isFullscreen09 = !isFullscreen09">
+                    <fa name="expand"></fa> Fullscreen
+                  </a>
+                </li>
+                <li>
+                  <a href tile-control-lightbox>
+                    <fa name="magnet"></fa> Open in Lightbox
+                  </a>
+                </li>
+
+              </ul>
+
+            </li>
+            <li class="remove"><a href tile-control-close><i class="fa fa-times"></i></a></li>
+          </ul>
+        </div>
+        <!-- /tile header -->
+
+        <!-- tile body -->
+        <div class="tile-body" style="max-height: 320px;overflow:auto;" slimscroll="{height: '100%'}">
+
+          <ul class="chats p-0" style="display:none">
+            <li class="in">
+              <div class="media">
+                <div class="pull-left thumb thumb-sm">
+                  <img class="media-object img-circle" src="images/random-avatar2.jpg" alt="">
+                </div>
+                <div class="media-body">
+                  <p class="media-heading"><a href="#" class="name">You </a><span class="datetime">at 12.10.2014</span></p>
+                  <span class="body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </span>
+                </div>
+              </div>
+            </li>
+            <li class="out">
+              <div class="media">
+                <div class="pull-right thumb thumb-sm">
+                  <img class="media-object img-circle" src="images/random-avatar1.jpg" alt="">
+                </div>
+                <div class="media-body">
+                  <p class="media-heading"><a href="#" class="name">Admin </a><span class="datetime">2 hours ago</span></p>
+                  <span class="body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </span>
+                </div>
+              </div>
+            </li>
+            <li class="in">
+              <div class="media">
+                <div class="pull-left thumb thumb-sm">
+                  <img class="media-object img-circle" src="images/random-avatar2.jpg" alt="">
+                </div>
+                <div class="media-body">
+                  <p class="media-heading"><a href="#" class="name">You </a><span class="datetime">2 hours ago</span></p>
+                  <span class="body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </span>
+                </div>
+              </div>
+            </li>
+            <li class="out">
+              <div class="media">
+                <div class="pull-right thumb thumb-sm">
+                  <img class="media-object img-circle" src="images/random-avatar1.jpg" alt="">
+                </div>
+                <div class="media-body">
+                  <p class="media-heading"><a href="#" class="name">Admin </a><span class="datetime">1 hours ago</span></p>
+                  <span class="body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </span>
+                </div>
+              </div>
+            </li>
+            <li class="in">
+              <div class="media">
+                <div class="pull-left thumb thumb-sm">
+                  <img class="media-object img-circle" src="images/random-avatar2.jpg" alt="">
+                </div>
+                <div class="media-body">
+                  <p class="media-heading"><a href="#" class="name">You </a><span class="datetime">53 minutes ago</span></p>
+                  <span class="body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </span>
+                </div>
+              </div>
+            </li>
+            <li class="out">
+              <div class="media">
+                <div class="pull-right thumb thumb-sm">
+                  <img class="media-object img-circle" src="images/random-avatar1.jpg" alt="">
+                </div>
+                <div class="media-body">
+                  <p class="media-heading"><a href="#" class="name">Admin </a><span class="datetime">40 minutes ago</span></p>
+                  <span class="body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </span>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+        </div>
+        <!-- /tile body -->
+
+        <!-- tile footer -->
+        <div class="tile-footer">
+          <div class="chat-form">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Type your message here...">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button"><i class="fa fa-chevron-right"></i></button>
+              </span>
+            </div>
+          </div>
+        </div>
+        <!-- /tile footer -->
+
+      </section>             
+			 
+
+            </div>
+			
+     
+		</div>
+		</div>
+        
+    </div>
+		<!-- Wellness Report popup starts -->
+        <script type="text/ng-template" id="welnessReportContent.html">
+            <div class="modal-header text-right">
+                <a class="btn btn-default btn-border" href="assets/reports/Water_NutritionReport_{{childData.studentId}}_{{childData.firstName}}.pdf" download="NutritionReport_{{childData.firstName}}.pdf">Download</a>
+                <button class="btn btn-default btn-border" ng-click="cancel()">Close</button>
+            </div>
+            <div class="add-nav">
+                <div class="nav-heading text-center">
+                    <h3><strong class="text-greensea"> Nutrition Report </strong></h3>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <section class="tile time-simple b-t">
+                            <div class="tile-body">
+                                <!-- Wellness Report child detail starts -->
+								<div class="row b-b pt-20">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 b-r">
+                                        <p class="text-uppercase text-strong mb-10 ">
+                                            Personal Detail
+                                        </p>
+                                        <ul class="list-unstyled text-default lt mb-20">
+                                            <li class="main_space">
+												<span class="profile_title_head">Name: </span> 
+												<span class="profile_spcaing">{{childData.firstName}} {{childData.lastName}} </span>
+											</li>
+                                            <li class="main_space">
+												<span class="profile_title_head">Date of Birth: </span> 
+												<span class="profile_spcaing"> {{childData.dob | date:'dd MMM yyyy'}}} </span> 
+											</li>
+                                            <li class="main_space">
+												<span class="profile_title_head">Age:</span> 
+												<span class="profile_spcaing">{{childData.studentsHealth.ageYears}}Y {{childData.studentsHealth.ageMonths}}M </span> 
+											</li>
+                                            <li class="main_space">
+												<span class="profile_title_head">Gender: </span> 
+												<span class="profile_spcaing">{{childData.gender}} </span> 
+											</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 b-r">
+                                        <p class="text-uppercase text-strong mb-10 ">
+                                            School Detail
+                                        </p>
+                                        <ul class="list-unstyled text-default lt mb-20">
+                                            <li class="main_space">
+												<span class="profile_title_head">School Name: </span> 
+												<span class="profile_spcaing">{{childData.schoolName}}</span> 
+											</li>
+                                            <li class="main_space">
+												<span class="profile_title_head">Branch Name: </span> 
+												<span class="profile_spcaing">{{childData.branchName}}</span> 
+											</li>
+                                            <li class="main_space">
+												<span class="profile_title_head">Class: </span> 
+												<span class="profile_spcaing">{{childData.className}} </span> 
+											</li>
+                                            <li class="main_space">
+												<span class="profile_title_head">Section: </span> 
+												<span class="profile_spcaing">{{childData.sectionName}} </span> 
+											</li>
+											<li class="main_space">
+												<span class="profile_title_head">Student Id: </span> 
+												<span class="profile_spcaing">{{childData.studentRollId}}</span> 
+											</li>
+                                            
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <p class="text-uppercase text-strong mb-10 ">Health Status : <span class="text-green" ng-if="childData.studentsHealth.category === 'Healthy'"> {{childData.studentsHealth.category}} </span> 
+																									 <span class="text-orange" ng-if="childData.studentsHealth.category === 'Above Ideal Ref. Range'"> {{childData.studentsHealth.category}} </span>  
+																									 <span class="text-hotpink" ng-if="childData.studentsHealth.category === 'Below Ideal Ref. Range'"> {{childData.studentsHealth.category}} </span> 
+										</p>
+                                        <ul class="list-unstyled text-default lt mb-20">
+                                            <li class="main_space">
+												<span class="profile_title_head">Height: </span> 
+												<span class="profile_spcaing">{{childData.studentsHealth.height}} {{childData.studentsHealth.heightUnit}}</span> 
+											</li>
+                                            <li class="main_space">
+												<span class="profile_title_head">Weight: </span> 
+												<span class="profile_spcaing">{{childData.studentsHealth.weight}} {{childData.studentsHealth.weightUnit}}</span> 
+											</li>
+                                            <li class="main_space">
+												<span class="profile_title_head">Body Mass Index (BMI): </span> 
+												<span class="profile_spcaing">{{childData.studentsHealth.bmi}}</span> 
+											</li>
+                                            <li class="main_space">
+												<span class="profile_title_head">BMI Percentile: </span> 
+												<span class="profile_spcaing">{{childData.studentsHealth.bmiPercentile}}</span> 
+											</li>
+                                            <li class="main_space">
+												<span class="profile_title_head">Ideal Body Weight (IBW): </span> 
+												<span class="profile_spcaing">{{childData.studentsHealth.ibw}}</span> 
+											</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- Wellness Report child detail ensds -->
+								
+                                <div class="row pt-20">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="mt-20">
+											<!-- Wellness Report Guidelines ends -->
+                                            <article class="streamline-post" ng-if="childData.studentsWellness.guidelines">
+                                                <div class="post-container">
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading">
+                                                            <h4 class="text-uppercase text-strong mb-10 ">Guidelines:</h4> 
+                                                        </div>
+                                                         <div ng-bind-html="childData.studentsWellness.guidelines"></div>
+                                                    </div>
+                                                </div>
+                                            </article>
+											<!-- Wellness Report Guidelines ends -->
+											<!-- Wellness Report Points to remember starts -->
+                                            <article class="streamline-post" ng-if="childData.studentsWellness.pntsToRem">
+                                                <div class="post-container">
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading">
+                                                            <h4 class="text-uppercase text-strong mb-10 ">Points to remember:</h4>
+                                                        </div>
+                                                        <div ng-bind-html="childData.studentsWellness.pntsToRem"></div>
+                                                    </div>
+                                                </div>
+                                            </article>
+											<!-- Wellness Report Points to remember ends -->
+											<!-- Wellness Report Recipe starts -->
+                                            <article class="streamline-post" ng-if="childData.studentsWellness.recipeName">
+                                                <div class="post-container">
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading">
+                                                            <h4 class="text-uppercase text-strong mb-10 ">A recipe just for you! </h4>
+															<div ng-bind-html="childData.studentsWellness.recipeName"></div>
+                                                        </div>
+                                                        <div ng-bind-html="childData.studentsWellness.recipeContent"></div>
+                                                    </div>
+                                                </div>
+                                            </article>
+											<!-- Wellness Report Recipe ends -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Wellness Report Disclaimer Starts -->
+                        <section class="tile time-simple b-t">
+                            <div class="tile-body">
+                                <div class="row">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <p>For any further assistance you may contact us at info@almanourisher.com / 8147359500.</p>
+										<p><strong style="color:red;">Disclaimer:</strong> This report is based on your child's anthropometrics and not to be substituted as a total nutrition advice until we assess your child's diet history and lifestyle pattern.</p>
+										<p>This is system generated report. </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- Wellness Report Disclaimer ends -->
+                    </div>
+                </div>
+            </div>
+        </script>
+        <!-- Wellness Report popup ends  -->
+		
+		<!-- Food Frequency Report popup starts -->
+        <script type="text/ng-template" id="foodFrequencyReportContent.html">
+            <div class="modal-header text-right">
+				<a class="btn btn-default btn-border" href="assets/reports/Water_FoodFreqReport_{{childData.studentId}}_{{childData.firstName}}.pdf" download="FoodFreqencyReport_{{childData.firstName}}.pdf">Download</a>
+                <button class="btn btn-default btn-border" ng-click="cancel()">Close</button>
+            </div>
+            <div class="add-nav">
+                <div class="nav-heading text-center">
+                    <h3><strong class="text-greensea">Food Frequency Report </strong></h3>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <section class="tile time-simple b-t">
+                            <div class="tile-body">
+                                <!-- Food Frequency Report child detail starts -->
+								<div class="row b-b pt-20">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 b-r">
+                                        <p class="text-uppercase text-strong mb-10 ">
+                                            Personal Detail
+                                        </p>
+                                        <ul class="list-unstyled text-default lt mb-20">
+                                            <li class="main_space">
+												<span class="profile_title_head">Name: </span> 
+												<span class="profile_spcaing">{{childData.firstName}} {{childData.lastName}} </span>
+											</li>
+                                            <li class="main_space">
+												<span class="profile_title_head">Date of Birth: </span> 
+												<span class="profile_spcaing"> {{childData.dob | date:'dd MMM yyyy'}}} </span> 
+											</li>
+                                            <li class="main_space">
+												<span class="profile_title_head">Age:</span> 
+												<span class="profile_spcaing">{{childData.studentsHealth.ageYears}}Y {{childData.studentsHealth.ageMonths}}M </span> 
+											</li>
+                                            <li class="main_space">
+												<span class="profile_title_head">Gender: </span> 
+												<span class="profile_spcaing">{{childData.gender}} </span> 
+											</li>
+                                            <li class="main_space">
+												<span class="profile_title_head">Food Preference: </span> 
+												<span class="profile_spcaing text-green "> {{childData.foodFreqReport[0].foodPreference}} </span><!-- / <span class="profile_spcaing text-orange"> Eggetarian </span> /  <span class="profile_spcaing text-hotpink"> Non-Vegetarian </span>--> 
+											</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 b-r">
+                                        <p class="text-uppercase text-strong mb-10 ">
+                                            School Detail
+                                        </p>
+                                        <ul class="list-unstyled text-default lt mb-20">
+                                            <li class="main_space">
+												<span class="profile_title_head">School Name: </span> 
+												<span class="profile_spcaing">{{childData.schoolName}}</span> 
+											</li>
+                                            <li class="main_space">
+												<span class="profile_title_head">Branch Name: </span> 
+												<span class="profile_spcaing">{{childData.branchName}}</span> 
+											</li>
+                                            <li class="main_space">
+												<span class="profile_title_head">Class: </span> 
+												<span class="profile_spcaing">{{childData.className}} </span> 
+											</li>
+                                            <li class="main_space">
+												<span class="profile_title_head">Section: </span> 
+												<span class="profile_spcaing">{{childData.sectionName}} </span> 
+											</li>
+											<li class="main_space">
+												<span class="profile_title_head">Student Id: </span> 
+												<span class="profile_spcaing">{{childData.studentRollId}} </span> 
+											</li>
+                                            
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <p class="text-uppercase text-strong mb-10 ">Health Status : <span class="text-green"> {{childData.studentsHealth.category}} </span> <!--/ <span class="text-orange"> Underweight </span> /  <span class="text-hotpink"> Overweight </span>--> </p>
+                                        <ul class="list-unstyled text-default lt mb-20">
+                                            <li class="main_space">
+												<span class="profile_title_head">Height: </span> 
+												<span class="profile_spcaing">{{childData.studentsHealth.height}} {{childData.studentsHealth.heightUnit}}</span> 
+											</li>
+                                            <li class="main_space">
+												<span class="profile_title_head">Weight: </span> 
+												<span class="profile_spcaing">{{childData.studentsHealth.weight}} {{childData.studentsHealth.weightUnit}}</span> 
+											</li>
+                                            <li class="main_space">
+												<span class="profile_title_head">Body Mass Index (BMI): </span> 
+												<span class="profile_spcaing">{{childData.studentsHealth.bmi}}</span> 
+											</li>
+                                            <li class="main_space">
+												<span class="profile_title_head">BMI Percentile: </span> 
+												<span class="profile_spcaing">{{childData.studentsHealth.bmiPercentile}}</span> 
+											</li>
+                                            <li class="main_space">
+												<span class="profile_title_head">Ideal Body Weight (IBW): </span> 
+												<span class="profile_spcaing">{{childData.studentsHealth.ibw}}</span> 
+											</li>
+                                        </ul>
+                                    </div>
+                                </div>								
+                                <!-- Food Frequency Report child detail ensds -->
+								
+                                <div class="row pt-20">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="streamlines">
+											<!-- Food Frequency Report Health Status ends -->
+                                            <article class="streamline-post" ng-repeat="report in childData.foodFreqReport" ng-if="report.content">
+                                                <div class="post-container">
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading" style="background-color:{{report.colorCode}}; color:white;">
+                                                            <h4 class="text-captialize text-strong mb-10 ">{{report.question}}
+																<span class="pull-right">
+																	<i class="fa fa-star"></i>
+																	<i class="fa fa-star" ng-if="report.grade=='A' || report.grade=='B'"></i>
+																	<i class="fa fa-star" ng-if="report.grade=='A'"></i>
+																</span>
+															</h4> 
+															
+                                                        </div>
+														<div class="panel-body">
+                                                         <div ng-bind-html="report.content"></div>
+														</div>
+                                                    </div>
+                                                </div>
+                                            </article>
+											<!-- Food Frequency Report Health Status ends -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+						
+						<!-- Food Frequency Report Disclaimer Starts -->
+                        <section class="tile time-simple b-t">
+                            <div class="tile-body">
+                                <div class="row">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <p>For any further assistance you may contact us at info@almanourisher.com / 8147359500.</p>
+										<p><strong style="color:rgba(233, 57, 57, 0.88);">Disclaimer:</strong> This report is based on your child's anthropometrics and not to be substituted as a total nutrition advice until we assess your child's diet history and lifestyle pattern.</p>
+										<p>This is system generated report. </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- Food Frequency Report Disclaimer ends -->
+                    </div>
+                </div>
+            </div>
+        </script>
+        <!-- Food Frequency Report popup ends  -->		
+    </div>
+</div>
+</div>
+<style>
+    .add-nav .tab-content .tab-pane {
+        padding: 0px 0 15px;
+    }
+    .media-heading {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+    .tile.time-simple {
+        margin-bottom: 0px;
+    }
+    .modal-dialog {
+        width: 90%;
+    }
+    .add-nav {
+        margin-top: 25px;
+    }
+	.splash .modal-dialog {
+		margin-top: 10px;
+	}
+	.splash.splash-2 .modal-header.text-right {
+		text-align:right;
+	}
+	.profile_spcaing{
+		padding: 0 0 0 15px;
+	}
+	.main_space{
+		color: #333;
+		line-height:1.6;
+	}
+	.main_space .profile_title_head {
+		color: #a3aeb4;
+		font-weight:normal
+	}
+	.tile {
+		padding: 20px 10px;
+	}
+	.modal-dialog  {
+		width:900px;
+	}
+	.action_status {
+		
+	}
+	.error_msg {
+		background-color: #dc485c;
+    	border-color: #d9364d;
+		color:#fff;
+		padding:10px 15px;
+		font-size:16px;
+		line-height:1.5;
+		margin: 0 0 0 0;
+	}
+	.error_msg span, .success_msg span {
+		margin: 0 20px;
+	}
+	.success_msg {
+		background-color: #16a085 ;
+    	border-color: #16a085;
+		color:#fff;
+		padding:10px 15px;
+		font-size:16px;
+		line-height:1.5;
+		margin: 0 0 0 0;
+	}
+</style>

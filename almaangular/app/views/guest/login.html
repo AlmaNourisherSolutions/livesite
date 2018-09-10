@@ -1,0 +1,129 @@
+<!-- #breadcrumbs end -->
+<!-- ============================================
+        =================== Content =====================
+        ============================================= -->
+
+<section id="content">
+    <!--<div class="row">
+				<div class="col-md-12" style="padding:0">
+				<img class="img-responsive" style="height:350px;width:100%" src="assets/images/school/{{school.schoolBanner}}" />
+				</div>    
+			</div>  -->
+    <div class="content-wrap" style="">
+
+        <div class="container clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-0 col-xs-offset-0 text-center clearfix">
+                        <img class="mb-40 mb-40 img-responsive" src="assets/images/school/{{school.schoolLogo}}" alt="">
+                        <h1><span class="text-greensea">Welcome to </span>{{school.schoolName}}</h1>
+                    </div>
+                    <div class="line"></div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 p-0">
+                    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2 col-sm-offset-0 col-xs-offset-0 clearfix p-0">
+
+                        <h3><i class="fa fa-unlock"></i> Login to your account</h3>
+                        <uib-tabset>
+                            <uib-tab>
+                                <uib-tab-heading>
+                                    <i class="glyphicon glyphicon-user"></i> Parent Login
+                                </uib-tab-heading>
+                                <form class="mob_space">
+                                    <div class="row">
+
+                                        <div class="form-group col-md-12">
+                                            <label for="username">E-Mail Id / Phone No.</label>
+                                            <input name="username" type="text" class="form-control myInput" id="username" ng-model="user.email" required>
+                                        </div>
+
+                                        <div class="form-group col-md-12">
+                                            <label for="password">Password</label>
+                                            <input name="password" type="password" class="form-control myInput" id="password" ng-model="user.password" required>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <button type="submit" ng-click="login('Parent')" class="myBtn myBtn-rounded myBtn-dark m-0 mt-10">Login</button>
+                                            <!--<a href="#" class="pull-right">Forgot Password?</a>-->
+                                        </div>
+
+                                    </div>
+                                </form>
+
+                            </uib-tab>
+                            <uib-tab>
+                                <uib-tab-heading>
+                                    <i class="fa fa-book"></i> School Login
+                                </uib-tab-heading>
+                                <form>
+                                    <div class="row">
+
+                                        <div class="form-group col-md-12">
+                                            <label for="susername">E-Mail Id / Phone No.</label>
+                                            <input name="susername" type="text" class="form-control myInput" id="susername" ng-model="user.email" required>
+                                        </div>
+
+                                        <div class="form-group col-md-12">
+                                            <label for="spassword">Password</label>
+                                            <input name="spassword" type="password" class="form-control myInput" id="spassword" ng-model="user.password" required>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <button type="submit" ng-click="login('SchoolAdmin')" class="myBtn myBtn-rounded myBtn-dark m-0 mt-10">Login</button>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </uib-tab>
+                        </uib-tabset>
+
+                    </div>
+                    <!-- /login -->
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ login ============ -->
+
+    </div>
+</section>
+<!-- #content end -->
+
+<!-- #content end -->
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        // MINOVATE.documentOnReady.init();
+        setTimeout(function() { // You might need this timeout to be sure its run after DOM render.
+            console.log("in directive");
+            MINOVATE.documentOnReady.init();
+            //MINOVATE.documentOnLoad.init();
+        }, 1000);
+    });
+</script>
+<style>
+    #content {
+        position: relative !important;
+        overflow: hidden;
+        background-color: #FFF;
+        z-index: 9;
+        top: 0 !important;
+        right: 0;
+        bottom: 0;
+        width: auto;
+        left: 0 !important;
+        padding-left: 0;
+        padding-top: 0;
+        z-index: 1;
+    }    
+    #breadcrumbs.breadcrumbs-sm h1 + span {
+        display: block !important;
+    }
+	#main-navbar ul li.active a {
+        color: #444;
+    }  
+	#main-navbar ul li.active_login a {
+        color: #428bca;
+    }
+	
+</style>

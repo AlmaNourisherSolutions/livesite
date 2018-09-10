@@ -1,0 +1,6 @@
+New Studen Data Load begins: Sat Apr 28 10:40:50 IST 2018
+----------------------- Record: 1 ----------------------------
+Current record values ---> KK_EC_6,Dakshesh Saikia,,Mr.abhijitsaikia@gmail.com,9986077089,M,Keykidz,Ecity,Toddler,,29-12-2014,89,cm,15,kgs
+---------------------------------------------------
+-------  Student Record exist. Updating height and weight --------
+*** Student details updated successfully ***

@@ -1,0 +1,387 @@
+<div class="page page-form-validate">
+
+    <!-- page header -->
+    <div class="pageheader">
+
+        <h2>{{page.title}} <span>// {{page.subtitle}}</span></h2>
+
+        <div class="page-bar">
+
+            <ul class="page-breadcrumb">
+                <li>
+                    <a ui-sref="administrator.dashboard"><i class="fa fa-home"></i> {{main.title}}</a>
+                </li>
+                <li>
+                    <a href="javascript:;">Manage Student</a>
+                </li>
+                <li>
+                    <a ui-sref="administrator.manageStudent.addSchool">{{page.title}}</a>
+                </li>
+            </ul>
+
+            <div ng-controller="DaterangepickerCtrl" class="page-toolbar">
+                <a href="javascript:;" class="btn btn-lightred no-border">
+                    <i class="fa fa-calendar"></i>&nbsp;&nbsp;<span>{{today}}</span>&nbsp;&nbsp;
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- /page header -->
+
+    <!-- page content -->
+    <div class="pagecontent">
+
+        <!-- row -->
+        <div class="row">
+
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-40">
+				<div class="tile-body tile">
+                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bg_white p-0">
+						<div class="tile-header dvd dvd-btm">
+                            <h1 class="custom-font"><strong>Upload Student</strong> XL</h1>
+						</div>
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 m20">
+							<div class="col-sm-9">
+								<input id="studentupload" name="studentupload" ui-jq="filestyle" type="file" class="filestyle" ui-options="{buttonText: 'Select file',iconName: 'fa fa-inbox'}" nv-file-select="{ alias: 'studentupload' }" uploader="uploaderStudent" />
+							</div>          
+							 <div class="col-sm-3">
+								<button type="submit" ng-click="uploadStudent()" class="btn btn-success">Upload </button>
+							 </div>      
+							 <div class="col-sm-12">
+							    <a class="btn btn-default btn-border" href="assets/images/uploadLogs/StudentDataUploadLog.txt" download="StudentDataUploadLog.txt">Download Logs</a>
+							 </div>           
+						 </div>               
+					</div>
+				</div>
+			</div>
+            <!-- col -->
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                <form name="addStudentForm" class="form-horizontal" ng-submit="submitForm(addStudentForm.$valid)" role="form" novalidate>
+
+                    <!-- tile -->
+                    <section class="tile" fullscreen="isFullscreen01">
+
+                        <!-- tile header -->
+                        <div class="tile-header dvd dvd-btm">
+                            <h1 class="custom-font"><strong>Add New</strong> Student</h1>
+                            <ul class="controls">
+                                <li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+
+                                    <a href uib-dropdown-toggle class="dropdown-toggle settings"><i class="fa fa-cog"></i></a>
+
+                                    <ul class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+                                        <li>
+                                            <a href tile-control-toggle>
+                                                <span class="minimize"><fa name="angle-down"></fa>&nbsp;&nbsp;&nbsp;Minimize</span>
+                                                <span class="expand"><fa name="angle-up"></fa>&nbsp;&nbsp;&nbsp;Expand</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href tile-control-refresh ng-click="ajaxFaker()">
+                                                <fa name="refresh"></fa> Refresh
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href tile-control-fullscreen ng-click="isFullscreen01 = !isFullscreen01">
+                                                <fa name="expand"></fa> Fullscreen
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href tile-control-lightbox>
+                                                <fa name="magnet"></fa> Open in Lightbox
+                                            </a>
+                                        </li>
+
+                                    </ul>
+
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /tile header -->
+
+                        <!-- tile body -->
+                        <div class="tile-body form-validation row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <p class="text-muted">Submit button will be enabled after completing form.</p>
+
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Upload Image:</label>
+                                        <div class="col-sm-9">
+                                            <div class="col-md-10">
+                                                <div class="form-group">
+                                                   <input id="profilepic" name="profilepic" ui-jq="filestyle" type="file" class="filestyle" ui-options="{
+			            							buttonText: 'Select file',iconName: 'fa fa-inbox'}" nv-file-select="{ alias: 'profilepic' }" uploader="uploader" />
+                                               
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <img ng-src="{{filepreview}}" class="img-responsive" ng-show="filepreview" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" ng-class="{ 'has-error' : addStudentForm.studentid.$invalid && !addStudentForm.studentid.$pristine, 'has-success' : addStudentForm.studentid.$valid && !addStudentForm.studentid.$pristine}">
+                                        <label class="col-sm-3 control-label">Student Id <sup class="alert_red_color"><strong>*</strong></sup>: </label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="studentid" id="studentid" placeholder="URK05" class="form-control" ng-model="user.studentRollId" ng-minlength="1" ng-maxlength="20" required>
+                                            <p class="help-block">
+                                                <span ng-show="addStudentForm.studentid.$invalid && !addStudentForm.studentid.$pristine">Student Id is required.</span>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" ng-class="{ 'has-error' : addStudentForm.studentfname.$invalid && !addStudentForm.studentfname.$pristine, 'has-success' : addStudentForm.studentfname.$valid && !addStudentForm.studentfname.$pristine}">
+                                        <label class="col-sm-3 control-label">First Name: <sup class="alert_red_color"><strong>*</strong></sup></label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="studentfname" id="studentfname" placeholder="Amit" class="form-control" ng-model="user.firstName" ng-minlength="3" ng-maxlength="50" required>
+                                            <p class="help-block">
+                                                <span ng-show="addStudentForm.studentfname.$invalid && !addStudentForm.studentfname.$pristine">First Name is required.</span>
+                                                <span ng-show="addStudentForm.studentfname.$error.minlength">First Name is too short.</span>
+                                                <span ng-show="addStudentForm.studentfname.$error.maxlength">First Name is too long.</span>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Last Name:</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="studentlname" id="studentlname" placeholder="kumar" class="form-control" ng-model="user.lastName">
+                                            
+                                        </div>
+                                    </div>
+
+                                     <div class="form-group">
+                                        <label class="col-sm-3 control-label">Parent Name:</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="parentname" id="parentname" placeholder="Ms. Harmit Kaur" class="form-control">
+                                            
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" ng-class="{ 'has-error' : addStudentForm.schoolemail.$invalid && !addStudentForm.parentemail.$pristine, 'has-success' : addStudentForm.parentemail.$valid && !addStudentForm.parentemail.$pristine}">
+                                        <label class="col-sm-3 control-label">Email Address <sup class="alert_red_color"><strong>*</strong></sup>:</label>
+                                        <div class="col-sm-9">
+                                            <input type="email" name="parentemail" id="parentemail" placeholder="xyz@parent.com" class="form-control" ng-model="user.parent.email" required>
+                                            <p class="help-block">
+                                                <span ng-show="addStudentForm.parentemail.$invalid && !addStudentForm.parentemail.$pristine">Email Id is required.</span>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" >
+                                        <label class="col-sm-3 control-label">Contact No.:</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="parentphone" id="parentphone" name="fc18" class="form-control" placeholder="1234567890" ng-model="user.parent.contact" ng-pattern="/\d{10}/" >
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" ng-class="{ 'has-error' : addStudentForm.parentpassword.$invalid && !addStudentForm.parentpassword.$pristine, 'has-success' : addStudentForm.parentpassword.$valid && !addStudentForm.parentpassword.$pristine}">
+                                        <label class="col-sm-3 control-label">Password <sup class="alert_red_color"><strong>*</strong></sup>:</label>
+                                        <div class="col-sm-9">
+                                            <input type="password" name="parentpassword" id="parentpassword" placeholder="Assign Password" class="form-control" ng-model="user.parent.password">
+                                            <p class="help-block">
+                                                <span ng-show="addStudentForm.parentpassword.$invalid && !addStudentForm.parentpassword.$pristine || addStudentForm.parentpassword.$invalid && submitted">Password is required.</span>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" ng-class="{ 'has-error' : addStudentForm.parentpassword.$invalid && !addStudentForm.parentpassword.$pristine, 'has-success' : addStudentForm.parentpassword.$valid && !addStudentForm.parentpassword.$pristine}">
+                                        <label class="col-sm-3 control-label">Gender <sup class="alert_red_color"><strong>*</strong></sup></label>
+                                        <div class="col-sm-9">
+                                            <div class="btn-group" ng-controller="ButtonsCtrl">
+                                                <label class="btn btn-default" ng-model="user.gender" uib-btn-radio="'Male'">Male</label>
+                                                <label class="btn btn-default" ng-model="user.gender" uib-btn-radio="'Female'">Female</label>
+                                                <label class="btn btn-default" ng-model="user.gender" uib-btn-radio="'Other'">Others</label>
+                                                <p class="help-block">
+                                                    <span ng-show="addStudentForm.parentpassword.$invalid && !addStudentForm.parentpassword.$pristine || addStudentForm.parentpassword.$invalid && submitted">Gender is required.</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" ng-class="{ 'has-error' : addStudentForm.studentdob.$invalid && !addStudentForm.studentdob.$pristine, 'has-success' : addStudentForm.studentdob.$valid && !addStudentForm.studentdob.$pristine}">
+                                        <label for="mask01" class="col-sm-3 control-label">Date of Birth <sup class="alert_red_color"><strong>*</strong></sup></label>
+                                        <div class="col-sm-9">
+                                            <datepicker date-format="MM/dd/yyyy">
+                                                <input type="text" class="form-control" name="studentdob" id="studentdob" ng-model="user.dob" ng-change="calculateAge(user.dob)">
+                                            </datepicker>
+                                            <p class="help-block">
+                                                <span ng-show="addStudentForm.studentdob.$invalid && !addStudentForm.studentdob.$pristine || addStudentForm.studentdob.$invalid && submitted">Date of Birth is required.</span>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Age</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="studentage" id="studentage" class="form-control" placeholder="10" ng-model="user.studentsHealth.age" readonly>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+                                    <div class="form-group" ng-class="{ 'has-error' : addStudentForm.studentschoolname.$invalid && !addStudentForm.studentschoolname.$pristine, 'has-success' : addStudentForm.studentschoolname.$valid && !addStudentForm.studentschoolname.$pristine}">
+                                        <label class="col-sm-3 control-label">Select School <sup class="alert_red_color"><strong>*</strong></sup></label>
+                                        <div class="col-sm-9">
+                                            <select name="studentschoolname" id="studentschoolname" class="form-control mb-10" ng-model="user.schoolId" ng-change="getSchoolBranch(user.schoolId)" required>
+                                                <option value="">Select option...</option>
+                                                <option ng-repeat="s in schoolList" value="{{s.schoolId}}">{{s.schoolName}}</option>
+                                            </select>
+                                            <p class="help-block">
+                                                <span ng-show="addStudentForm.studentschoolname.$invalid && !addStudentForm.studentschoolname.$pristine || addStudentForm.studentschoolname.$invalid && submitted">School Name is required.</span>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" ng-class="{ 'has-error' : addStudentForm.studentschoolbranch.$invalid && !addStudentForm.studentschoolbranch.$pristine, 'has-success' : addStudentForm.studentschoolbranch.$valid && !addStudentForm.studentschoolbranch.$pristine}">
+                                        <label class="col-sm-3 control-label">Select Branch <sup class="alert_red_color"><strong>*</strong></sup></label>
+                                        <div class="col-sm-9">
+                                            <select name="studentschoolbranch" id="studentschoolbranch" class="form-control mb-10" ng-model="user.branchId" ng-change="getClassList(user.branchId)" required>
+                                                <option value="">Select option...</option>
+                                                <option ng-repeat="b in schoolBranchList" value="{{b.branchId}}">{{b.branchName}}</option>
+                                            </select>
+
+                                            <p class="help-block">
+                                                <span ng-show="addStudentForm.studentschoolbranch.$invalid && !addStudentForm.studentschoolbranch.$pristine || addStudentForm.studentschoolbranch.$invalid && submitted">School Branch is required.</span>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" ng-class="{ 'has-error' : addStudentForm.studentschoolclass.$invalid && !addStudentForm.studentschoolclass.$pristine, 'has-success' : addStudentForm.studentschoolclass.$valid && !addStudentForm.studentschoolclass.$pristine}">
+                                        <label class="col-sm-3 control-label">Select Class <sup class="alert_red_color"><strong>*</strong></sup></label>
+                                        <div class="col-sm-9">
+                                            <select name="studentschoolclass" id="studentschoolclass" class="form-control mb-10" ng-model="user.className" required>
+                                                <option value="">Select option...</option>
+                                                <option ng-repeat="b in schoolClassList" value="{{b}}">{{b}}</option>
+                                            </select>
+                                            <p class="help-block">
+                                                <span ng-show="addStudentForm.studentschoolclass.$invalid && !addStudentForm.studentschoolclass.$pristine || addStudentForm.studentschoolclass.$invalid && submitted">Class is required.</span>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Section</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="studentclasssection" id="studentclasssection" class="form-control mb-10" placeholder="Sec-1" ng-model="user.sectionName">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" ng-class="{ 'has-error' : addStudentForm.studentheight.$invalid && !addStudentForm.studentheight.$pristine, 'has-success' : addStudentForm.studentheight.$valid && !addStudentForm.studentheight.$pristine}">
+                                        <label class="col-sm-3 control-label">Height <sup class="alert_red_color"><strong>*</strong></sup></label>
+                                        <div class="col-sm-9">
+                                            <div class="col-xs-6">
+                                                <input type="number" name="studentheight" id="studentheight" placeholder="100" class="form-control" ng-model="user.studentsHealth.height" ng-change="calculateBMI()">
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <select name="studentheightunit" id="studentheightunit" class="form-control mb-10" ng-model="user.studentsHealth.heightUnit" ng-init="somethingHere = options[0]" required>
+                                                    <option value="Centimeter" selected>Centimeter</option>
+                                                    <option value="Inches">Inches</option>
+                                                    <option value="Feet">Feet</option>
+                                                </select>
+
+                                            </div>
+                                            <p class="help-block">
+                                                <span ng-show="addStudentForm.studentheight.$invalid && !addStudentForm.studentheight.$pristine || addStudentForm.studentheight.$invalid && submitted">Height is required.</span>
+                                            </p>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" ng-class="{ 'has-error' : addStudentForm.studentweight.$invalid && !addStudentForm.studentweight.$pristine, 'has-success' : addStudentForm.studentweight.$valid && !addStudentForm.studentweight.$pristine}">
+                                        <label class="col-sm-3 control-label">Weight <sup class="alert_red_color"><strong>*</strong></sup></label>
+                                        <div class="col-sm-9">
+                                            <div class="col-xs-6">
+                                                <input type="number" name="studentweight" id="studentweight" placeholder="100" class="form-control" ng-model="user.studentsHealth.weight" ng-change="calculateBMI()">
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <select name="studentweightunit" id="studentweightunit" class="form-control mb-10" ng-model="user.studentsHealth.weightUnit" required>
+                                                    <option value="Kilograms" selected>Kilograms</option>
+                                                    <option value="LBS">LBS</option>
+                                                </select>
+                                            </div>
+                                            <p class="help-block">
+                                                <span ng-show="addStudentForm.studentweight.$invalid && !addStudentForm.studentweight.$pristine || addStudentForm.studentweight.$invalid && submitted">Weight is required.</span>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">BMI</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="studentbmi" id="studentbmi" class="form-control" placeholder="10" ng-model="user.studentsHealth.bmi" readonly>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">BMI Percentile</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="studentbmipercentage" id="studentbmipercentage" class="form-control" placeholder="10" ng-model="user.studentsHealth.bmiPercentile" readonly>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">IBW</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="studentibw" id="studentibw" class="form-control" placeholder="10" ng-model="user.studentsHealth.ibw" readonly>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Status <sup class="alert_red_color"><strong>*</strong></sup></label>
+                                        <div class="col-sm-9">
+                                            <div class="btn-group" ng-controller="ButtonsCtrl">
+                                                <label class="btn btn-default" ng-model="user.active" uib-btn-radio="false">Inactive</label>
+                                                <label class="btn btn-default" ng-model="user.active" uib-btn-radio="true">Active</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- /tile body -->
+                            </div>
+                        </div>
+                        <!-- tile footer -->
+                        <div class="tile-footer text-right bg-tr-black lter dvd dvd-top">
+                            <!-- SUBMIT BUTTON -->
+                            <button type="submit" class="btn btn-success" ng-disabled="addStudentForm.$invalid">Submit</button>
+                        </div>
+                        <!-- /tile footer -->
+
+                    </section>
+                    <!-- /tile -->
+
+                </form>
+
+            </div>
+            <!-- /col -->
+
+        </div>
+        <!-- /row -->
+
+    </div>
+    <!-- /page content -->
+
+</div>
+<style>
+    .checkbox-custom > i,
+    .checkbox-custom-alt > i {
+        border: 0px;
+    }
+	.bg_white {
+		background:#fff;
+	}
+	.m20{
+		margin:20px
+	}
+	.alert_red_color{
+ 	color: #dc485c;
+ }
+</style>

@@ -1,0 +1,176 @@
+
+<div class="page page-dashboard">
+
+  <div class="pageheader">
+
+    <h2>{{page.title}} <span>// {{page.subtitle}}</span></h2>
+
+    <div class="page-bar">
+
+      <ul class="page-breadcrumb">
+        <li>
+          <a ui-sref="schoolUrl.parentarea.dashboard"><i class="fa fa-home"></i> Dashboard </a>
+        </li>
+        <li>
+          <a ui-sref="schoolUrl.parentarea.postQueryP">{{page.title}}</a>
+        </li>
+      </ul>
+
+      <div ng-controller="DaterangepickerCtrl" class="page-toolbar">
+        <a href="javascript:;" class="btn btn-lightred no-border">
+          <i class="fa fa-calendar"></i>&nbsp;&nbsp;<span>{{today}}</span>&nbsp;&nbsp;
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- page content starts-->
+    <div class="pagecontent container">
+      <!-- row -->
+          <div class="row mob_padding_space">
+            <!-- col -->
+            <div class=" col-lg-8 col-md-8 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2 col-sm-offset-0 col-xs-offset-0 mob_padding_space">
+
+			<section class="tile widget-chat" fullscreen="isFullscreen09">
+
+        <!-- tile header -->
+        <div class="tile-header dvd dvd-btm">
+          <h1 class="custom-font">Directly Ask Question to Admin</h1>
+          <ul class="controls">
+            
+
+            <li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+
+              <a href uib-dropdown-toggle class="dropdown-toggle settings"><i class="fa fa-cog"></i></a>
+
+              <ul class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+                <li>
+                  <a href tile-control-toggle>
+                    <span class="minimize"><fa name="angle-down"></fa>&nbsp;&nbsp;&nbsp;Minimize</span>
+                    <span class="expand"><fa name="angle-up"></fa>&nbsp;&nbsp;&nbsp;Expand</span>
+                  </a>
+                </li>
+                <li>
+                  <a href tile-control-refresh ng-click="ajaxFaker()">
+                    <fa name="refresh"></fa> Refresh
+                  </a>
+                </li>
+                <li>
+                  <a href tile-control-fullscreen ng-click="isFullscreen09 = !isFullscreen09">
+                    <fa name="expand"></fa> Fullscreen
+                  </a>
+                </li>
+                <li>
+                  <a href tile-control-lightbox>
+                    <fa name="magnet"></fa> Open in Lightbox
+                  </a>
+                </li>
+
+              </ul>
+
+            </li>
+            <li class="remove"><a href tile-control-close><i class="fa fa-times"></i></a></li>
+          </ul>
+        </div>
+        <!-- /tile header -->
+
+        <!-- tile body -->
+        <div class="tile-body" style="max-height: 320px;overflow:auto;" slimscroll="{height: '100%'}">
+
+          <ul class="chats p-0">
+            <li class="in">
+              <div class="media">
+                <div class="pull-left thumb thumb-sm">
+                  <img class="media-object img-circle" src="images/random-avatar2.jpg" alt="">
+                </div>
+                <div class="media-body">
+                  <p class="media-heading"><a href="#" class="name">You </a><span class="datetime">at 12.10.2014</span></p>
+                  <span class="body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </span>
+                </div>
+              </div>
+            </li>
+            <li class="out">
+              <div class="media">
+                <div class="pull-right thumb thumb-sm">
+                  <img class="media-object img-circle" src="images/random-avatar1.jpg" alt="">
+                </div>
+                <div class="media-body">
+                  <p class="media-heading"><a href="#" class="name">Admin </a><span class="datetime">2 hours ago</span></p>
+                  <span class="body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </span>
+                </div>
+              </div>
+            </li>
+            <li class="in">
+              <div class="media">
+                <div class="pull-left thumb thumb-sm">
+                  <img class="media-object img-circle" src="images/random-avatar2.jpg" alt="">
+                </div>
+                <div class="media-body">
+                  <p class="media-heading"><a href="#" class="name">You </a><span class="datetime">2 hours ago</span></p>
+                  <span class="body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </span>
+                </div>
+              </div>
+            </li>
+            <li class="out">
+              <div class="media">
+                <div class="pull-right thumb thumb-sm">
+                  <img class="media-object img-circle" src="images/random-avatar1.jpg" alt="">
+                </div>
+                <div class="media-body">
+                  <p class="media-heading"><a href="#" class="name">Admin </a><span class="datetime">1 hours ago</span></p>
+                  <span class="body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </span>
+                </div>
+              </div>
+            </li>
+            <li class="in">
+              <div class="media">
+                <div class="pull-left thumb thumb-sm">
+                  <img class="media-object img-circle" src="images/random-avatar2.jpg" alt="">
+                </div>
+                <div class="media-body">
+                  <p class="media-heading"><a href="#" class="name">You </a><span class="datetime">53 minutes ago</span></p>
+                  <span class="body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </span>
+                </div>
+              </div>
+            </li>
+            <li class="out">
+              <div class="media">
+                <div class="pull-right thumb thumb-sm">
+                  <img class="media-object img-circle" src="images/random-avatar1.jpg" alt="">
+                </div>
+                <div class="media-body">
+                  <p class="media-heading"><a href="#" class="name">Admin </a><span class="datetime">40 minutes ago</span></p>
+                  <span class="body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </span>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+        </div>
+        <!-- /tile body -->
+
+        <!-- tile footer -->
+        <div class="tile-footer">
+          <div class="chat-form">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Type your message here...">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button"><i class="fa fa-chevron-right"></i></button>
+              </span>
+            </div>
+          </div>
+        </div>
+        <!-- /tile footer -->
+
+      </section>             
+			 
+
+            </div>
+            <!-- /col -->
+          </div>
+          </div>
+          <!-- /row -->
+     
+</div>

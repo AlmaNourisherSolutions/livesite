@@ -1,0 +1,50 @@
+<div id="sidebar-wrap" ng-controller="NavCtrl">
+  <uib-accordion close-others="oneAtTime" slimscroll="{height: '100%'}">
+
+    <uib-accordion-group is-open="status.isFirstOpen">
+      <uib-accordion-heading>
+        Navigation <i class="pull-right fa" ng-class="{'fa-angle-up': status.isFirstOpen, 'fa-angle-down': !status.isFirstOpen}"></i>
+      </uib-accordion-heading>
+      <ul id="navigation" nav-collapse ripple>
+        <li ui-sref-active="active"><a ui-sref="administrator.dashboard"><fa name="dashboard"></fa> <span>{{ 'Menu.DASHBOARD' | translate }}</span></a></li>
+
+        <li ui-sref-active="active" ng-class="{'open':$state.includes('administrator.manageSchool')}">
+          <a ui-sref="administrator.manageSchool"><fa name="university"></fa> <span>{{ 'Manage School' | translate }}</span></a>
+          <ul>
+            <li ui-sref-active="active"><a ui-sref="administrator.manageSchool.addSchool"><fa name="caret-right"></fa> {{ 'Add School' | translate }}</a></li>
+            <li ui-sref-active="active"><a ui-sref="administrator.manageSchool.viewSchoolList"><fa name="caret-right"></fa> {{ 'View School' | translate }}</a></li>
+          </ul>
+        </li>
+
+        <li ui-sref-active="active" ng-class="{'open':$state.includes('administrator.manageStudent')}">
+          <a ui-sref="administrator.manageStudent"><fa name="child"></fa> <span>{{ 'Manage Student' | translate }}</span></a>
+          <ul>
+            <li ui-sref-active="active"><a ui-sref="administrator.manageStudent.addStudent"><fa name="caret-right"></fa> {{ 'Add Student' | translate }}</a></li>
+            <li ui-sref-active="active"><a ui-sref="administrator.manageStudent.viewStudentList"><fa name="caret-right"></fa> {{ 'View Student' | translate }}</a></li>
+          </ul>
+        </li>
+
+       <!-- <li ui-sref-active="active" ng-class="{'open':$state.includes('administrator.manageNutritionist')}">
+          <a ui-sref="administrator.manageNutritionist"><fa name="users"></fa> <span>{{ 'Manage Nutritionist' | translate }}</span></a>
+          <ul>
+            <li ui-sref-active="active"><a ui-sref="administrator.manageNutritionist.addNutritionist"><fa name="caret-right"></fa> {{ 'Add Nutritionist' | translate }}</a></li>
+            <li ui-sref-active="active"><a ui-sref="administrator.manageNutritionist.viewNutritionistList"><fa name="caret-right"></fa> {{ 'View Nutritionist' | translate }}</a></li>
+          </ul>
+        </li>
+
+        <li ui-sref-active="active" ng-class="{'open':$state.includes('app.forms')}">
+          <a ui-sref="app.forms"><fa name="list"></fa> <span>{{ 'Menu.Manage Documents' | translate }}</span></a>
+          <ul>
+            <li ui-sref-active="active"><a ui-sref="app.forms.common"><fa name="caret-right"></fa> {{ 'Menu.COMMON_ELEMENTS' | translate }}</a></li>
+            <li ui-sref-active="active"><a ui-sref="app.forms.validate"><fa name="caret-right"></fa> {{ 'Menu.VALIDATION_ELEMENTS' | translate }}</a></li>
+          </ul>
+        </li>-->
+      </ul>
+    </uib-accordion-group>
+
+
+
+
+
+  </uib-accordion>
+</div>

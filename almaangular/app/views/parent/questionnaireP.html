@@ -1,0 +1,335 @@
+<div class="page page-dashboard">
+    
+	<!-- Page Breadcrum starts -->
+	<div class="pageheader">
+        <h2>{{page.title}} <span>// {{page.subtitle}}</span></h2>
+        <div class="page-bar">
+			<ul class="page-breadcrumb">
+				<li>
+					<a ui-sref="schoolUrl.parentarea.dashboard"><i class="fa fa-home"></i> Dashboard</a>
+				</li>
+				<li>
+					 {{page.title}}
+				</li>
+			</ul>
+            <div ng-controller="DaterangepickerCtrl" class="page-toolbar">
+                <a href="javascript:;" class="btn btn-lightred no-border">
+                    <i class="fa fa-calendar"></i>&nbsp;&nbsp;<span>{{today}}</span>&nbsp;&nbsp;
+                </a>
+            </div>
+        </div>
+    </div>
+	<!-- Page Breadcrum ends -->
+
+    <!-- page content starts-->
+    <div class="pagecontent">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <form name="submitQuestionnaire" class="form-horizontal" role="form" novalidate>
+					<section class="tile" fullscreen="isFullscreen04">
+						<div class="tile-header dvd dvd-btm">
+							<h1 class="custom-font"><strong>Question</strong> List</h1>
+							<ul class="controls">
+								<li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+									<a href uib-dropdown-toggle class="dropdown-toggle settings"><i class="fa fa-cog"></i></a>
+									<ul class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+										<li>
+											<a href tile-control-toggle>
+												<span class="minimize"><fa name="angle-down"></fa>&nbsp;&nbsp;&nbsp;Minimize</span>
+												<span class="expand"><fa name="angle-up"></fa>&nbsp;&nbsp;&nbsp;Expand</span>
+											</a>
+										</li>
+										<li>
+											<a href tile-control-refresh ng-click="ajaxFaker()">
+												<fa name="refresh"></fa> Refresh
+											</a>
+										</li>
+										<li>
+											<a href tile-control-fullscreen ng-click="isFullscreen04 = !isFullscreen04">
+												<fa name="expand"></fa> Fullscreen
+											</a>
+										</li>
+										<li>
+											<a href tile-control-lightbox>
+												<fa name="magnet"></fa> Open in Lightbox
+											</a>
+										</li>
+									</ul>
+								</li>
+								<li class="remove"><a href tile-control-close><i class="fa fa-times"></i></a>
+								</li>
+							</ul>
+						</div>
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-sm-12 mt-40">
+								<div class="col-lg-6 col-md-6 col-sm-8 col-xs-12 col-lg-offset-3 col-md-offset-3 col-sm-offset-1 col-xs-offset-0">
+									<div class="form-group tile-body">
+										<label for="input01" class="col-sm-5 control-label"> 
+											<h4 class="custom-font"><strong>Select Child: </strong></h4>
+										</label> 
+										<div class="col-sm-7">
+											<select class="form-control mb-10" ng-model="selectedChild">
+												<option value="{{child}}" ng-repeat="child in children">{{child.firstName}} {{child.lastName}}</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-sm-12">
+								<div class="col-lg-6 col-md-6 col-sm-8 col-xs-12 col-lg-offset-3 col-md-offset-3 col-sm-offset-1 col-xs-offset-0">
+									<div class="form-group tile-body">
+										<label for="input01" class="col-sm-5 control-label"> 
+											<h4 class="custom-font"><strong>Select Food Preference: </strong></h4>
+										</label> 
+										<div class="col-sm-7">
+											<select class="form-control mb-10" ng-model="foodPerference" ng-init="foodPerference = 'Vegetarian'">
+												<option value="Non vegetarian">Non vegetarian</option>
+												<option value="Vegetarian">Vegetarian</option>
+												<option value="Eggetarian">Eggetarian</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+						<hr class="line-dashed line-full"/>
+						<div ng-repeat="ques in questions">
+							<div ng-switch="ques.questionType">
+								
+								<!-- food questions starts -->
+								<div ng-switch-when="FOOD">
+									<div class="tile-widget">
+										<div class="row">
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+												<h4 class="custom-font"><strong>{{$index + 1}}. {{ques.question}}</strong>: Frequency (Please tick ✓)</h4>
+											</div>
+										</div>
+									</div>
+									
+									<div class="tile-body p-0 table-responsive">
+										<table class="table table-bordered"  ng-repeat="foodgroup in ques.foodgroups">
+											<thead>
+												<tr class="bg_row">
+													<th>{{foodgroup.serveGroupName}}</th>
+													<th class="width10">2-3 times a day</th>
+													<th class="width10">Once a day</th>
+													<th class="width10">2-3 times a week</th>
+													<th class="width10">Once a week</th>
+													<th class="width10">Never</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr ng-repeat="food in foodgroup.foods">
+													<td>{{food.foodName}}</td>
+													<td>
+														<label class="checkbox checkbox-custom-alt " ng-if="food.freqScoreCard['23_times_day']">
+															<input ng-model="food.freqans" value="23_times_day" name="f_{{ques.questionId}}_{{foodgroup.serveGroupId}}_{{food.foodName}}" type="radio"><i></i>
+														</label>
+													</td>
+													<td>
+														<label class="checkbox checkbox-custom-alt " ng-if="food.freqScoreCard['once_day']">
+															<input ng-model="food.freqans" value="once_day" name="f_{{ques.questionId}}_{{foodgroup.serveGroupId}}_{{food.foodName}}" type="radio"><i></i>
+														</label>
+													</td>
+													<td>
+														<label class="checkbox checkbox-custom-alt " ng-if="food.freqScoreCard['23_times_week']">
+															<input ng-model="food.freqans" value="23_times_week" name="f_{{ques.questionId}}_{{foodgroup.serveGroupId}}_{{food.foodName}}" type="radio"><i></i>
+														</label>
+													</td>
+													<td>
+														<label class="checkbox checkbox-custom-alt " ng-if="food.freqScoreCard['once_week']">
+															<input ng-model="food.freqans" value="once_week" name="f_{{ques.questionId}}_{{foodgroup.serveGroupId}}_{{food.foodName}}" type="radio"><i></i>
+														</label>
+													</td>
+													<td>
+														<label class="checkbox checkbox-custom-alt " ng-if="food.freqScoreCard['never']">
+															<input ng-model="food.freqans" value="never" name="f_{{ques.questionId}}_{{foodgroup.serveGroupId}}_{{food.foodName}}" type="radio"><i></i>
+														</label>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<!-- /tile body -->
+								
+									<!-- tile widget -->
+									<div class="tile-widget">
+										<div class="row">
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+												<h4 class="custom-font"><strong>{{ques.question}}</strong>: Portion sizes per serving (Please tick ✓)</h4>
+											</div>
+										</div>
+									</div>
+									<!-- /tile widget -->
+									
+									<!-- tile body -->
+									<div class="tile-body p-0 table-responsive">
+										<table class="table table-bordered"  ng-repeat="foodgroup in ques.foodgroups">
+											<thead>
+												<tr class="bg_row">
+													<th>{{foodgroup.serveGroupName}}</th>
+													<th class="width12_25" ng-repeat="serv in foodgroup.servings">{{serv}}</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr ng-repeat="food in foodgroup.foods">
+													<td>{{food.foodName}}</td>
+													<td>
+														<label class="checkbox checkbox-custom-alt " ng-if="food.servScoreCard['serve1']">
+															<input ng-model="food.servans" value="1" name="s_{{ques.questionId}}_{{foodgroup.serveGroupId}}_{{food.foodName}}" type="radio"><i></i>
+														</label>
+													</td>
+													<td>
+														<label class="checkbox checkbox-custom-alt " ng-if="food.servScoreCard['serve2']">
+															<input ng-model="food.servans" value="2" name="s_{{ques.questionId}}_{{foodgroup.serveGroupId}}_{{food.foodName}}" type="radio"><i></i>
+														</label>
+													</td>
+													<td>
+														<label class="checkbox checkbox-custom-alt " ng-if="food.servScoreCard['serve3']">
+															<input ng-model="food.servans" value="3" name="s_{{ques.questionId}}_{{foodgroup.serveGroupId}}_{{food.foodName}}" type="radio"><i></i>
+														</label>
+													</td>
+													<td>
+														<label class="checkbox checkbox-custom-alt " ng-if="food.servScoreCard['serve4']">
+															<input ng-model="food.servans" value="4" name="s_{{ques.questionId}}_{{foodgroup.serveGroupId}}_{{food.foodName}}" type="radio"><i></i>
+														</label>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<!-- /tile body -->
+								</div>
+								<!-- food questions end -->
+							
+								<!-- BOOLEAN questions start -->
+								<div ng-switch-when="BOOLEAN">
+									<div class="tile-widget">
+										<div class="row">
+											<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+												<h4 class="custom-font"><strong>{{$index + 1}}. {{ques.question}}</strong>:(Please tick ✓)</h4>
+											</div>
+											<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 table-responsive">
+												<table class="table table-bordered">
+													<tbody>
+														<tr>
+															<td class="width10">
+																<label class="checkbox checkbox-custom-alt ">
+																	<input ng-model="ques.boolAns" value="YES" name="bool_{{ques.questionId}}" type="radio"><i></i> Yes
+																</label> 
+															</td>
+															<td class="width10"><label class="checkbox checkbox-custom-alt ">
+																	<input ng-model="ques.boolAns" value="NO" name="bool_{{ques.questionId}}" type="radio"><i></i> No
+																</label> 
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+									
+								</div>
+								<!-- BOOLEAN questions end -->
+								
+								<!-- PA questions start -->
+								<div ng-switch-when="PA">
+									<div class="tile-widget">
+										<div class="row">
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+												<h4 class="custom-font"><strong>{{$index + 1}}. {{ques.question}}</strong>:(Please tick ✓)</h4>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 table-responsive">
+												<table class="table table-bordered">
+													<tbody>
+														<tr>
+															<td class="" ng-repeat="option in ques.options">
+																<label class="checkbox checkbox-custom-alt ">
+																	<input ng-model="ques.mcqAns" value="{{option}}" name="PA_{{ques.questionId}}" type="radio"><i></i>{{option}}
+																</label> 
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										 </div>
+									</div>
+								</div>
+								<!-- PA questions  end -->
+							
+							</div>
+						</div>
+						<!-- submit button starts-->
+						<div class="tile-footer text-right bg-tr-black lter dvd dvd-top">
+							<button type="submit" class="btn btn-success" ng-click="submitQuestionaire()" ng-disabled="submitQuestionnaire.$invalid || isDisabled">Submit</button>
+						</div>
+						<!-- submit button ends-->
+					</section>
+				</form>
+            </div>
+        </div>
+    </div>
+	<!-- page content ends-->
+</div>
+<style>
+    .checkbox-custom > i,
+    .checkbox-custom-alt > i {
+        border: 0px;
+    }
+    .radio,
+    .checkbox {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    .table > thead > tr > th,
+    .table > tbody > tr > th,
+    .table > tfoot > tr > th,
+    .table > thead > tr > td,
+    .table > tbody > tr > td,
+    .table > tfoot > tr > td {
+        border-bottom: 1px solid #ddd;
+		vertical-align: middle;
+    }
+	table td.ng-binding{
+		width:40%;
+	}
+	.bg_row {
+		background-color: #f5f5f5;
+	}
+	.width10 {
+		width:10%;
+	}
+	.width12_25 {
+		width:12.25%;
+	}
+	.checkbox-custom-alt:hover>i, .checkbox-custom:hover>i {
+		border-color: #22beef;
+	}
+	.checkbox-custom-alt>i {
+		width: 18px;
+		height: 18px;
+		background-color: transparent;
+		border: 2px solid #dfdfdf;
+	}
+	.checkbox-custom-alt input[type='radio']:checked + i:before {
+		left: 3px;
+		top: 4px;
+	}
+	.checkbox-custom-alt>i, .checkbox-custom>i {
+		position: relative;
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		margin-top: -2px;
+		margin-right: 4px;
+		margin-left: -20px;
+		line-height: 1;
+		vertical-align: middle;
+		background-color: #fff;
+		border: 1px solid rgba(0,0,0,.2);
+		transition: all .2s;
+	}
+</style>

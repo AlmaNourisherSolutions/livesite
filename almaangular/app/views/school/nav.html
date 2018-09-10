@@ -1,0 +1,48 @@
+<div id="sidebar-wrap" ng-controller="NavCtrl">
+  <uib-accordion close-others="oneAtTime" slimscroll="{height: '100%'}">
+
+    <uib-accordion-group is-open="status.isFirstOpen">
+      <uib-accordion-heading>
+        Navigation <i class="pull-right fa" ng-class="{'fa-angle-up': status.isFirstOpen, 'fa-angle-down': !status.isFirstOpen}"></i>
+      </uib-accordion-heading>
+      <ul id="navigation" nav-collapse ripple>
+        <li>
+        	<a ui-sref="app.home"><span>{{ 'Home' | translate }}</span></a>
+        </li>
+		<li ui-sref-active="active">
+        	<a ui-sref="schoolUrl.schoolarea.dashboard"><span>{{ 'Dashboard' | translate }}</span></a>
+        </li>
+
+        <li ui-sref-active="active" ng-class="{'open':$state.includes('schoolUrl.schoolarea.questionnaireP')}">
+          <a ui-sref="schoolUrl.schoolarea.questionnaireP"> <span>{{ 'Questionnaire' | translate }}</span></a>
+        </li>
+		
+        <li ui-sref-active="active" ng-class="{'open':$state.includes('schoolUrl.schoolarea.postQueryP')}">
+          <a ui-sref="schoolUrl.schoolarea.postQueryP"> <span>{{ 'Post a Query' | translate }}</span></a>
+        </li>
+        
+        <li ui-sref-active="active" ng-class="{'open':$state.includes('schoolUrl.schoolarea.articleList')}">
+          <a ui-sref="schoolUrl.schoolarea.articleList"> <span>{{ 'Articles' | translate }}</span></a>
+        </li>
+        
+        <li ui-sref-active="active" ng-class="{'open':$state.includes('schoolUrl.schoolarea.recipeList')}">
+          <a ui-sref="schoolUrl.schoolarea.recipeList"><span>{{ 'Recipes' | translate }}</span></a>
+        </li>
+        
+        
+        <!--<li ui-sref-active="active" ng-class="{'open':$state.includes('schoolarea.recipesListP')}">
+          <a ui-sref="schoolUrl.schoolarea.recipesListP"><fa name="university"></fa> <span>{{ 'Recipes' | translate }}</span></a>
+        </li>
+
+        <li ui-sref-active="active" ng-class="{'open':$state.includes('schoolarea.newslettersP')}">
+          <a ui-sref="schoolUrl.schoolarea.newslettersP"><fa name="child"></fa> <span>{{ 'Newsletters' | translate }}</span></a>
+        </li>
+
+        <li ui-sref-active="active" ng-class="{'open':$state.includes('schoolarea.nutritional_product_reviewsP')}">
+          <a ui-sref="schoolUrl.schoolarea.nutritional_product_reviewsP"><fa name="users"></fa> <span>{{ 'Nutritional Product Reviews' | translate }}</span></a>
+        </li>-->
+      </ul>
+    </uib-accordion-group>
+
+  </uib-accordion>
+</div>

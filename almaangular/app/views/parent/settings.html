@@ -1,0 +1,136 @@
+<div class="page page-dashboard">
+  
+	<!-- Page Breadcrum starts -->
+	<div class="pageheader">
+		<h2>{{page.title}} <span>// {{page.subtitle}}</span></h2>
+        <div class="page-bar">
+			<ul class="page-breadcrumb">
+				<li>
+					<a ui-sref="schoolUrl.parentarea.dashboard"><i class="fa fa-home"></i> Dashboard</a>
+				</li>
+				<li>
+					 {{page.title}}
+				</li>
+			</ul>
+            <div ng-controller="DaterangepickerCtrl" class="page-toolbar">
+                <a href="javascript:;" class="btn btn-lightred no-border">
+                    <i class="fa fa-calendar"></i>&nbsp;&nbsp;<span>{{today}}</span>&nbsp;&nbsp;
+                </a>
+            </div>
+        </div>
+        </div>
+    
+	<!-- Page Breadcrum ends -->
+	
+	
+	<!-- child detail starts-->
+<div class="pagecontent">    
+<div class="row"> 
+ <div class="col-md-12">
+	 <div class="col-lg-6 col-md-6 col-sm-8 col-xs-12 col-lg-offset-3 col-md-offset-3 col-sm-offset-2 col-xs-offset-0">
+
+        <form name="userForm" ng-submit="changePassword(userForm.$valid)" role="form" novalidate>
+
+          <!-- tile -->
+          <section class="tile" fullscreen="isFullscreen01">
+
+            <!-- tile header -->
+            <div class="tile-header dvd dvd-btm">
+              <h1 class="custom-font"><strong>Change</strong> Password</h1>
+              <ul class="controls">
+                <li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+
+                  <a href uib-dropdown-toggle class="dropdown-toggle settings"><i class="fa fa-cog"></i></a>
+
+                  <ul class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+                    <li>
+                      <a href tile-control-toggle>
+                        <span class="minimize"><fa name="angle-down"></fa>&nbsp;&nbsp;&nbsp;Minimize</span>
+                        <span class="expand"><fa name="angle-up"></fa>&nbsp;&nbsp;&nbsp;Expand</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href tile-control-refresh ng-click="ajaxFaker()">
+                        <fa name="refresh"></fa> Refresh
+                      </a>
+                    </li>
+                    <li>
+                      <a href tile-control-fullscreen ng-click="isFullscreen01 = !isFullscreen01">
+                        <fa name="expand"></fa> Fullscreen
+                      </a>
+                    </li>
+                    <li>
+                      <a href tile-control-lightbox>
+                        <fa name="magnet"></fa> Open in Lightbox
+                      </a>
+                    </li>
+
+                  </ul>
+
+                </li>
+                <li class="remove"><a href tile-control-close><i class="fa fa-times"></i></a></li>
+              </ul>
+            </div>
+            <!-- /tile header -->
+
+            <!-- tile body -->
+            <div class="tile-body">
+
+              <p class="text-muted">You can login using Email id or Phone No.</p>
+
+			  <div class="form-group"">
+                <label><strong>Email Id: </strong>{{currentUser.email}} </label>
+                           
+              </div>
+			  <div class="form-group"" ng-if="parentcontact">
+                <label><strong>Phone No.: </strong>{{currentUser.contact}}</label>
+                              
+              </div>
+
+              <div class="row">
+
+                <div class="form-group col-md-6" ng-class="{ 'has-error' : userForm.password.$invalid && !userForm.password.$pristine, 'has-success' : userForm.password.$valid && !userForm.password.$pristine}">
+                  <label for="password">New Password: </label>
+                  <input type="password" name="password" id="password" class="form-control" ng-model="user.password" ng-minlength="6" required>
+                  <p class="help-block">
+                    <span ng-show="userForm.password.$invalid && !userForm.password.$pristine">Password is required.</span>
+                    <span ng-show="userForm.password.$error.minlength">Password is too short.</span>
+                  </p>
+                </div>
+
+                <div class="form-group col-md-6" ng-class="{ 'has-error' : userForm.passwordConfirm.$invalid && !userForm.passwordConfirm.$pristine, 'has-success' : userForm.passwordConfirm.$valid && !userForm.passwordConfirm.$pristine}">
+                  <label for="passwordConfirm">Password confirmation: </label>
+                  <input type="password" name="passwordConfirm" id="passwordConfirm" class="form-control" ng-model="user.passwordConfirm" ui-validate=" '$value==user.password' " ui-validate-watch=" 'user.password' " required>
+                  <p class="help-block">
+                    <span ng-show='userForm.passwordConfirm.$error.validator'>Passwords do not match!</span>
+                  </p>
+                </div>
+
+              </div>              
+
+            </div>
+            <div class="row"><h2>{{message}}</h2></div>
+            <!-- /tile body -->
+
+
+            <!-- tile footer -->
+            <div class="tile-footer text-right bg-tr-black lter dvd dvd-top">
+              <!-- SUBMIT BUTTON -->
+              <button type="submit" class="btn btn-success" ng-disabled="userForm.$invalid">Submit</button>
+            </div>
+            <!-- /tile footer -->
+
+          </section>
+          <!-- /tile -->
+
+
+        </form>
+		</div>
+		</div>
+			
+			
+			
+            <!-- /col -->
+</div>
+</div>
+</div>

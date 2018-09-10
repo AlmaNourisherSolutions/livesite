@@ -1,0 +1,767 @@
+<section id="slider" class="slider-parallax">
+    
+	<div class="tp-banner-container">
+        <div class="tp-banner">
+
+            <ul>
+                <li class="light" data-transition="fade" data-slotamount="1" data-masterspeed="1000" >
+					<img src="assets/images/slider/slide1.jpg" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
+                </li>
+                <li class="light" data-transition="slideup" data-slotamount="1" data-masterspeed="1000" >
+					<img src="assets/images/slider/slide2.jpg" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
+                </li>
+
+            </ul>
+
+        </div>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+			
+				// MINOVATE.documentOnReady.init();
+				setTimeout(function () { // You might need this timeout to be sure its run after DOM render.
+                  console.log("in directive, Homepage Slider loaded.");
+				  MINOVATE.documentOnReady.init();
+				//MINOVATE.documentOnLoad.init();
+                }, 3000);
+
+                var apiRevoSlider = $('.tp-banner').show().revolution({
+                    dottedOverlay: "none",
+                    delay: 7000,
+                    startwidth: 1140,
+                    startheight: 700,
+                    hideThumbs: 200,
+
+                    thumbWidth: 100,
+                    thumbHeight: 50,
+                    thumbAmount: 3,
+
+                    navigationType: "none",
+                    navigationArrows: "solo",
+                    navigationStyle: "preview1",
+
+                    touchenabled: "on",
+                    onHoverStop: "on",
+
+                    swipe_velocity: 0.7,
+                    swipe_min_touches: 1,
+                    swipe_max_touches: 1,
+                    drag_block_vertical: false,
+
+                    parallax: "mouse",
+                    parallaxBgFreeze: "on",
+                    parallaxLevels: [8, 7, 6, 5, 4, 3, 2, 1],
+                    parallaxDisableOnMobile: "on",
+
+                    keyboardNavigation: "on",
+
+                    navigationHAlign: "center",
+                    navigationVAlign: "bottom",
+                    navigationHOffset: 0,
+                    navigationVOffset: 20,
+
+                    soloArrowLeftHalign: "left",
+                    soloArrowLeftValign: "center",
+                    soloArrowLeftHOffset: 20,
+                    soloArrowLeftVOffset: 0,
+
+                    soloArrowRightHalign: "right",
+                    soloArrowRightValign: "center",
+                    soloArrowRightHOffset: 20,
+                    soloArrowRightVOffset: 0,
+
+                    shadow: 0,
+                    fullWidth: "off",
+                    fullScreen: "on",
+
+                    spinner: "spinner3",
+
+                    stopLoop: "off",
+                    stopAfterLoops: -1,
+                    stopAtSlide: -1,
+
+                    shuffle: "off",
+
+                    forceFullWidth: "off",
+                    fullScreenAlignForce: "off",
+                    minFullScreenHeight: "400",
+
+                    hideThumbsOnMobile: "off",
+                    hideNavDelayOnMobile: 1500,
+                    hideBulletsOnMobile: "off",
+                    hideArrowsOnMobile: "off",
+                    hideThumbsUnderResolution: 0,
+
+                    hideSliderAtLimit: 0,
+                    hideCaptionAtLimit: 0,
+                    hideAllCaptionAtLilmit: 0,
+                    startWithSlide: 0,
+                    fullScreenOffsetContainer: ".header"
+                });
+
+                apiRevoSlider.bind("revolution.slide.onchange", function(e, data) {
+                    if ($(window).width() > 992) {
+                        if ($('#slider ul > li').eq(data.slideIndex - 1).hasClass('light')) {
+                            $('#header:not(.sticky-header)').addClass('light');
+                        } else {
+                            $('#header:not(.sticky-header)').removeClass('light');
+                        }
+                        MINOVATE.header.chooseLogo();
+                    }
+                });
+
+            }); //ready
+        </script>
+
+    </div>
+    <!-- END REVOLUTION SLIDER -->
+
+</section>
+<!-- #slider end -->
+
+<section id="content">
+
+    <div class="content-wrap pb-0">
+
+        <!-- ============ abt alma starts ============ -->
+        <div class="container clearfix">
+
+            <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-0 col-xs-offset-0 text-center clearfix">
+                <h1>About <span class="text-greensea"> Us</span>?</h1>
+                <h4 class="abt_alma">Almanourisher was founded in 2016 with a vision to bridge the nutrition gap among children by empowering appropriate nourishment combined with regular physical activities. We bring in nutrition intervention by engaging and educating the families. We partner with Pre-schools/Schools and help them to structure the nutrition program, create intervention among parents and create a healthy school environment and healthy children.</h4>
+                <!-- <a href="#" class="myBtn myBtn-3d myBtn-dark myBtn-lg ">More About Us</a> -->
+                <!-- <a href="#" class="myBtn myBtn-3d myBtn-lg">Contact Us</a> -->
+            </div>
+
+            <!-- <div class="line"></div> -->
+        </div>
+        <!-- /abt alma ends-->
+        <!-- ============ Services ============ -->
+        <div class="section bg-light mb-0" data-stellar-background-ratio="0.3">
+            <div class="container clearfix">
+
+                <div class="row">
+                    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-0 col-xs-offset-0 text-center clearfix mb-60">
+                        <h1>Our <span class="text-greensea"> Services</span></h1>
+                        <h4 class="abt_alma">We want what is best for the children and it all begins with good nutrition. It’s a concept designed program that offers a year- long engagement program by partnering with schools and pre-schools. This encourage students and parents to think of their nutritional decisions as health decisions.</h4>
+                        <!-- <a href="#" class="myBtn myBtn-3d myBtn-dark myBtn-lg ">More About Us</a> -->
+                        <!-- <a href="#" class="myBtn myBtn-3d myBtn-lg">Contact Us</a> -->
+                    </div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="feature-box icon-block" data-animate="fadeIn">
+                            <a href="#">
+                                <img class="service_icons img-circle " alt=" " src="assets/images/services/Health-assesment.svg">
+                            </a>
+                            <div class="heading">
+                                <h3>Health risk assessment</h3>
+                            </div>
+                            <p>It is a useful tool that helps parents to keep track about the growth pattern and development of their child.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="feature-box icon-block" data-animate="fadeIn" data-delay="200">
+
+                            <a href="#">
+                                <img class="service_icons img-circle " alt=" " src="assets/images/services/Dietary-Assesment.svg">
+                            </a>
+                            <div class="heading">
+                                <h3>Dietary assessment</h3>
+                            </div>
+                            <p>The frequency of consumption of a defined list of foods with portion size helps us estimate the intake of nutrients met by individual child.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="feature-box icon-block" data-animate="fadeIn" data-delay="400">
+                            <a href="#">
+                                <img class="service_icons img-circle " alt=" " src="assets/images/services/Awarenes.svg">
+                            </a>
+                            <div class="heading">
+                                <h3>Awareness & workshops</h3>
+                            </div>
+                            <p>It helps to bring in nutrition intervention and awareness on child nutrition, thereby develop healthy food habits that lasts for lifetime.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="feature-box icon-block" data-animate="fadeIn" data-delay="600">
+                            <a href="#">
+                                <img class="service_icons img-circle " alt=" " src="assets/images/services/Teacher-Workshop.svg">
+                            </a>
+                            <div class="heading">
+                                <h3>Teacher workshop</h3>
+                            </div>
+                            <p>Our teacher workshop encourages teachers to co-create a healthy eating and nourished environment within the schools.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="feature-box icon-block" data-animate="fadeIn" data-delay="800">
+                            <a href="#">
+                                <img class="service_icons img-circle " alt=" " src="assets/images/services/E-Consulting.svg">
+                            </a>
+                            <div class="heading">
+                                <h3>e-consultations</h3>
+                            </div>
+                            <p>Parents can avail consultation from our nutrition experts through online or telecall consultation.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="feature-box icon-block" data-animate="fadeIn" data-delay="1000">
+                            <a href="#">
+                                <img class="service_icons img-circle " alt=" " src="assets/images/services/Menu-planning.svg">
+                            </a>
+                            <div class="heading">
+                                <h3>Menu planning</h3>
+                            </div>
+                            <p>The primary objective in the school is to create healthy eating environment through right menu planning with simple yet healthy recipes.</p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /services -->
+        </div>
+
+        <!-- ============ how we work  starts ============ -->
+        <div class="mt-60 mb-60" data-stellar-background-ratio="0.3">
+
+            <div class="container clearfix">
+
+                <div class="row">
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="center-block text-center clearfix mb-0">
+							<h1>How we <span class="text-greensea"> work?</span></h1>
+						</div>
+                       <div class="col-lg-8 col-md-8 col-sm-10 col-xs-12 col-lg-offset-2 col-md-offset-2 col-sm-offset-1 col-xs-offset-0">
+							<img src="assets/images/how-we-work.png" data-animate="fadeInUp" alt="" class="img-responsive">
+						</div>
+
+                    </div>
+                    
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- /how we work  ends  -->
+
+        <!-- ============ school list  starts ============ -->
+        <div class="section bg-light mb-0" data-stellar-background-ratio="0.3">
+            <div class="container clearfix">
+
+                <div class="row">
+                    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-0 col-xs-offset-0 text-center clearfix mb-60">
+                        <h1>Our <span class="text-greensea"> Partners</span></h1>
+                        <h4 class="abt_alma">We are proud to associate with several renowned preschools and schools. With the launch of our School nutrition program, we are able to address the critical needs of nutrition in children at varying stages of their growth and development. Thanks to our partners who has taken small steps to make big differences!</h4>
+                        <!-- <a href="#" class="myBtn myBtn-3d myBtn-dark myBtn-lg ">More About Us</a> -->
+                        <!-- <a href="#" class="myBtn myBtn-3d myBtn-lg">Contact Us</a> -->
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" >
+                        <section class="tile tile-simple">
+                            <!-- tile body -->
+                            <div class="tile-body p-0">
+                                <div class="list-group no-radius no-border">
+                                    <p class="list-group-item">
+                                        <i class="text-muted mr-10"> </i>
+                                        <span class="text-dark mr-10">The South School, </span>
+                                        <span class="text-muted">RBI Layout </span>
+                                    </p>
+                                    <p class="list-group-item">
+                                        <i class="text-muted mr-10"> </i>
+                                        <span class="text-dark mr-10">I play, I learn, </span>
+                                        <span class="text-muted"> JP Nagar </span>
+                                    </p>
+                                    <p class="list-group-item">
+                                        <i class="text-muted mr-10"> </i>
+                                        <span class="text-dark mr-10">Key Kidz,  </span>
+                                        <span class="text-muted"> Hulimavu </span>
+                                    </p>
+                                    <p class="list-group-item">
+                                        <i class="text-muted mr-10"> </i>
+                                        <span class="text-dark mr-10">Key Kids,  </span>
+                                        <span class="text-muted">E-City</span>
+                                    </p>
+                                    <p class="list-group-item">
+                                        <i class="text-muted mr-10"> </i>
+                                        <span class="text-dark mr-10">Euro Kids,  </span>
+                                        <span class="text-muted"> JP Nagar 1st Phase </span>
+                                    </p>
+                                    <p class="list-group-item">
+                                        <i class="text-muted mr-10"> </i>
+                                        <span class="text-dark mr-10">Euro Kids,  </span>
+                                        <span class="text-muted"> JP Nagar 2nd Phase </span>
+                                    </p>
+                                    <p class="list-group-item">
+                                        <i class="text-muted mr-10"> </i>
+                                        <span class="text-dark mr-10">Euro Kids,  </span>
+                                        <span class="text-muted"> JP Nagar 7th Phase </span>
+                                    </p>
+                                    <p class="list-group-item">
+                                        <i class="text-muted mr-10"></i>
+                                        <span class="text-dark mr-10">Euro Kids,  </span>
+                                        <span class="text-muted"> JP Nagar 8th Phase </span>
+                                    </p>
+                                    <p class="list-group-item">
+                                        <i class="text-muted mr-10"> </i>
+                                        <span class="text-dark mr-10">Hello Kids, </span>
+                                        <span class="text-muted"> MLA Layout </span>
+                                    </p>
+                                    <p class="list-group-item">
+                                        <i class="text-muted mr-10"> </i>
+                                        <span class="text-dark mr-10">Hello Kids,</span>
+                                        <span class="text-muted"> NOBO Nagar </span>
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- /tile body -->
+                        </section>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <section class="tile tile-simple">
+                            <!-- tile body -->
+                            <div class="tile-body p-0">
+                                <div class="list-group no-radius no-border">
+                                    <p class="list-group-item">
+                                        <i class="text-muted mr-10"> </i>
+                                        <span class="text-dark mr-10">Hello Kids, </span>
+                                        <span class="text-muted"> Basaveshwarnargar </span>
+                                    </p>
+                                    <p class="list-group-item">
+                                        <i class="text-muted mr-10"> </i>
+                                        <span class="text-dark mr-10">Brooklands, </span>
+                                        <span class="text-muted"> JP Nagar </span>
+                                    </p>
+                                    <p class="list-group-item">
+                                        <i class="text-muted mr-10">  </i>
+                                        <span class="text-dark mr-10">Planet Kids,  </span>
+                                        <span class="text-muted"> Arekee </span>
+                                    </p>
+                                    <p class="list-group-item">
+                                        <i class="text-muted mr-10">  </i>
+                                        <span class="text-dark mr-10">Planet Kids,  </span>
+                                        <span class="text-muted"> 6th Phase </span>
+                                    </p>
+                                    <p class="list-group-item">
+                                        <i class="text-muted mr-10">  </i>
+                                        <span class="text-dark mr-10">Planet Kids,  </span>
+                                        <span class="text-muted"> 3rd Phase </span>
+                                    </p>
+                                    <p class="list-group-item">
+                                        <i class="text-muted mr-10">  </i>
+                                        <span class="text-dark mr-10">Planet Kids,  </span>
+                                        <span class="text-muted"> Jayanagar 4th Block </span>
+                                    </p>
+                                    <p class="list-group-item">
+                                        <i class="text-muted mr-10"> </i>
+                                        <span class="text-dark mr-10">Planet Kids,  </span>
+                                        <span class="text-muted"> BTM Layout </span>
+                                    </p>
+                                    <p class="list-group-item">
+                                        <i class="text-muted mr-10">  </i>
+                                        <span class="text-dark mr-10">Planet Kids,  </span>
+                                        <span class="text-muted"> Bhanshankari </span>
+                                    </p>
+                                    <p class="list-group-item">
+                                        <i class="text-muted mr-10">  </i>
+                                        <span class="text-dark mr-10">Planet Kids, </span>
+                                        <span class="text-muted"> Koramangala </span>
+                                    </p>
+                                    <p class="list-group-item">
+                                        <i class="text-muted mr-10">  </i>
+                                        <span class="text-dark mr-10">Planet Kids, </span>
+                                        <span class="text-muted"> Kothanur </span>
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- /tile body -->
+                        </section>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <section class="tile tile-simple">
+                            <!-- tile body -->
+                            <div class="tile-body p-0">
+                                <div class="list-group no-radius no-border">
+                                    <p class="list-group-item">
+                                        <i class="text-muted mr-10">  </i>
+                                        <span class="text-dark mr-10">Hello Kids, </span>
+                                        <span class="text-muted"> Basavangudi </span>
+                                    </p>
+                                    <p class="list-group-item">
+                                        <i class="text-muted mr-10">  </i>
+                                        <span class="text-dark mr-10">Brooklands, </span>
+                                        <span class="text-muted"> Thrahalli </span>
+                                    </p>
+                                    <p class="list-group-item">
+                                        <i class="text-muted mr-10">  </i>
+                                        <span class="text-dark mr-10">Planet Kids,  </span>
+                                        <span class="text-muted"> Shanti Nagar </span>
+                                    </p>
+                                    <p class="list-group-item">
+                                        <i class="text-muted mr-10">  </i>
+                                        <span class="text-dark mr-10">Planet Kids,  </span>
+                                        <span class="text-muted"> RR Nagar </span>
+                                    </p>
+                                    <p class="list-group-item">
+                                        <i class="text-muted mr-10"> </i>
+                                        <span class="text-dark mr-10">Planet Kids,  </span>
+                                        <span class="text-muted"> Gnabarathi </span>
+                                    </p>
+                                    <p class="list-group-item">
+                                        <i class="text-muted mr-10">  </i>
+                                        <span class="text-dark mr-10">Planet Kids,  </span>
+                                        <span class="text-muted"> Vijayanagar </span>
+                                    </p>
+                                    <p class="list-group-item">
+                                        <i class="text-muted mr-10">  </i>
+                                        <span class="text-dark mr-10">Kangaroo Kids,  </span>
+                                        <span class="text-muted"> Yelahanaka </span>
+                                    </p>
+                                    <p class="list-group-item">
+                                        <i class="text-muted mr-10">  </i>
+                                        <span class="text-dark mr-10">Orange Kids,  </span>
+                                        <span class="text-muted"> Sahakarnagar </span>
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- /tile body -->
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /school list ends  -->
+
+        <!-- ============ Reciple and parent feedback section starts ============ -->
+        <div class="section m-0 pb-15">
+            <div class="container clearfix ">
+
+                <div class="row ">
+
+                    <!-- ============ posts section ============ -->
+				
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+
+                        <div class="header-line  ">
+                            <h4 class="bg-light">Recipes</h4>
+                        </div>
+
+                        <div class="row ">
+							<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 blog_min_height" ng-repeat="r in recRecipeList">
+								<div class="media">
+									<a class="pull-left" ui-sref="app.recipesDetailP({'recipeName':r.seoheading})">
+										<img class="media-object recipe_img" src="assets/images/document/{{r.icon}}" alt="Image ">
+									</a>
+									<div class="media-body">
+										<article class="post-entry ">
+											<div class="entry-title ">
+												<h5 class="article_title_link">
+													<a ui-sref="app.recipesDetailP({'recipeName':r.seoheading})">{{r.heading}}</a>
+												</h5>
+												<p>{{ r.description | limitTo: 100 }}{{r.description.length > 100 ? '...' : ''}}<a ui-sref="app.recipesDetailP({'recipeName':r.seoheading})" class="text-sm color_link">Read more</a> </p>
+											</div>
+											<ul class="entry-meta clearfix ">
+												<li><i class="fa fa-thumbs-up "></i>{{r.likes}} </li>
+												<li><a href="# "><i class="fa fa-eye "></i> {{r.views}}</a></li>
+											</ul>
+										</article>
+									</div>
+								</div>
+							</div>
+                        </div>
+
+                    </div>
+                    <!-- /posts section -->
+
+                    <!-- ============ feedback section ============ -->
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 ">
+
+                        <div class="header-line ">
+                            <h4 class="">Parent's Feedback</h4>
+                        </div>
+
+						<div class="fslider " data-animation="slide " data-arrows="false ">
+                            <div class="flexslider reference-slider ">
+                                <div class="slider-wrap">
+                                    <div class="slide ">
+                                        <div class="media ">
+                                            <!--<div class="media-left ">
+                                                <img class="media-object thumb img-circle " alt=" " src="assets/images/avatars/random-avatar1.jpg ">
+                                            </div> -->
+                                            <div class="media-body ">
+                                                <p class="reference-quote ">"After consulting with Kaif- nutritionist I was really relaxed and happy. I was so much worried about my daughter Aditi, her weight gain issues and health. After her consultation, I got many ideas and the way to make kids feed and make the food more interesting. I’m happy now that I have so many good ideas to make my child look healthier and better.“</p>
+                                                <p class="reference-quote-meta ">
+                                                    <strong></strong>
+													<br/>
+                                                    <span></span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slide ">
+                                        <div class="media ">
+                                            <!--<div class="media-left ">
+                                                <img class="media-object thumb img-circle " alt=" " src="assets/images/avatars/random-avatar2.jpg ">
+                                            </div> -->
+                                            <div class="media-body ">
+                                                <p class="reference-quote ">"All the recipes are good and it has very good variety. Because of these our daughter has started trying out healthy foods. We are happy that along with education, overall health is also being focussed. We are very happy and pleased to continue the same. This is very good initiative which I don’t see in other schools. My wife’s friends are also taking these recipes and trying for their children.“</p>
+                                                <p class="reference-quote-meta ">
+                                                    <strong>Shirlin druz</strong>
+                                                    <br/>
+                                                    <span></span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slide ">
+                                        <div class="media ">
+                                            <!--<div class="media-left ">
+                                                <img class="media-object thumb img-circle " alt=" " src="assets/images/avatars/random-avatar2.jpg ">
+                                            </div> -->
+                                            <div class="media-body ">
+                                                <p class="reference-quote ">"Recipes are very useful, pretty easy and enjoyable. Good quality, detailed overview of health and nutrition to provide basic knowledge. I also leant some unique recipes that is healthy too. Also, I would like you to give us some healthy tips for cold and cough with education, overall health is also being focussed.“</p>
+                                                <p class="reference-quote-meta ">
+                                                    <strong>Nagendra and Sowmyashree</strong>
+                                                    <br/>
+                                                    <span></span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slide ">
+                                        <div class="media ">
+                                            <!--<div class="media-left ">
+                                                <img class="media-object thumb img-circle " alt=" " src="assets/images/avatars/random-avatar2.jpg ">
+                                            </div> -->
+                                            <div class="media-body ">
+                                                <p class="reference-quote ">"I feel fried items, although very likable by kids, should be avoided for the first food for the day. It is a good attempt in ensuring the child has nutritious food. Please encourage the parents that the food given to the child for school tiffin does not end up the only time, the child gets to eat nutritious food.“</p>
+                                                <p class="reference-quote-meta ">
+                                                    <strong>Gautam and Chaitali chakraborthy</strong>
+                                                    <br/>
+                                                    <span></span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- /feedback section -->
+
+                </div>
+
+            </div>
+        </div>
+        <!-- ============ Reciple and parent feedback section ends ============ -->
+
+        <!-- ============ Articles and school feedback section starts ============ -->
+        <div class="section m-0 pb-15 bg-light">
+            <div class="container clearfix ">
+
+                <div class="row ">
+
+                    <!-- ============ posts section ============ -->
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+
+                        <div class="header-line ">
+                            <h4 class="text_bg-light">Articles</h4>
+                        </div>
+
+                        <div class="row ">
+							<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 blog_min_height" ng-repeat="r in recArticleList">
+								<div class="media">
+									<a class="pull-left" ui-sref="app.articleDetailP({'articleName':r.seoheading})">
+										<img class="media-object recipe_img" src="assets/images/document/{{r.icon}}" alt="Image ">
+									</a>
+									<div class="media-body">
+										<article class="post-entry ">
+											<div class="entry-title ">
+												<h5 class="article_title_link">
+													<a ui-sref="app.articleDetailP({'articleName':r.seoheading})">{{r.heading}}</a>
+												</h5>
+												<p>{{ r.description | limitTo: 100 }}{{r.description.length > 100 ? '...' : ''}}<a ui-sref="app.articleDetailP({'articleName':r.seoheading})" class="text-sm color_link">Read more</a> </p>
+											</div>
+											<ul class="entry-meta clearfix ">
+												<li><i class="fa fa-thumbs-up "></i>{{r.likes}} </li>
+												<li><a href="# "><i class="fa fa-eye "></i> {{r.views}}</a></li>
+											</ul>
+										</article>
+									</div>
+								</div>
+							</div>
+                        </div>
+
+                    </div>
+                    <!-- /posts section -->
+
+                    <!-- ============ feedback section ============ -->
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+                        <div class="header-line ">
+                            <h4 class="text_bg-light">School's Feedback</h4>
+                        </div>
+                        <section class="tile tile-simple box box-3d" style="min-height: 250px; overflow: hidden; background:#fff;">
+							<div class="fslider " data-animation="slide " data-arrows="false ">
+								<div class="flexslider reference-slider ">
+									<div class="slider-wrap">
+										<div class="slide ">
+											<div class="media ">
+												<!--<div class="media-left ">
+													<img class="media-object thumb img-circle " alt=" " src="assets/images/avatars/random-avatar1.jpg ">
+												</div> -->
+												<div class="media-body ">
+													<p class="reference-quote ">"The class was very good improve out nutrition knowledge and help s to know. We make good habits and interest in food in our kids."</p>
+													<p class="reference-quote-meta ">
+														<strong>Smitha Singh, </strong> <br/>
+														<h4 class="text-light ">Hello Kids </h4>
+													</p>
+												</div>
+											</div>
+										</div>
+										<div class="slide ">
+											<div class="media ">
+												<!--<div class="media-left ">
+													<img class="media-object thumb img-circle " alt=" " src="assets/images/avatars/random-avatar2.jpg ">
+												</div> -->
+												<div class="media-body ">                                                
+													<p class="reference-quote ">"This program was helpful. As it was very knowledgeable anout the nutrition for me as a mother and teacher."</p>
+													<p class="media-heading">
+														<strong>Kavita, </strong> <br/>
+														<h4 class="text-light">Hello Kids</h4>
+													</p>
+												</div>
+											</div>
+										</div>
+										<div class="slide ">
+											<div class="media ">
+												<!--<div class="media-left ">
+													<img class="media-object thumb img-circle " alt=" " src="assets/images/avatars/random-avatar2.jpg ">
+												</div> -->
+												<div class="media-body ">
+													<p class="reference-quote ">"Very interesting improvement in making child eating his food with happy."</p>
+													<p class="media-heading">
+														<strong>Yamuna, teacher,</strong> <br/>
+														<h4 class="text-light">Hello Kids</h4>
+													</p>
+												</div>
+											</div>
+										</div>
+										<div class="slide ">
+											<div class="media ">
+												<!--<div class="media-left ">
+													<img class="media-object thumb img-circle " alt=" " src="assets/images/avatars/random-avatar2.jpg ">
+												</div> -->
+												<div class="media-body ">
+													<p class="reference-quote ">"It is very much informative and will help to ensure nutritional value food at school as well as at home."</p>
+													<p class="media-heading">
+														<strong>Teacher Training Program</strong> <br/>
+														<h4 class="text-light ">Kreedology</h4>
+													</p>
+												</div>
+											</div>
+										</div>
+										<div class="slide ">
+											<div class="media ">
+												<!--<div class="media-left ">
+													<img class="media-object thumb img-circle " alt=" " src="assets/images/avatars/random-avatar2.jpg ">
+												</div> -->
+												<div class="media-body ">
+													<p class="reference-quote ">"Sure nurition education is the need of day because mothers are going to the luxury oriented so always ready to serve fast and ready made food to their wards."</p>
+													<p class="media-heading">
+														<strong>Teacher Training Program</strong> <br/>
+														<h4 class="text-light ">Kreedology</h4>
+													</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						  </section>
+
+                    </div>
+                    <!-- /feedback section -->
+
+                </div>
+
+            </div>
+        </div>
+        <!-- ============ Article and School feedback section ends ============ -->
+		
+		<!-- ============ featured in  starts ============ -->
+                <div class="section carousel-full m-0 pb-60">
+					<div class="center-block text-center clearfix">
+						<h1>We are<span class="text-greensea"> Featured</span> in</h1>
+						<div class="clearfix ">
+							<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+								<p class="m_center">
+									<a target="_blank" href="http://www.deccanchronicle.com/lifestyle/health-and-wellbeing/290716/start-up-helps-kids-kick-junk-food-in-bengaluru.html">
+										<img src="assets/images/featured/DC.jpg" class="img-responsive" alt="featured in ">
+									</a>
+								</p>
+							</div>
+							<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+								<p class="m_center">
+									<a target="_blank" href="http://epaperbeta.timesofindia.com/Article.aspx?eid=31815&articlexml=This-Startup-Works-to-Wean-Children-Off-Junk-04082016002025">
+										<img src="assets/images/featured/TOI.png" class="img-responsive" alt="featured in TOI">
+									</a>
+								</p>
+							</div>
+							<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+								<p class="m_center">
+									<a target="_blank" href="">
+										<img src="assets/images/featured/ET.png" class="img-responsive" alt="featured in ET">
+									</a>
+								</p>
+							</div>
+							<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+								<p class="m_center">
+									<a target="_blank" href="http://timesofindia.indiatimes.com/city/bengaluru/Where-ideas-for-social-enterprise-take-wing/articleshow/51103263.cms">
+										<img src="assets/images/featured/TOI.png" class="img-responsive" alt="featured in TOI">
+									</a>
+								</p>
+							</div>
+						</div>
+					</div>
+                </div><!-- /featured in end -->
+
+    </div>
+</section>
+<!-- #content end -->
+
+<style>
+    #content {
+        position: relative !important;
+        overflow: hidden;
+        background-color: #FFF;
+        z-index: 9;
+        top: 0 !important;
+        right: 0;
+        bottom: 0;
+        width: auto;
+        left: 0 !important;
+        padding-left: 0;
+        padding-top: 0;
+        z-index: 1;
+    }    
+    .entry-title h3 a {
+        color: #444 !important;
+    }
+    
+    *[class*='bg-']:not(.bg-default):not(.bg-white):not(.bg-tr-white) a:not(.ui-select-choices-row-inner):not(.event-remove) {
+        color: #a2a2a2;
+    } 
+	.appWrapper.header-fixed.aside-fixed #content {
+		z-index:9;
+	}
+	.text_bg-light, .header-line h4  {
+		background-color: transparent;
+	}
+	.blog_min_height .media {
+		min-height:230px;
+	}
+</style>

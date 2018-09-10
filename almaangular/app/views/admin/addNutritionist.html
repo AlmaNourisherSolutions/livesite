@@ -1,0 +1,260 @@
+<div class="page page-form-validate">
+
+  <!-- page header -->
+  <div class="pageheader">
+
+    <h2>{{page.title}} <span>// {{page.subtitle}}</span></h2>
+
+    <div class="page-bar">
+
+      <ul class="page-breadcrumb">
+        <li>
+          <a ui-sref="administrator.dashboard"><i class="fa fa-home"></i> {{main.title}}</a>
+        </li>
+        <li>
+          <a href="javascript:;">Manage Nutritionist</a>
+        </li>
+        <li>
+          <a ui-sref="administrator.manageNutritionist.addNutritionist">{{page.title}}</a>
+        </li>
+      </ul>
+
+      <div ng-controller="DaterangepickerCtrl" class="page-toolbar">
+        <a href="javascript:;" class="btn btn-lightred no-border">
+          <i class="fa fa-calendar"></i>&nbsp;&nbsp;<span>{{today}}</span>&nbsp;&nbsp;
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+  <!-- /page header -->
+
+
+
+
+  <!-- page content -->
+  <div class="pagecontent">
+
+
+    <!-- row -->
+    <div class="row">
+
+
+      <!-- col -->
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+
+        <form name="addNutritionistForm" class="form-horizontal" ng-submit="submitForm(addNutritionistForm.$valid)" role="form" novalidate>
+
+          <!-- tile -->
+          <section class="tile" fullscreen="isFullscreen01">
+
+            <!-- tile header -->
+            <div class="tile-header dvd dvd-btm">
+              <h1 class="custom-font"><strong>Add New</strong> Nutritionist</h1>
+              <ul class="controls">
+                <li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+
+                  <a href uib-dropdown-toggle class="dropdown-toggle settings"><i class="fa fa-cog"></i></a>
+
+                  <ul class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+                    <li>
+                      <a href tile-control-toggle>
+                        <span class="minimize"><fa name="angle-down"></fa>&nbsp;&nbsp;&nbsp;Minimize</span>
+                        <span class="expand"><fa name="angle-up"></fa>&nbsp;&nbsp;&nbsp;Expand</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href tile-control-refresh ng-click="ajaxFaker()">
+                        <fa name="refresh"></fa> Refresh
+                      </a>
+                    </li>
+                    <li>
+                      <a href tile-control-fullscreen ng-click="isFullscreen01 = !isFullscreen01">
+                        <fa name="expand"></fa> Fullscreen
+                      </a>
+                    </li>
+                    <li>
+                      <a href tile-control-lightbox>
+                        <fa name="magnet"></fa> Open in Lightbox
+                      </a>
+                    </li>
+
+                  </ul>
+
+                </li>
+              </ul>
+            </div>
+            <!-- /tile header -->
+
+
+            <!-- tile body -->
+            <div class="tile-body form-validation row">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <p class="text-muted">Submit button will be enabled after completing form.</p>
+
+
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">Upload Image:</label>
+                  <div class="col-sm-9">
+                    <div class="tbox tbox-sm">
+
+                      <div class="tcol">
+
+                        <div class="p-15">
+
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div class="p-10 bg-white b-a b-solid inline-block">
+                                <img ng-src="{{myCroppedImage}}" />
+                              </div>
+                              <div class="tcol w-lg bg-tr-white lt">
+
+                                <div class="p-15 text-center">
+                                  <div class="form-group text-left">
+                                    <input ui-jq="filestyle" type="file" class="filestyle" ui-options="{
+                                buttonText: 'Select image',
+                                iconName: 'fa fa-file-image-o'
+                              }" id="fileInput">
+                                  </div>
+
+                                </div>
+
+
+                              </div>
+                            </div>
+                            <div class="col-md-12">
+
+                              <div class="p-10 bg-white b-a b-solid" style="height:180px">
+                                <img-crop
+                                  image="myImage"
+                                  result-image="myCroppedImage"
+                                  result-image-size="160"
+                                  area-type="{{cropType}}"
+                                ></img-crop>
+                              </div>
+
+                            </div>
+
+
+                          </div>
+
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                
+                <div class="form-group" ng-class="{ 'has-error' : addNutritionistForm.nutritionistname.$invalid && !addNutritionistForm.nutritionistname.$pristine, 'has-success' : addNutritionistForm.nutritionistname.$valid && !addNutritionistForm.parentname.$pristine}">
+                  <label class="col-sm-3 control-label">Nutritionist Name:</label>
+                  <div class="col-sm-9">
+                    <input type="text" name="nutritionistname" id="nutritionistname" placeholder="Ms. Harmit Kaur" class="form-control" ng-model="user.nutritionistname" ng-minlength="3" ng-maxlength="50" required>
+                    <p class="help-block">
+                      <span ng-show="addNutritionistForm.nutritionistname.$invalid && !addNutritionistForm.nutritionistname.$pristine">Nutritionist Name is required.</span>
+                      <span ng-show="addNutritionistForm.nutritionistname.$error.minlength">Nutritionist Name is too short.</span>
+                      <span ng-show="addNutritionistForm.nutritionistname.$error.maxlength">Nutritionist Name is too long.</span>
+                    </p>
+                  </div>
+                </div>
+                
+                <div class="form-group" ng-class="{ 'has-error' : addNutritionistForm.schoolemail.$invalid && !addNutritionistForm.nutritionist.$pristine, 'has-success' : addNutritionistForm.nutritionist.$valid && !addNutritionistForm.nutritionist.$pristine}">
+                  <label class="col-sm-3 control-label">Email Address:</label>
+                  <div class="col-sm-9">
+                    <input type="email" name="nutritionist" id="nutritionist" placeholder="xyz@parent.com" class="form-control" ng-model="user.nutritionist" required>
+                    <p class="help-block">
+                      <span ng-show="addNutritionistForm.nutritionist.$invalid && !addNutritionistForm.nutritionist.$pristine">Email Id is required.</span>
+                    </p>
+                  </div>
+                </div>
+
+
+                <div class="form-group" ng-class="{ 'has-error' : addNutritionistForm.nutritionistphone.$invalid && !addNutritionistForm.nutritionistphone.$pristine, 'has-success' : addNutritionistForm.nutritionistphone.$valid && !addNutritionistForm.nutritionistphone.$pristine}">
+                  <label class="col-sm-3 control-label">Contact No.:</label>
+                  <div class="col-sm-9">
+                    <input type="text" name="nutritionistphone" id="nutritionistphone" name="fc18" class="form-control" placeholder="1234567890" ng-model="user.nutritionistphone" ng-pattern="/\d{10}/" required >
+                    <p class="help-block">
+                      <span ng-show="addNutritionistForm.nutritionistphone.$invalid && !addNutritionistForm.nutritionistphone.$pristine">Phone Number is required. Please match pattern [1234567890]</span>
+                    </p>
+                  </div>
+                </div>
+                
+                
+                
+                <div class="form-group" ng-class="{ 'has-error' : addNutritionistForm.nutritionistschoolname.$invalid && !addNutritionistForm.nutritionistschoolname.$pristine, 'has-success' : addNutritionistForm.nutritionistschoolname.$valid && !addNutritionistForm.nutritionistschoolname.$pristine}">
+                <label class="col-sm-3 control-label">Select School</label>
+                <div class="col-sm-9">
+                  <select name="nutritionistschoolname" id="nutritionistschoolname" class="form-control mb-10" ng-model="user.nutritionistschoolname" required>
+                    <option value="">Select option...</option>
+                    <option value="foo">Foo</option>
+                    <option value="bar">Bar</option>
+                  </select>
+                  <p class="help-block">
+                      <span ng-show="addNutritionistForm.nutritionistschoolname.$invalid && !addNutritionistForm.nutritionistschoolname.$pristine || addNutritionistForm.nutritionistschoolname.$invalid && submitted">Assigned School Name is required.</span>
+                    </p>
+                </div>
+              </div>
+			  
+			  <div class="form-group" ng-class="{ 'has-error' : addNutritionistForm.nutritionistaddress.$invalid && !addNutritionistForm.nutritionistaddress.$pristine || addNutritionistForm.nutritionistaddress.$invalid && submitted, 'has-success' : addNutritionistForm.nutritionistaddress.$valid && !addNutritionistForm.nutritionistaddress.$pristine || addNutritionistForm.nutritionistaddress.$valid && submitted}">
+                  <label class="col-sm-3 control-label">Address:</label>
+                  <div class="col-sm-9">
+                    <input type="text" name="nutritionistaddress" id="nutritionistaddress" placeholder="Type Nutritionist Address" class="form-control" ng-model="user.nutritionistaddress" googleplace on-blur-validation>
+                    <p class="help-block">
+                      <span ng-show="addNutritionistForm.nutritionistaddress.$invalid && !addNutritionistForm.nutritionistaddress.$pristine || addSchoolForm.nutritionistaddress.$invalid && submitted">School address is required.</span>
+                    </p>
+                  </div>
+                </div>
+              
+              
+              <div class="form-group">
+                  <label class="col-sm-3 control-label">Status</label>
+                  <div class="col-sm-9">
+                    <div class="btn-group" ng-controller="ButtonsCtrl">
+                      <label class="btn btn-default" ng-model="user.schoolActive" uib-btn-radio="false">Inactive</label>
+                      <label class="btn btn-default" ng-model="user.schoolActive" uib-btn-radio="true">Active</label>
+                    </div>
+                  </div>
+              </div>
+
+              </div>
+              <!-- /tile body -->
+            </div>
+            </div>
+            <!-- tile footer -->
+            <div class="tile-footer text-right bg-tr-black lter dvd dvd-top">
+              <!-- SUBMIT BUTTON -->
+              <button type="submit" class="btn btn-success" ng-disabled="addNutritionistForm.$invalid">Submit</button>
+            </div>
+            <!-- /tile footer -->
+
+          </section>
+          <!-- /tile -->
+
+
+        </form>
+
+
+      </div>
+      <!-- /col -->
+
+    </div>
+    <!-- /row -->
+
+  </div>
+  <!-- /page content -->
+
+
+</div>
+<style>
+  .checkbox-custom > i, .checkbox-custom-alt > i{
+    border: 0px;
+  }
+</style>

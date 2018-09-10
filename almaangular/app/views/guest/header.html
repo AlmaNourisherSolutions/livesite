@@ -1,0 +1,87 @@
+<!-- ============================================
+        ==================== Header =====================
+        ============================================= -->
+
+    <!-- class .sticky-mobile makes header sticky on small devices -->
+
+    <div id="header-wrap">
+
+        <div class="container clearfix">
+
+            <div id="main-navbar-toggle"><i class="fa fa-bars"></i></div>
+            <!-- ============================================
+                    =================== Branding ====================
+                    ============================================= -->
+
+            <div id="branding">
+                <a ui-sref="app.home" class="brand-normal" data-light-logo="assets/images/alma-nourisher-logo.png">
+					<img src="assets/images/alma-nourisher-logo.png" alt="Alma Nourisher">
+				</a>
+                <a ui-sref="app.home" class="brand-retina" data-light-logo="assets/images/alma-nourisher-logo.png"> Alma Nourisher</a>
+                <!-- <a href="index.html" class="brand-normal" data-light-logo="assets/images/log"><img src="assets/images/logo" alt="Alma Nourisher"> Alma Nourisher</a> -->
+                <!-- <a href="index.html" class="brand-retina" data-light-logo="assets/images/logo"><img src="assets/images/logo" alt="Alma Nourisher"> Alma Nourisher</a> -->
+            </div>
+            <!-- #branding end -->
+
+            <!-- ============================================
+                    ================= Main Navbar ===================
+                    ============================================= -->
+
+            <nav id="main-navbar">
+
+                <ul>
+                    <li class="active"><a ui-sref="app.home">Home</a></li>
+                    <li class="active_abt"><a ui-sref="app.aboutus">About us</a></li>
+                    <li class="active_faq"><a ui-sref="app.faq">FAQ</a></li>					
+                    <li class="active_article"><a ui-sref="app.articleList({'tag':'noFilter'})">Articles</a></li>
+                    <li class="active_recipe"><a ui-sref="app.recipeList({'tag':'noFilter'})">Recipes</a></li>
+                    <li class="active_contact"><a ui-sref="app.contactus">Contact Us</a></li>
+                   <!-- <li class=""><a ui-sref="app.recipes">Recipes</a></li>
+                    <li class=""><a ui-sref="app.articles">Articles</a></li>
+                    <li class=""><a ui-sref="app.weblogin"><span class="myBtn myBtn-rounded myBtn-dark m-0 mt-10">Login</span></a></li>-->
+                     <li ng-if="loggedIn">
+                    		<a ui-sref="{{url}}">Dashboard</a>
+                    </li>
+                    <li class="active_login" ng-controller="ModalDemoCtrl">
+					  <script type="text/ng-template" id="myModalContent.html">
+						<div class="modal-header">
+						  <h3 class="modal-title custom-font">Select School</h3>
+						</div>
+						<form>
+							<div class="modal-body" style="margin:10px 0 50px">
+							  <label class="control-label">Please select school to login</label>
+								  <div class="form-group">									
+									<div class="col-sm-12" style="padding:20px 0">
+									  <select chosen="{width: '100%'}" ng-model="school">	
+										  <option ng-repeat="s in schoolList" value="{{s}}">{{s.schoolName}}</option>
+									  </select>
+									</div>
+								  </div>							  
+							</div>
+							<div class="modal-footer">
+							  <button class="btn btn-success btn-ef btn-ef-3 btn-ef-3c" ng-click="ok()"><i class="fa fa-arrow-right"></i> Submit</button>
+							  <button class="btn btn-lightred btn-ef btn-ef-4 btn-ef-4c" ng-click="cancel()"><i class="fa fa-arrow-left"></i> Cancel</button>
+							</div>
+						</form>
+					  </script>
+						<a ng-if="!loggedIn" ng-click="open('sm')">
+							Login
+							<!-- <span ng-click="open('sm')" class="myBtn myBtn-rounded myBtn-dark m-0 mt-10">Login</span> -->
+						</a>
+						<a class="dropdown-toggle" ng-click="logout()" href="#" ng-if="loggedIn">
+							<span>Logout </span>
+					    </a>	
+					</li>
+                </ul>
+            </nav>
+            <!-- #main-navbar end -->
+
+        </div>
+
+    </div>
+<style>
+#header.sticky-header {
+     height: 110px; 
+}
+</style>
+<!-- #header end -->

@@ -1,0 +1,213 @@
+
+<div class="page page-dashboard">
+
+  <div class="pageheader">
+
+    <h2>{{page.title}} <span>// {{page.subtitle}}</span></h2>
+
+    <div class="page-bar">
+
+      <ul class="page-breadcrumb">
+        <li>
+          <a ui-sref="administrator.dashboard"><i class="fa fa-home"></i> {{main.title}}</a>
+        </li>
+        <li>
+          <a ui-sref="administrator.dashboard">{{page.title}}</a>
+        </li>
+      </ul>
+
+      <div ng-controller="DaterangepickerCtrl" class="page-toolbar">
+        <a href="javascript:;" class="btn btn-lightred no-border">
+          <i class="fa fa-calendar"></i>&nbsp;&nbsp;<span>{{today}}</span>&nbsp;&nbsp;
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- cards row -->
+  <div class="row">
+
+    <!-- col -->
+    <div class="card-container col-lg-3 col-sm-6 col-sm-12">
+      <div class="card">
+        <div class="front bg-greensea">
+
+          <!-- row -->
+          <div class="row">
+            <!-- col -->
+            <div class="col-xs-4">
+              <i class="fa fa-building-o fa-4x"></i>
+            </div>
+            <!-- /col -->
+            <!-- col -->
+            <div class="col-xs-8">
+              <p class="text-elg text-strong mb-0">3 659</p>
+              <span>Total School</span>
+            </div>
+            <!-- /col -->
+          </div>
+          <!-- /row -->
+
+        </div>
+        <div class="back bg-greensea">
+
+          <!-- row -->
+          <div class="row">
+            <!-- col -->
+            <div class="col-xs-6">
+              <a ui-sref="administrator.manageSchool.addSchool"><i class="fa fa-plus fa-2x"></i> Create</a>
+            </div>
+            <!-- /col -->
+            <!-- col -->
+            <div class="col-xs-6">
+              <a ui-sref="administrator.manageSchool.viewSchoolList"><i class="fa fa-eye fa-2x"></i> View</a>
+            </div>
+            <!-- /col -->
+          </div>
+          <!-- /row -->
+
+        </div>
+      </div>
+    </div>
+    <!-- /col -->
+
+    <!-- col -->
+    <div class="card-container col-lg-3 col-sm-6 col-sm-12">
+      <div class="card">
+        <div class="front bg-lightred">
+
+          <!-- row -->
+          <div class="row">
+            <!-- col -->
+            <div class="col-xs-4">
+              <i class="fa fa-child fa-4x"></i>
+            </div>
+            <!-- /col -->
+            <!-- col -->
+            <div class="col-xs-8">
+              <p class="text-elg text-strong mb-0">19 364</p>
+              <span>Total Students</span>
+            </div>
+            <!-- /col -->
+          </div>
+          <!-- /row -->
+
+        </div>
+        <div class="back bg-lightred">
+
+          <!-- row -->
+          <div class="row">
+            <!-- col -->
+            <div class="col-xs-6">
+              <a ui-sref="administrator.manageStudent.addStudent"><i class="fa fa-plus fa-2x"></i> Create</a>
+            </div>
+            <!-- /col -->
+            <!-- col -->
+            <div class="col-xs-6">
+              <a ui-sref="administrator.manageStudent.viewStudentList"><i class="fa fa-eye fa-2x"></i> View</a>
+            </div>
+            <!-- /col -->
+          </div>
+          <!-- /row -->
+
+        </div>
+      </div>
+    </div>
+    <!-- /col -->
+
+    <!-- col -->
+    <div class="card-container col-lg-3 col-sm-6 col-sm-12">
+      <div class="card">
+        <div class="front bg-blue">
+
+          <!-- row -->
+          <div class="row">
+            <!-- col -->
+            <div class="col-xs-4">
+              <i class="fa fa-users fa-4x"></i>
+            </div>
+            <!-- /col -->
+            <!-- col -->
+            <div class="col-xs-8">
+              <p class="text-elg text-strong mb-0">16</p>
+              <span>Total Nutritionist</span>
+            </div>
+            <!-- /col -->
+          </div>
+          <!-- /row -->
+
+        </div>
+        <div class="back bg-blue">
+
+          <!-- row -->
+          <div class="row">
+            <!-- col -->
+            <div class="col-xs-6">
+              <a ui-sref="administrator.manageNutritionist.addNutritionist"><i class="fa fa-plus fa-2x"></i> Create</a>
+            </div>
+            <!-- /col -->
+            <!-- col -->
+            <div class="col-xs-6">
+              <a ui-sref="administrator.manageNutritionist.viewNutritionistList"><i class="fa fa-eye fa-2x"></i> View</a>
+            </div>
+            <!-- /col -->
+          </div>
+          <!-- /row -->
+
+        </div>
+      </div>
+    </div>
+    <!-- /col -->
+
+    <!-- col -->
+    <div class="card-container col-lg-3 col-sm-6 col-sm-12">
+      <div class="card">
+        <div class="front bg-slategray">
+
+          <!-- row -->
+          <div class="row">
+            <!-- col -->
+            <div class="col-xs-4">
+              <i class="fa fa-question-circle fa-4x"></i>
+            </div>
+            <!-- /col -->
+            <!-- col -->
+            <div class="col-xs-8">
+              <p class="text-elg text-strong mb-0">29</p>
+              <span>Questions</span>
+            </div>
+            <!-- /col -->
+          </div>
+          <!-- /row -->
+
+        </div>
+        <div class="back bg-slategray">
+
+          <!-- row -->
+          <div class="row">
+            <!-- col -->
+            <div class="col-xs-6">
+              <a href=javascript:;><i class="fa fa-cog fa-2x"></i> Answered</a>
+            </div>
+            <!-- /col -->
+            <!-- col -->
+            <div class="col-xs-6">
+              <a href=javascript:;><i class="fa fa-chain-broken fa-2x"></i> Unanswered</a>
+            </div>
+            <!-- /col -->
+          </div>
+          <!-- /row -->
+
+        </div>
+      </div>
+    </div>
+    <!-- /col -->
+
+  </div>
+  <!-- /row -->
+
+
+
+</div>

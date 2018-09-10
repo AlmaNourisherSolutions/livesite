@@ -1,0 +1,281 @@
+<div class="page page-form-validate">
+
+    <!-- page header -->
+    <div class="pageheader">
+
+        <h2>{{page.title}} <span>// {{page.subtitle}}</span></h2>
+
+        <div class="page-bar">
+
+            <ul class="page-breadcrumb">
+                <li>
+                    <a ui-sref="administrator.dashboard"><i class="fa fa-home"></i> {{main.title}}</a>
+                </li>
+                <li>
+                    <a href="javascript:;">Manage School</a>
+                </li>
+                <li>
+                    <a ui-sref="administrator.manageSchool.addSchool">{{page.title}}</a>
+                </li>
+            </ul>
+
+            <div ng-controller="DaterangepickerCtrl" class="page-toolbar">
+                <a href="javascript:;" class="btn btn-lightred no-border">
+                    <i class="fa fa-calendar"></i>&nbsp;&nbsp;<span>{{today}}</span>&nbsp;&nbsp;
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- /page header -->
+
+    <!-- page content -->
+    <div class="pagecontent">
+
+        <!-- row -->
+        <div class="row">
+
+            <!-- col -->
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                <form name="addSchoolForm" class="form-horizontal" ng-submit="submitForm(addSchoolForm.$valid)" role="form" novalidate>
+
+                    <!-- tile -->
+                    <section class="tile" fullscreen="isFullscreen01">
+
+                        <!-- tile header -->
+                        <div class="tile-header dvd dvd-btm">
+                            <h1 class="custom-font"><strong>Add New</strong> School</h1>
+                            <ul class="controls">
+                                <li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+
+                                    <a href uib-dropdown-toggle class="dropdown-toggle settings"><i class="fa fa-cog"></i></a>
+
+                                    <ul class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+                                        <li>
+                                            <a href tile-control-toggle>
+                                                <span class="minimize"><fa name="angle-down"></fa>&nbsp;&nbsp;&nbsp;Minimize</span>
+                                                <span class="expand"><fa name="angle-up"></fa>&nbsp;&nbsp;&nbsp;Expand</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href tile-control-refresh ng-click="ajaxFaker()">
+                                                <fa name="refresh"></fa> Refresh
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href tile-control-fullscreen ng-click="isFullscreen01 = !isFullscreen01">
+                                                <fa name="expand"></fa> Fullscreen
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href tile-control-lightbox>
+                                                <fa name="magnet"></fa> Open in Lightbox
+                                            </a>
+                                        </li>
+
+                                    </ul>
+
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /tile header -->
+
+                        <!-- tile body -->
+                        <div class="tile-body form-validation row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <p class="text-muted">Submit button will be enabled after completing form.</p>
+
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="alert alert-success">
+                                        <ul>
+                                            <li>School Detail</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Upload Logo:</label>
+                                        <div class="col-sm-9">
+                                            <div class="col-md-10">
+                                                <div class="form-group">
+                                                    <input id="logo" name="logo" ui-jq="filestyle" type="file" class="filestyle" ui-options="{
+			            							buttonText: 'Select file',iconName: 'fa fa-inbox'}" nv-file-select="{ alias: 'logo' }" uploader="uploaderLogo" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                  <!--   <div class="form-group">
+                                        <label class="col-sm-3 control-label">Upload Banner:</label>
+                                        <div class="col-sm-9">
+                                            <div class="col-md-10">
+                                                <div class="form-group">
+                                                    <input id="banner" name="banner" type="file" class="filestyle" ui-jq="filestyle" 
+                                                    ui-options="{buttonText: 'Select file',iconName: 'fa fa-inbox'}" nv-file-select="{ alias: 'banner' }" uploader="uploaderBanner" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <img ng-src="{{filepreview}}" class="img-responsive" ng-show="filepreview" />
+                                            </div>
+                                        </div>
+                                    </div> -->
+
+                                    <div class="form-group" ng-class="{ 'has-error' : addSchoolForm.schoolname.$invalid && !addSchoolForm.schoolname.$pristine, 'has-success' : addSchoolForm.schoolname.$valid && !addSchoolForm.schoolname.$pristine}">
+                                        <label class="col-sm-3 control-label">School Name:</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="schoolname" id="schoolname" placeholder="Xyz Public School" class="form-control" ng-model="user.schoolName" ng-minlength="3" ng-maxlength="50" required>
+                                            <p class="help-block">
+                                                <span ng-show="addSchoolForm.schoolname.$invalid && !addSchoolForm.schoolname.$pristine">School Name is required.</span>
+                                                <span ng-show="addSchoolForm.schoolname.$error.minlength">School Name is too short.</span>
+                                                <span ng-show="addSchoolForm.schoolname.$error.maxlength">School Name is too long.</span>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" ng-class="{ 'has-error' : addSchoolForm.schooladdress.$invalid && !addSchoolForm.schooladdress.$pristine || addSchoolForm.schooladdress.$invalid && submitted, 'has-success' : addSchoolForm.schooladdress.$valid && !addSchoolForm.schooladdress.$pristine || addSchoolForm.schooladdress.$valid && submitted}">
+                                        <label class="col-sm-3 control-label">Address:</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="schooladdress" id="schooladdress" placeholder="Type School Address" class="form-control" ng-model="user.schoolAddress" googleplace on-blur-validation>
+                                            <p class="help-block">
+                                                <span ng-show="addSchoolForm.schooladdress.$invalid && !addSchoolForm.schooladdress.$pristine || addSchoolForm.schooladdress.$invalid && submitted">School address is required.</span>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" ng-class="{ 'has-error' : addSchoolForm.schoolcontactperson.$invalid && !addSchoolForm.schoolcontactperson.$pristine, 'has-success' : addSchoolForm.schoolcontactperson.$valid && !addSchoolForm.schoolcontactperson.$pristine}">
+                                        <label class="col-sm-3 control-label">Contact Person:</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="schoolcontactperson" id="schoolcontactperson" placeholder="Ramesh" class="form-control" ng-model="user.schoolContactPerson" ng-minlength="2" ng-maxlength="50" required>
+                                            <p class="help-block">
+                                                <span ng-show="addSchoolForm.schoolcontactperson.$invalid && !addSchoolForm.schoolname.$pristine">Contact Person Name is required.</span>
+                                                <span ng-show="addSchoolForm.schoolcontactperson.$error.minlength">Contact Person Name is too short.</span>
+                                                <span ng-show="addSchoolForm.schoolcontactperson.$error.maxlength">Contact Person Name is too long.</span>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" ng-class="{ 'has-error' : addSchoolForm.schoolemail.$invalid && !addSchoolForm.schoolemail.$pristine, 'has-success' : addSchoolForm.schoolemail.$valid && !addSchoolForm.schoolemail.$pristine}">
+                                        <label class="col-sm-3 control-label">Email Address:</label>
+                                        <div class="col-sm-9">
+                                            <input type="email" name="schoolemail" id="schoolemail" placeholder="xyz@school.com" class="form-control" ng-model="user.schoolEmail" required>
+                                            <p class="help-block">
+                                                <span ng-show="addSchoolForm.schoolemail.$invalid && !addSchoolForm.schoolemail.$pristine">Email is required.</span>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" ng-class="{ 'has-error' : addSchoolForm.schoolphone.$invalid && !addSchoolForm.schoolphone.$pristine, 'has-success' : addSchoolForm.schoolphone.$valid && !addSchoolForm.schoolphone.$pristine}">
+                                        <label class="col-sm-3 control-label">Phone No.:</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="schoolphone" id="schoolphone" name="fc18" class="form-control" placeholder="1234567890" ng-model="user.mobileNumber" ng-pattern="/\d{10}/" required>
+                                            <p class="help-block">
+                                                <span ng-show="addSchoolForm.schoolphone.$invalid && !addSchoolForm.schoolphone.$pristine">Phone Number is required. Please match pattern [1234567890]</span>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" ng-class="{ 'has-error' : addSchoolForm.schoolurl.$invalid && !addSchoolForm.schoolurl.$pristine, 'has-success' : addSchoolForm.schoolurl.$valid && !addSchoolForm.schoolurl.$pristine}">
+                                        <label class="col-sm-3 control-label">School URL:</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="schoolurl" id="schoolurl" name="fc18" class="form-control" placeholder="dps" ng-model="user.url" required>
+                                            <p class="help-block">
+                                                <span ng-show="addSchoolForm.schoolurl.$invalid && !addSchoolForm.schoolurl.$pristine">School URL is required.</span>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+                                    <div class="alert alert-success">
+                                        <ul>
+                                            <li>School Admin Detail</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="form-group" ng-class="{ 'has-error' : addSchoolForm.schooladminname.$invalid && !addSchoolForm.schooladminname.$pristine, 'has-success' : addSchoolForm.schooladminname.$valid && !addSchoolForm.schooladminname.$pristine}">
+                                        <label class="col-sm-3 control-label">Name:</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="schooladminname" id="schooladminname" placeholder="Amit Kumar" class="form-control" ng-model="user.schoolAdmin.firstName" ng-minlength="3" ng-maxlength="50" required>
+                                            <p class="help-block">
+                                                <span ng-show="addSchoolForm.schooladminname.$invalid && !addSchoolForm.schooladminname.$pristine">School Admin Name is required.</span>
+                                                <span ng-show="addSchoolForm.schooladminname.$error.minlength">School Admin Name is too short.</span>
+                                                <span ng-show="addSchoolForm.schooladminname.$error.maxlength">School Admin Name is too long.</span>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" ng-class="{ 'has-error' : addSchoolForm.schooladminemail.$invalid && !addSchoolForm.schooladminemail.$pristine, 'has-success' : addSchoolForm.schooladminemail.$valid && !addSchoolForm.schooladminemail.$pristine}">
+                                        <label class="col-sm-3 control-label">Email Address:</label>
+                                        <div class="col-sm-9">
+                                            <input type="email" name="schooladminemail" id="schooladminemail" placeholder="xyz@school.com" class="form-control" ng-model="user.schoolAdmin.email" required>
+                                            <p class="help-block">
+                                                <span ng-show="addSchoolForm.schooladminemail.$invalid && !addSchoolForm.schooladminemail.$pristine">Admin Email is required.</span>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" ng-class="{ 'has-error' : addSchoolForm.schooladminphone.$invalid && !addSchoolForm.schooladminphone.$pristine, 'has-success' : addSchoolForm.schooladminphone.$valid && !addSchoolForm.schooladminphone.$pristine}">
+                                        <label class="col-sm-3 control-label">Phone No.:</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="schooladminphone" id="schooladminphone" class="form-control" placeholder="1234567890" ng-model="user.schoolAdmin.contact" ng-pattern="/\d{10}/" required>
+                                            <p class="help-block">
+                                                <span ng-show="addSchoolForm.schooladminphone.$invalid && !addSchoolForm.schooladminphone.$pristine">Admin Phone Number is required. Please match pattern [1234567890]</span>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" ng-class="{ 'has-error' : addSchoolForm.schooladminpassword.$invalid && !addSchoolForm.schooladminpassword.$pristine, 'has-success' : addSchoolForm.schooladminpassword.$valid && !addSchoolForm.schooladminpassword.$pristine}">
+                                        <label class="col-sm-3 control-label">Login Password:</label>
+                                        <div class="col-sm-9">
+                                            <input type="password" name="schooladminpassword" id="schooladminpassword"  class="form-control" placeholder="1234567890" ng-model="user.schoolAdmin.password" required>
+                                            <p class="help-block">
+                                                <span ng-show="addSchoolForm.schooladminpassword.$invalid && !addSchoolForm.schooladminpassword.$pristine">Password is required.</span>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Status</label>
+                                        <div class="col-sm-9">
+                                            <div class="btn-group" ng-controller="ButtonsCtrl">
+                                                <label class="btn btn-default" ng-model="user.schoolActive" uib-btn-radio="false">Inactive</label>
+                                                <label class="btn btn-default" ng-model="user.schoolActive" uib-btn-radio="true">Active</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- /tile body -->
+                            </div>
+                        </div>
+                        <!-- tile footer -->
+                        <div class="tile-footer text-right bg-tr-black lter dvd dvd-top">
+                            <!-- SUBMIT BUTTON -->
+                            <button type="submit" class="btn btn-success" ng-disabled="addSchoolForm.$invalid">Submit</button>
+                        </div>
+                        <!-- /tile footer -->
+
+                    </section>
+                    <!-- /tile -->
+
+                </form>
+
+            </div>
+            <!-- /col -->
+
+        </div>
+        <!-- /row -->
+
+    </div>
+    <!-- /page content -->
+
+</div>
+<style>
+    .checkbox-custom > i,
+    .checkbox-custom-alt > i {
+        border: 0px;
+    }
+</style>

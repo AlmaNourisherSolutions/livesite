@@ -1,0 +1,578 @@
+
+        <!-- ============================================
+        =================== Content =====================
+        ============================================= -->
+
+        <section id="content row">
+
+            <div class="content-wrap" style="background:#fff">
+
+                <div class="container clearfix">
+
+                    <div class="row">
+
+
+                        <!-- BLOG POST -->
+                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 blog-post">
+
+
+                            <article class="col-lg-12 col-md-12 col-sm-12 col-xs-12 post-entry">
+
+                                <div class="entry-title">
+                                    <h2 class="text-uppercase">{{article.heading}}</h2>
+                                </div>
+
+                                <ul class="entry-meta clearfix">
+									<li ng-if="article.published"><i class="fa fa-calendar-o"></i> {{article.publishDate | date:'dd MMM yyyy'}}</li>
+                                    <li><i class="fa fa-eye"></i> {{article.views}}</li>
+                                    <li ng-if="!isLikedbyUser"><a ng-click='performLike()'><i class="fa fa-thumbs-up"></i> {{article.likes}}</a></li>
+                                    <li ng-if="isLikedbyUser"><i class="fa fa-thumbs-up"></i> {{article.likes}}</li>
+                                </ul>
+
+
+                                <div class="entry-content" ng-bind-html="article.content">
+                                </div>
+
+                                <div class="entry-tags">
+                                    <ul class="list-unstyled list-inline">
+                                        <li ng-repeat="t in article.tags"><a ui-sref="schoolUrl.parentarea.articleList({'tag':t})" class="btn-tag">{{t}}</a></li>
+                                    </ul>
+                                </div>
+								
+								<div class="entry-share">
+                                    <span>Share this post at:</span>
+                                    <div class="pull-right">
+										
+										<a class="social-icon social-icon-light social-facebook" title="web" target="_blank" href="https://web.whatsapp.com/send?text={{article.heading}}: {{absurl}}">
+                                             <div class="front">
+                                                <i class="fa fa-whatsapp"></i>
+                                             </div>
+                                             <div class="back">
+                                                <i class="fa fa-whatsapp"></i>
+                                             </div>
+                                        </a>
+                                        
+                                        <a class="social-icon social-icon-light social-facebook" title="mobile" socialshare socialshare-provider="whatsapp" socialshare-text="{{article.heading}}" 
+                                        socialshare-url="{{absurl}}">
+                                             <div class="front">
+                                                <i class="fa fa-whatsapp"></i>
+                                             </div>
+                                             <div class="back">
+                                                <i class="fa fa-whatsapp"></i>
+                                             </div>
+                                        </a>
+										
+										<a class="social-icon social-icon-light social-facebook" socialshare socialshare-provider="facebook" socialshare-quote="{{article.heading}}" 
+                                        socialshare-url="{{absurl}}">
+                                             <div class="front">
+                                                <i class="fa fa-facebook"></i>
+                                             </div>
+                                             <div class="back">
+                                                <i class="fa fa-facebook"></i>
+                                             </div>
+                                        </a>
+
+                                        <a class="social-icon social-icon-light social-twitter" socialshare socialshare-provider="twitter" socialshare-text="{{article.heading}}" 
+                                        socialshare-url="{{absurl}}">
+                                             <div class="front">
+                                                <i class="fa fa-twitter"></i>
+                                             </div>
+                                             <div class="back">
+                                                <i class="fa fa-twitter"></i>
+                                             </div>
+                                        </a>
+
+                                        <a class="social-icon social-icon-light social-googleplus" socialshare socialshare-provider="google" socialshare-text="{{article.heading}}" 
+                                        socialshare-url="{{absurl}}">
+                                             <div class="front">
+                                                <i class="fa fa-google-plus"></i>
+                                             </div>
+                                             <div class="back">
+                                                <i class="fa fa-google-plus"></i>
+                                             </div>
+                                        </a>
+
+                                    </div>
+                                </div>
+								
+                                <hr class="post-divider">
+								
+								<div class="entry-comments">
+                                    <h3><span class="text-theme">{{comments.length}}</span> Comments:</h3>
+
+                                    <ul class="comments-feed">
+
+                                        <li class="comment" ng-repeat="c in comments">
+
+                                            <div class="comment-avatar" ng-if="c.userId == currentUserId">
+                                                <img class="thumb img-circle" alt="" src="assets/images/comment-edit-icon.png">
+                                            </div>
+                                            <div class="comment-avatar" ng-if="c.userId != currentUserId">
+                                                <img class="thumb img-circle" alt="" src="assets/images/comment-icon.png">
+                                            </div>
+
+                                            <div class="comment-body">
+                                                <div class="comment-header">
+                                                    <h3 class="comment-author">Comment {{$index + 1}}:</h3>
+                                                    <span class="comment-meta">{{c.insertedDate | date:"MMM dd,yyyy 'at' hh:mm a"}}</span>
+                                                </div>
+                                                <p class="comment-content">{{c.comment}}</p>
+                                            </div>
+
+                                        </li>
+
+                                    </ul>
+                                </div>
+								
+								<hr class="post-divider">
+
+
+                                <h3 class="mt-40"><span class="text-theme">Post New</span> Comment:</h3>
+
+
+                                <form name="commentForm" class="form-horizontal" ng-submit="submitForm(commentForm.$valid)" role="form" novalidate>
+
+									<div class="row">
+
+                                        <div class="form-group col-sm-12" ng-class="{ 'has-error' : commentForm.comment.$invalid && !commentForm.comment.$pristine, 'has-success' : commentForm.comment.$valid && !commentForm.comment.$pristine}">
+                                            <label for="comment">Comment <span class="text-lightred" style="font-size: 15px">*</span></label>
+                                            <textarea name="comment" class="form-control myInput" id="comment" ng-model="articleComment.comment" rows="8" ng-minlength="3" required></textarea>
+                                             <p class="help-block">
+                                                <span ng-show="commentForm.comment.$invalid && !commentForm.comment.$pristine">Comment is required.</span>
+                                                <span ng-show="commentForm.comment.$error.minlength">Comment is too short.</span>
+                                            </p>
+                                        </div>
+
+                                    </div>
+
+                                    <button type="submit" class="myBtn myBtn-rounded myBtn-3d m-0 mt-10" ng-disabled="commentForm.$invalid">Post Comment</button>
+
+
+                                </form>
+
+                            </article>
+
+
+
+                        </div>
+                        <!-- END BLOG POSTS -->
+
+                        <!-- SIDEBAR -->
+					<div class="col-lg-3 col-md-3 col-sm-3 col-sm-12 sidebar">
+
+						<!-- Recent recipe starts -->
+						<h4 class="widget-heading">Recent Recipe</h4>
+						<ul class="media-list recent-posts sidebar-widget">
+
+							<li class="media" ng-repeat="r in recRecipeList">
+								<div class="media-left">
+									<a ui-sref="app.recipesDetailP({'recipeName':r.seoheading})">
+										<img class="media-object" alt="" src="assets/images/document/{{r.icon}}">
+									</a>
+								</div>
+								<div class="media-body">
+									<h5 class="media-heading"><a ui-sref="schoolUrl.parentarea.recipesDetailP({'recipeName':r.seoheading})">{{r.heading}}</a></h5>
+									<p><span class="text-muted"><i class="fa fa-calendar-o "></i> {{r.publishDate | date:'dd MMM yyyy'}}</span></p>
+									<p><span class="text-muted"><i class="fa fa-eye "></i> {{r.views}}</span> / 
+                                     <span class="text-muted like_view_space"><i class="fa fa-thumbs-up "></i> {{r.likes}}</span>
+									</p>
+								</div>
+							</li>
+						</ul>
+						<!-- Recent recipe ends -->
+						
+						<!-- Recent Articles starts -->
+						<h4 class="widget-heading">Recent Articles</h4>
+						<ul class="media-list recent-posts sidebar-widget">
+
+							<li class="media" ng-repeat="a in recArticleList">
+								<div class="media-left">
+									<a ui-sref="app.articleDetailP({'articleName':a.seoheading})">
+										<img class="media-object" alt="" src="assets/images/document/{{a.icon}}">
+									</a>
+								</div>
+								<div class="media-body">
+									<h5 class="media-heading"><a ui-sref="schoolUrl.parentarea.articleDetailP({'articleName':a.seoheading})">{{a.heading}}</a></h5>
+									<p><span class="text-muted"><i class="fa fa-calendar-o "></i> {{a.publishDate | date:'dd MMM yyyy'}}</span></p>
+									<p><span class="text-muted"><i class="fa fa-eye "></i> {{a.views}}</span> / 
+                                     <span class="text-muted like_view_space"><i class="fa fa-thumbs-up "></i> {{a.likes}}</span></p>
+								</div>
+							</li>
+						</ul>
+						<!-- Recent Articles ends -->
+
+						<!-- TAGS -->
+						<h4 class="widget-heading">Tags</h4>
+						<ul class="tags sidebar-widget list-unstyled list-inline">
+							<li ng-repeat="tag in topTags"><a ui-sref="schoolUrl.parentarea.articleList({'tag':tag})" class="btn-tag"><i class="fa fa-tags"></i> {{tag}}</a></li>
+						</ul>
+						<!-- END TAGS -->
+
+					</div>
+					<!-- sidebar END -->
+
+                    </div><!-- blog -->
+
+
+                </div>
+            </div>
+        </section><!-- #content end -->
+        
+<style>
+
+.post-entry {
+    position: relative;
+    padding-bottom: 40px;
+    min-height: 180px;
+}
+.post-entry .entry-image {
+    margin-bottom: 20px;
+}
+.post-entry .entry-image img {
+    opacity: 1;
+    -webkit-transition: opacity 0.3s linear;
+    -moz-transition: opacity 0.3s linear;
+    transition: opacity 0.3s linear;
+}
+.post-entry .entry-image > a:hover img {
+    opacity: .8;
+}
+.post-entry .entry-title h3,
+.post-entry .entry-title h2 {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+.post-entry .entry-title h3 a,
+.post-entry .entry-title h2 a {
+    color: #222;
+}
+.post-entry .entry-title h3 a:hover,
+.post-entry .entry-title h2 a:hover {
+    color: #428bca;
+}
+.post-entry .entry-title h2 {
+    font-size: 22px;
+    font-weight: 700;
+}
+.post-entry .entry-meta {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.post-entry .entry-meta > li {
+    display: inline;
+    font-style: italic;
+    font-size: 12px;
+    color: #a2a2a2;
+}
+.post-entry .entry-meta > li > a {
+    color: #a2a2a2;
+}
+.post-entry .entry-meta > li > a:hover {
+    color: #428bca;
+}
+.post-entry .entry-meta > li:after {
+    content: "/";
+    margin: 0 5px 0 6px;
+}
+.post-entry .entry-meta > li:last-child:after {
+    display: none;
+}
+.post-entry .entry-content {
+    margin-top: 30px;
+}
+.post-entry .plus {
+    position: absolute;
+    right: -15px;
+    bottom: 20px;
+}
+.post-entry .entry-tags {
+    margin-bottom: 20px;
+}
+.post-entry .entry-share {
+    padding: 20px 0;
+}
+.post-entry .entry-share > span {
+    font-family: "Raleway", "Arial", sans-serif;
+    color: #444;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.post-entry .entry-comments {
+    margin-top: 40px;
+}
+.blog-posts .post-entry {
+    padding-bottom: 20px;
+}
+.blog-posts .post-entry .entry-image img {
+    border-radius: 4px;
+}
+.blog-posts .post-divider {
+    border-top: 2px solid #f2f2f2;
+}
+.blog-post .post-entry .entry-meta {
+    margin-bottom: 30px;
+}
+.blog-post .post-entry .entry-content > p,
+.blog-post .post-entry .entry-content > pre,
+.blog-post .post-entry .entry-content > div {
+    margin-bottom: 30px;
+}
+.blog-post .post-divider {
+    border-top: 2px solid #f2f2f2;
+}
+.thumb {
+    width: 64px;
+    height: 64px;
+}
+.box {
+    width: 100%;
+    background-color: #eee;
+    padding: 20px;
+}
+.right {
+	float: right;
+	padding: 15px;
+}
+.left {
+	float: left;
+	padding: 15px;
+}
+#content .content-wrap {
+    position: relative;
+    padding: 80px 0 60px;
+}
+.p_20 {
+	padding:20px;
+}
+.sidebar .sidebar-widget {
+    margin-bottom: 40px;
+}
+.list-inline {
+    padding-left: 0;
+    margin-left: -5px;
+    list-style: none;
+}
+.list-inline > li {
+    display: inline-block;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+.btn-tag {
+    position: relative;
+    color: #a2a2a2;
+    border: 2px solid #f2f2f2;
+    display: inline-block;
+    padding: 2px 5px;
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+    font-size: 12px;
+    margin-bottom: 5px;
+    margin-right: 3px;
+	text-decoration : none !important;
+}
+.btn-tag:before {
+    content: "";
+    top: 50%;
+    right: -11px;
+    display: block;
+    margin-top: -11px;
+    position: absolute;
+    height: 0;
+    width: 0;
+    border-bottom: 11px solid transparent;
+    border-left: 11px solid #fff;
+    border-top: 11px solid transparent;
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+    z-index: 4;
+}
+.btn-tag:after {
+    content: "";
+    top: 50%;
+    right: -14px;
+    z-index: 2;
+    display: block;
+    margin-top: -13px;
+    position: absolute;
+    height: 0;
+    width: 0;
+    border-bottom: 13px solid transparent;
+    border-left: 13px solid #f2f2f2;
+    border-top: 13px solid transparent;
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+}
+.btn-tag:hover {
+    border-color: #428bca;
+    color: #428bca;
+}
+.btn-tag:hover:after {
+    border-left-color: #428bca;
+}
+.media-object {
+	width: 64px;
+	height: 64px;
+}
+.appWrapper.header-fixed.aside-fixed #content {
+    position: relative;
+    top: 0;
+    left: 0;
+}
+#main-navbar ul li.active a {
+        color: #444;
+    }    
+    #main-navbar ul li.active_article a {
+        color: #428bca;
+}
+.social-icon {
+    margin: 0 5px 5px 0;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    text-align: center;
+    line-height: 30px;
+    color: #fff;
+    position: relative;
+    transform: rotateY(0deg);
+    transition: transform 0.25s ease-out;
+    transform-style: preserve-3d;
+}
+.social-icon > div {
+    width: 30px;
+    height: 30px;
+    background: #1e1e1e;
+    position: absolute;
+}
+.social-icon > div.front {
+    transform: translateZ(12px);
+}
+.social-icon > div.back {
+    background: #428bca;
+    transform: rotateY(-100deg) translateZ(10px);
+    color: white;
+}
+.social-icon.social-icon-light {
+    color: #6f6f6f;
+}
+.social-icon.social-icon-light > div {
+    background-color: #f2f2f2;
+}
+/*  Social Media Colors
+	Facebook #3B5998
+	Flickr #FE0883
+	Foursquare #8FD400
+	Google+ #C63D2D
+	Instagram #4E433C
+	Linkedin #4875B4
+	Tumblr #2B4964
+	Twitter #33CCFF
+	Vimeo #86B32D
+	Youtube #FF3333
+	Dribbble #ea4c89
+*/
+
+.social-icon.social-facebook > .back {
+    background: #3B5998;
+}
+.social-icon.social-twitter > .back {
+    background: #55ACEE;
+}
+.social-icon.social-github > .back {
+    background: #f3f3f3;
+    color: #000;
+}
+.social-icon.social-pinterest > .back {
+    background: #e3262e;
+}
+.social-icon.social-googleplus > .back {
+    background: #dd4B39;
+}
+.social-icon.social-skype > .back {
+    background: #12A5F4;
+}
+.social-icon.social-linkedin > .back {
+    background: #4875B4;
+}
+.social-icon.social-dribbble > .back {
+    background: #ea4c89;
+}
+.social-icon.social-flickr > .back {
+    background: #FE0883;
+}
+/* Hover */
+
+.social-icon:hover {
+    transform: rotateY(100deg);
+}
+.comments-feed {
+    list-style: none;
+    padding: 0 0 0 30px;
+    margin: 60px 0 0;
+}
+.comments-feed > .comment {
+    margin-bottom: 60px;
+}
+.comments-feed .comment {
+    border: 1px solid #f2f2f2;
+    border-radius: 2px;
+    padding: 15px 30px 15px 60px;
+    position: relative;
+}
+.comments-feed .comment .comment-avatar {
+    position: absolute;
+    top: -30px;
+    left: -30px;
+}
+.comments-feed .comment .comment-avatar > img {
+    border: 3px solid white;
+    box-shadow: 0 0 0 1px #eee;
+}
+.comments-feed .comment .comment-body .comment-header {
+    margin-bottom: 20px;
+}
+.comments-feed .comment .comment-body .comment-author {
+    font-size: 16px;
+    margin-bottom: 0;
+}
+.comments-feed .comment .comment-body .comment-meta {
+    font-size: 12px;
+    font-style: italic;
+    color: #a2a2a2;
+}
+.comments-feed .comment .comment-body .comment-reply {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.comments-feed .comment .comment-body .comment-reply > a {
+    color: #a2a2a2;
+}
+.comments-feed .comment .comment-body .comment-reply > a:hover {
+    color: #428bca;
+}
+.comments-feed .comment .comment-replies {
+    list-style: none;
+    padding: 10px 0 0;
+    margin: 20px 0 0;
+}
+.comments-feed .comment .comment-replies > .comment {
+    border: 0;
+    border-radius: 0;
+    border-left: 2px solid #f2f2f2;
+    padding: 15px 30px 15px 75px;
+}
+.comments-feed .comment .comment-replies > .comment .comment-avatar {
+    left: 15px;
+    top: 15px;
+}
+.comments-feed .comment .comment-replies > .comment .comment-avatar > img {
+    border: 0;
+    box-shadow: none;
+    width: 40px;
+    height: 40px;
+}
+</style>

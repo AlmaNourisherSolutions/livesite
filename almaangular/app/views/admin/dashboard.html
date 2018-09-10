@@ -1,0 +1,264 @@
+<div class="page page-dashboard">
+
+    <div class="pageheader">
+
+        <h2>{{page.title}} <span>// {{page.subtitle}}</span></h2>
+        <div class="page-bar">
+            <ul class="page-breadcrumb">
+                <li>
+                    <a ui-sref="administrator.dashboard"><i class="fa fa-home"></i> {{main.title}}</a>
+                </li>
+                <li>
+                    <a ui-sref="administrator.dashboard">{{page.title}}</a>
+                </li>
+            </ul>
+			
+            <div ng-controller="DaterangepickerCtrl" class="page-toolbar">
+                <a href="javascript:;" class="btn btn-lightred no-border">
+                    <i class="fa fa-calendar"></i>&nbsp;&nbsp;<span>{{today}}</span>&nbsp;&nbsp;
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Counter row starts -->
+    <div class="row">
+
+        <!-- Total school count starts -->
+        <div class="card-container col-lg-2 col-sm-6 col-sm-12">
+            <div class="card">
+                <div class="front bg-greensea">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <i class="fa fa-building-o fa-4x"></i>
+                        </div>
+                        <div class="col-xs-8">
+                            <p class="text-elg text-strong mb-0">{{schoolCount}}</p>
+                            <span>Total School</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="back bg-greensea">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <a ui-sref="administrator.manageSchool.addSchool"><i class="fa fa-plus fa-2x"></i> Create</a>
+                        </div>
+                        <div class="col-xs-6">
+                            <a ui-sref="administrator.manageSchool.viewSchoolList"><i class="fa fa-eye fa-2x"></i> View All</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Total school count ends -->
+
+        <!-- Total Students count starts -->
+        <div class="card-container col-lg-2 col-sm-6 col-sm-12">
+            <div class="card">
+                <div class="front bg-lightred">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <i class="fa fa-child fa-4x"></i>
+                        </div>
+                        <div class="col-xs-8">
+                            <p class="text-elg text-strong mb-0">{{studentCount}}</p>
+                            <span>Total Students</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="back bg-lightred">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <a ui-sref="administrator.manageStudent.addStudent"><i class="fa fa-plus fa-2x"></i> Create</a>
+                        </div>
+                        <div class="col-xs-6">
+                            <a ui-sref="administrator.manageStudent.viewStudentList"><i class="fa fa-eye fa-2x"></i> View All</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Total Student count ends -->
+
+        <!-- Total Nutritionist count starts -->
+    <!--     <div class="card-container col-lg-3 col-sm-6 col-sm-12">
+            <div class="card">
+                <div class="front bg-slategray">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <i class="fa fa-users fa-4x"></i>
+                        </div>
+                        <div class="col-xs-8">
+                            <p class="text-elg text-strong mb-0">16</p>
+                            <span>Total Nutritionist</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="back bg-slategray">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <a ui-sref=""><i class="fa fa-plus fa-2x"></i> Create</a>
+                        </div>
+                        <div class="col-xs-6">
+                            <a ui-sref=""><i class="fa fa-eye fa-2x"></i> View All</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+        <!-- Total Nutritionist count ends -->
+
+        <!-- Total Article count starts -->
+        <div class="card-container col-lg-2 col-sm-6 col-sm-12">
+            <div class="card">
+                <div class="front bg-blue">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <i class="fa fa-question-circle fa-4x"></i>
+                        </div>
+                        <div class="col-xs-8">
+                            <p class="text-elg text-strong mb-0">{{articleCount}}</p>
+                            <span>Total Articles</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="back bg-blue">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <a ui-sref="administrator.createDocument"><i class="fa fa-plus fa-2x"></i> Create</a>
+                        </div>
+                        <div class="col-xs-6">
+                            <a ui-sref="administrator.listArticle"><i class="fa fa-eye fa-2x"></i> View All</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Total Article count ends -->
+
+        <!-- Total Recipe count starts -->
+        <div class="card-container col-lg-2 col-sm-6 col-sm-12">
+            <div class="card">
+                <div class="front bg-lightred">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <i class="fa fa-users fa-4x"></i>
+                        </div>
+                        <div class="col-xs-8">
+                            <p class="text-elg text-strong mb-0">{{recipeCount}}</p>
+                            <span>Total Recipe</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="back bg-lightred">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <a ui-sref="administrator.createDocument"><i class="fa fa-plus fa-2x"></i> Create</a>
+                        </div>
+                        <div class="col-xs-6">
+                            <a ui-sref="administrator.listRecipe"><i class="fa fa-eye fa-2x"></i> View All</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Total Recipe count ends -->
+        
+         <!-- Total Questionaire Stats count starts -->
+        <div class="card-container col-lg-2 col-sm-6 col-sm-12">
+            <div class="card">
+                <div class="front bg-lightred">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <i class="fa fa-users fa-4x"></i>
+                        </div>
+                        <div class="col-xs-8">
+                            <p class="text-elg text-strong mb-0">{{qStats}}</p>
+                            <span>Questionaire Stats</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="back bg-lightred">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <a ui-sref="administrator.viewStatistics"><i class="fa fa-eye fa-2x"></i> View Detailed Stats</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Total Questionaire Stats ends -->
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-40">
+	<div class="tile-body tile">
+	   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bg_white p-0">
+			<div class="tile-header dvd dvd-btm">
+				<h1 class="custom-font"><strong>Upload Questionaire</strong> XL</h1>
+			</div>
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 m20">
+				<div class="col-sm-9">
+					<input id="quesupload" name="quesupload" type="file" class="filestyle" ui-options="{
+           	buttonText: 'Select file',iconName: 'fa fa-inbox'}" nv-file-select="{ alias: 'quesupload' }" uploader="uploaderQuestionaire" />
+				</div>          
+				 <div class="col-sm-3">
+					<button type="submit" ng-click="uploadQuestionaire()" class="btn btn-success">Upload</button>
+				 </div>  
+				 <div class="col-sm-12">
+				    <a class="btn btn-default btn-border" href="assets/images/uploadLogs/QuestionaireUploadLog.txt" download="QuestionaireUploadLog.txt">Download Logs</a>
+				 </div>             
+			 </div>               
+		</div>
+	</div>
+</div>		
+
+	<!-- Counter row ends -->
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-40">
+	<div class="tile-body tile">
+	   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bg_white p-0">
+			<div class="tile-header dvd dvd-btm">
+				<h1 class="custom-font">Generate<strong>Bulk Reports </strong></h1>
+			</div>
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 m20">
+			  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 m20">
+				<label class="col-sm-6 control-label">Select School</label>
+					<div class="col-sm-6">
+						<select class="form-control" chosen="{width: '100%'}" ng-model="school" name="schoollist" id="schoollist" ng-change="getBranchList()">
+											<option ng-repeat="s in schoolList" value="{{s.schoolId}}">{{s.schoolName}}</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 m20">
+				<label class="col-sm-6 control-label">Select Branch</label>
+					<div class="col-sm-6">
+						<select class="form-control" chosen="{width: '100%'}" ng-model="branch" name="branchlist" id="branchlist">
+											<option ng-repeat="b in branchList" value="{{b.branchId}}">{{b.branchName}}</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 m20">
+					<div class="col-sm-6 m20">
+						<button ng-if="branch" type="submit" ng-click="bulkNutritionReport()" class="btn btn-success">Nutrition Report</button>
+						<a ng-if="nutritionreport" class="btn btn-default btn-border" href="assets/reports/Water_BulkNutritionReport_{{branch}}.pdf" download="BulkNutritionReport_{{branch}}.pdf">Download</a>
+					</div>          
+					 <div class="col-sm-6 m20">
+						<button ng-if="branch" type="submit" ng-click="bulkFoodFreqReport()" class="btn btn-success">Food Frequency Report</button>
+						<a ng-if="foodfreqreport" class="btn btn-default btn-border" href="assets/reports/Water_BulkFoodFreqReport_{{branch}}.pdf" download="BulkFoodFreqReport_{{branch}}.pdf">Download</a>
+					 </div>  
+			</div>             
+			 </div>               
+		</div>
+	</div>
+</div>		
+</div>
+<style>
+   #quesupload {
+       background-color: white;
+       width: 100%;
+   }
+
+	.bg_white {
+		background:#fff;
+	}
+	.m20{
+		margin:20px
+	}
+</style>
