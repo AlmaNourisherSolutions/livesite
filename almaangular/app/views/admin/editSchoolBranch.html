@@ -93,15 +93,10 @@
             <div class="tile-body form-validation">
               <p class="text-muted">Submit button will be enabled after completing form.</p>
 
-              <div class="form-group" ng-class="{ 'has-error' : addSchoolForm.schoolname.$invalid && !addSchoolForm.schoolname.$pristine, 'has-success' : addSchoolForm.schoolname.$valid && !addSchoolForm.schoolname.$pristine}">
-                <label class="col-sm-3 control-label">School Name:</label>
+              <div class="form-group" >
+              	<label class="col-sm-3 control-label">School Name:</label>
                 <div class="col-sm-9">
                   <input type="text" name="schoolname" id="schoolname" placeholder="Xyz Public School" class="form-control" ng-model="user.schoolName" ng-minlength="3" ng-maxlength="50" disabled="disabled" required>
-                 <p class="help-block">
-                    <span ng-show="addSchoolForm.schoolname.$invalid && !addSchoolForm.schoolname.$pristine">School Name is required.</span>
-                    <span ng-show="addSchoolForm.schoolname.$error.minlength">School Name is too short.</span>
-                    <span ng-show="addSchoolForm.schoolname.$error.maxlength">School Name is too long.</span>
-                  </p>
                 </div>
               </div>
 
@@ -112,16 +107,16 @@
                 <div class="col-sm-9">
                   <input type="text" name="schoolbranchname" id="schoolbranchname" placeholder="Xyz Public School" class="form-control" ng-model="user.branchName" ng-minlength="3" ng-maxlength="50" required>
                   <p class="help-block">
-                    <span ng-show="addSchoolBranchForm.schoolbranchname.$invalid && !addSchoolBranchForm.schoolbranchname.$pristine">School Name is required.</span>
-                    <span ng-show="addSchoolBranchForm.schoolbranchname.$error.minlength">School Name is too short.</span>
-                    <span ng-show="addSchoolBranchForm.schoolbranchname.$error.maxlength">School Name is too long.</span>
+                    <span ng-show="addSchoolBranchForm.schoolbranchname.$invalid && !addSchoolBranchForm.schoolbranchname.$pristine">Branch Name is required.</span>
+                    <span ng-show="addSchoolBranchForm.schoolbranchname.$error.minlength">Branch Name is too short.</span>
+                    <span ng-show="addSchoolBranchForm.schoolbranchname.$error.maxlength">Branch Name is too long.</span>
                   </p>
                 </div>
               </div>
 
               <hr class="line-dashed line-full" />
 
-              <div class="form-group" ng-class="{ 'has-error' : addSchoolBranchForm.schoolbranchaddress.$invalid && !addSchoolBranchForm.schoolbranchaddress.$pristine || addSchoolBranchForm.schoolbranchaddress.$invalid && submitted, 'has-success' : addSchoolBranchForm.schoolbranchaddress.$valid && !addSchoolBranchForm.schoolbranchaddress.$pristine || addSchoolForm.schoolbranchaddress.$valid && submitted}">
+              <div class="form-group" ng-class="{ 'has-error' : addSchoolBranchForm.schoolbranchaddress.$invalid && !addSchoolBranchForm.schoolbranchaddress.$pristine, 'has-success' : addSchoolBranchForm.schoolbranchaddress.$valid && !addSchoolBranchForm.schoolbranchaddress.$pristine}">
                 <label class="col-sm-3 control-label">Address:</label>
                 <div class="col-sm-9">
                   <textarea class="form-control" rows="7" name="schoolbranchaddress" id="schoolbranchaddress" placeholder="Type School Address" ng-model="user.branchAddress"  googleplace on-blur-validation required></textarea>
@@ -133,50 +128,39 @@
 
               <hr class="line-dashed line-full" />
               
-               <div class="form-group" ng-class="{ 'has-error' : addSchoolBranchForm.branchclasses.$invalid && !addSchoolBranchForm.branchclasses.$pristine || addSchoolBranchForm.branchclasses.$invalid && submitted, 'has-success' : addSchoolBranchForm.branchclasses.$valid && !addSchoolBranchForm.branchclasses.$pristine || addSchoolForm.branchclasses.$valid && submitted}">
+               <div class="form-group" >
                 <label class="col-sm-3 control-label">Classes</label>
                 <div class="col-sm-9">
-                  <select class="form-control" multiple chosen="{width: '100%'}" ng-model="user.classes" name="branchclasses" id="branchclasses">
-                    <option ng-repeat="c in classLookup" value="{{c}}">{{c}}</option>
+                  <select class="form-control" multiple  ng-model="user.classes" name="branchclasses" id="branchclasses">
+                    <option ng-repeat="c in classLookup" value="c">{{c}}</option>
                   </select>
                 </div>
               </div>			  
               
                <hr class="line-dashed line-full" />
 
-              <div class="form-group" ng-class="{ 'has-error' : addSchoolBranchForm.schoolbranchcontactperson.$invalid && !addSchoolBranchForm.schoolbranchcontactperson.$pristine, 'has-success' : addSchoolBranchForm.schoolbranchcontactperson.$valid && !addSchoolBranchForm.schoolbranchcontactperson.$pristine}">
-                <label class="col-sm-3 control-label">School Admin:</label>
+              <div class="form-group" >
+              	<label class="col-sm-3 control-label">School Admin:</label>
                 <div class="col-sm-9">
-                  <input type="text" disabled="disabled" name="schoolbranchcontactperson" id="schoolbranchcontactperson" placeholder="Ramesh" class="form-control" ng-model="user.schoolAdmin.firstName" ng-minlength="2" ng-maxlength="50" >
-                  <p class="help-block">
-                    <span ng-show="addSchoolBranchForm.schoolbranchcontactperson.$invalid && !addSchoolBranchForm.schoolname.$pristine">Contact Person Name is required.</span>
-                    <span ng-show="addSchoolBranchForm.schoolbranchcontactperson.$error.minlength">Contact Person Name is too short.</span>
-                    <span ng-show="addSchoolBranchForm.schoolbranchcontactperson.$error.maxlength">Contact Person Name is too long.</span>
-                  </p>
+                  <input type="text" disabled="disabled" name="schoolbranchcontactperson" id="schoolbranchcontactperson" placeholder="Ramesh" class="form-control" ng-model="user.schoolAdmin.firstName"  >
                 </div>
               </div>
 
               <hr class="line-dashed line-full" />
 
-              <div class="form-group" ng-class="{ 'has-error' : addSchoolBranchForm.schoolbranchemail.$invalid && !addSchoolBranchForm.schoolbranchemail.$pristine, 'has-success' : addSchoolBranchForm.schoolbranchemail.$valid && !addSchoolBranchForm.schoolbranchemail.$pristine}">
-                <label class="col-sm-3 control-label">Email Address:</label>
+              <div class="form-group" >
+               <label class="col-sm-3 control-label">Email Address:</label>
                 <div class="col-sm-9">
                   <input type="email" disabled="disabled" name="schoolbranchemail" id="schoolbranchemail" placeholder="xyz@school.com" class="form-control" ng-model="user.schoolAdmin.email" >
-                  <p class="help-block">
-                    <span ng-show="addSchoolBranchForm.schoolbranchemail.$invalid && !addSchoolBranchForm.schoolbranchemail.$pristine">Email is required.</span>
-                  </p>
                 </div>
               </div>
 
               <hr class="line-dashed line-full" />
 
-              <div class="form-group" ng-class="{ 'has-error' : addSchoolBranchForm.schoolbranchphone.$invalid && !addSchoolBranchForm.schoolbranchphone.$pristine, 'has-success' : addSchoolBranchForm.schoolbranchphone.$valid && !addSchoolBranchForm.schoolbranchphone.$pristine}">
-                  <label class="col-sm-3 control-label">Phone No.:</label>
+              <div class="form-group" >
+              	<label class="col-sm-3 control-label">Phone No.:</label>
                 <div class="col-sm-9">
-                  <input type="text" disabled="disabled" name="schoolbranchphone" id="schoolbranchphone" name="fc18" class="form-control" placeholder="1234567890" ng-model="user.schoolAdmin.contact" ng-pattern="/\d{10}/" >
-                  <p class="help-block">
-                    <span ng-show="addSchoolBranchForm.schoolbranchphone.$invalid && !addSchoolBranchForm.schoolbranchphone.$pristine">Phone Number is required. Please match pattern [1234567890]</span>
-                  </p>
+                  <input type="text" disabled="disabled" name="schoolbranchphone" id="schoolbranchphone" name="fc18" class="form-control" placeholder="1234567890" ng-model="user.schoolAdmin.contact"  >
                 </div>
               </div>
  			
@@ -195,22 +179,6 @@
 
               <hr class="line-dashed line-full" />
 
-           <!--  <div class="form-group">
-                <label class="col-sm-3 control-label">Add Class</label>
-                <div class="col-sm-9">
-                  <div class="btn-group" ng-controller="ButtonsCtrl">
-                    <label class="btn btn-default" ng-model="user.checkModel.PreSchool" uib-btn-checkbox>Pre-School</label>
-                    <label class="btn btn-default" ng-model="user.checkModel.middle" uib-btn-checkbox>Nursery</label>
-                    <label class="btn btn-default" ng-model="user.checkModel.LKG" uib-btn-checkbox>LKG</label>
-                    <label class="btn btn-default" ng-model="user.checkModel.UKG" uib-btn-checkbox>UKG</label>
-                    <label class="btn btn-default" ng-model="user.checkModel.class1" uib-btn-checkbox>Class 1</label>
-                    <label class="btn btn-default" ng-model="user.checkModel.class2" uib-btn-checkbox>Class 2</label>
-                    <label class="btn btn-default" ng-model="user.checkModel.class3" uib-btn-checkbox>Class 3</label>
-                    <label class="btn btn-default" ng-model="user.checkModel.class4" uib-btn-checkbox>Class 4</label>
-                    <label class="btn btn-default" ng-model="user.checkModel.class5" uib-btn-checkbox>Class 5</label>
-                  </div>
-                </div>
-              </div> -->  
 
             </div>
             <!-- /tile body -->

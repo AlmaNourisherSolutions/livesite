@@ -136,8 +136,8 @@
                <div class="form-group" ng-class="{ 'has-error' : addSchoolBranchForm.branchclasses.$invalid && !addSchoolBranchForm.branchclasses.$pristine || addSchoolBranchForm.branchclasses.$invalid && submitted, 'has-success' : addSchoolBranchForm.branchclasses.$valid && !addSchoolBranchForm.branchclasses.$pristine || addSchoolForm.branchclasses.$valid && submitted}">
                 <label class="col-sm-3 control-label">Classes</label>
                 <div class="col-sm-9">
-                  <select class="form-control" multiple chosen="{width: '100%'}" ng-model="user.classes" name="branchclasses" id="branchclasses">
-                    <option ng-repeat="c in classLookup" value="{{c}}">{{c}}</option>
+                  <select class="form-control" multiple ng-model="user.classes" name="branchclasses" id="branchclasses" >
+                  	<option ng-repeat="c in classLookup" value="c">{{c}}</option>
                   </select>
                 </div>
               </div>			  
@@ -161,7 +161,7 @@
               <div class="form-group" ng-class="{ 'has-error' : addSchoolBranchForm.schoolbranchemail.$invalid && !addSchoolBranchForm.schoolbranchemail.$pristine, 'has-success' : addSchoolBranchForm.schoolbranchemail.$valid && !addSchoolBranchForm.schoolbranchemail.$pristine}">
                 <label class="col-sm-3 control-label">Email Address:</label>
                 <div class="col-sm-9">
-                  <input type="email" name="schoolbranchemail" id="schoolbranchemail" placeholder="xyz@school.com" class="form-control" ng-model="user.schoolAdmin.email" required>
+                  <input type="email" name="schoolbranchemail" id="schoolbranchemail" placeholder="xyz@school.com" class="form-control" ng-model="user.schoolAdmin.email" required autocomplete="off">
                   <p class="help-block">
                     <span ng-show="addSchoolBranchForm.schoolbranchemail.$invalid && !addSchoolBranchForm.schoolbranchemail.$pristine">Email is required.</span>
                   </p>
@@ -183,7 +183,7 @@
  			<div class="form-group" ng-class="{ 'has-error' : addSchoolForm.schooladminpassword.$invalid && !addSchoolForm.schooladminpassword.$pristine, 'has-success' : addSchoolForm.schooladminpassword.$valid && !addSchoolForm.schooladminpassword.$pristine}">
                 <label class="col-sm-3 control-label">Login Password:</label>
                  <div class="col-sm-9">
-                       <input type="password" name="schooladminpassword" id="schooladminpassword"  class="form-control" placeholder="1234567890" ng-model="user.schoolAdmin.password" required>
+                       <input type="password" name="schooladminpassword" id="schooladminpassword"  class="form-control" placeholder="1234567890" ng-model="user.schoolAdmin.password" required autocomplete="off">
                      <p class="help-block">
                        <span ng-show="addSchoolForm.schooladminpassword.$invalid && !addSchoolForm.schooladminpassword.$pristine">Password is required.</span>
                     </p>

@@ -108,7 +108,7 @@ app
 
     $scope.ok = function () {
       $uibModalInstance.close();
-      var school = JSON.parse($scope.school);
+      var school = $scope.school;
       $rootScope.school = school;
       console.log(school);
       var obj = {};

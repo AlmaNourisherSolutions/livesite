@@ -230,9 +230,8 @@
                                     <div class="form-group" ng-class="{ 'has-error' : addStudentForm.studentschoolname.$invalid && !addStudentForm.studentschoolname.$pristine, 'has-success' : addStudentForm.studentschoolname.$valid && !addStudentForm.studentschoolname.$pristine}">
                                         <label class="col-sm-3 control-label">Select School <sup class="alert_red_color"><strong>*</strong></sup></label>
                                         <div class="col-sm-9">
-                                            <select name="studentschoolname" id="studentschoolname" class="form-control mb-10" ng-model="user.schoolId" ng-change="getSchoolBranch(user.schoolId)" required>
-                                                <option value="">Select option...</option>
-                                                <option ng-repeat="s in schoolList" value="{{s.schoolId}}">{{s.schoolName}}</option>
+                                            <select name="studentschoolname" id="studentschoolname" class="form-control mb-10" ng-model="user.schoolId" ng-change="getSchoolBranch(user.schoolId)" required ng-options="s.schoolId as s.schoolName for s in schoolList">
+                                                <option value=""></option>
                                             </select>
                                             <p class="help-block">
                                                 <span ng-show="addStudentForm.studentschoolname.$invalid && !addStudentForm.studentschoolname.$pristine || addStudentForm.studentschoolname.$invalid && submitted">School Name is required.</span>
@@ -243,9 +242,8 @@
                                     <div class="form-group" ng-class="{ 'has-error' : addStudentForm.studentschoolbranch.$invalid && !addStudentForm.studentschoolbranch.$pristine, 'has-success' : addStudentForm.studentschoolbranch.$valid && !addStudentForm.studentschoolbranch.$pristine}">
                                         <label class="col-sm-3 control-label">Select Branch <sup class="alert_red_color"><strong>*</strong></sup></label>
                                         <div class="col-sm-9">
-                                            <select name="studentschoolbranch" id="studentschoolbranch" class="form-control mb-10" ng-model="user.branchId" ng-change="getClassList(user.branchId)" required>
-                                                <option value="">Select option...</option>
-                                                <option ng-repeat="b in schoolBranchList" value="{{b.branchId}}">{{b.branchName}}</option>
+                                            <select name="studentschoolbranch" id="studentschoolbranch" class="form-control mb-10" ng-model="user.branchId" ng-change="getClassList(user.branchId)" required ng-options="b.branchId as b.branchName for b in schoolBranchList">
+                                                <option value=""></option>
                                             </select>
 
                                             <p class="help-block">
@@ -257,9 +255,8 @@
                                     <div class="form-group" ng-class="{ 'has-error' : addStudentForm.studentschoolclass.$invalid && !addStudentForm.studentschoolclass.$pristine, 'has-success' : addStudentForm.studentschoolclass.$valid && !addStudentForm.studentschoolclass.$pristine}">
                                         <label class="col-sm-3 control-label">Select Class <sup class="alert_red_color"><strong>*</strong></sup></label>
                                         <div class="col-sm-9">
-                                            <select name="studentschoolclass" id="studentschoolclass" class="form-control mb-10" ng-model="user.className" required>
-                                                <option value="">Select option...</option>
-                                                <option ng-repeat="b in schoolClassList" value="{{b}}">{{b}}</option>
+                                            <select name="studentschoolclass" id="studentschoolclass" class="form-control mb-10" ng-model="user.className" required ng-options="b in schoolClassList">
+                                                <option value=""></option>
                                             </select>
                                             <p class="help-block">
                                                 <span ng-show="addStudentForm.studentschoolclass.$invalid && !addStudentForm.studentschoolclass.$pristine || addStudentForm.studentschoolclass.$invalid && submitted">Class is required.</span>

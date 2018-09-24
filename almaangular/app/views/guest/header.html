@@ -52,8 +52,8 @@
 							  <label class="control-label">Please select school to login</label>
 								  <div class="form-group">									
 									<div class="col-sm-12" style="padding:20px 0">
-									  <select chosen="{width: '100%'}" ng-model="school">	
-										  <option ng-repeat="s in schoolList" value="{{s}}">{{s.schoolName}}</option>
+									  <select chosen="{width: '100%'}" ng-model="school" ng-options="s as s.schoolName for s in schoolList">	
+										  <option value=""></option>
 									  </select>
 									</div>
 								  </div>							  

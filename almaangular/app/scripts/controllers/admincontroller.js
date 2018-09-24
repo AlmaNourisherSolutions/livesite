@@ -7,7 +7,7 @@
 app
 	.controller(
 				'DashboardCtrl',
-				function($scope, $http, FileUploader, $rootScope) {
+				function($scope, $http, FileUploader, $rootScope,$window) {
 					$scope.page = {
 						title : 'Dashboard',
 						subtitle : 'Place subtitle here...'
@@ -129,7 +129,7 @@ app
 								.error(
 										function(data, status, headers, config) {
 											$window
-													.alert("Something went wrong while adding school");
+													.alert("Something went wrong");
 										});
 		            
 					}
@@ -145,7 +145,7 @@ app
 								.error(
 										function(data, status, headers, config) {
 											$window
-													.alert("Something went wrong while adding school");
+													.alert("Something went wrong");
 										});
 					}
 				})
@@ -1048,7 +1048,7 @@ app
 				})
 
 		.controller('viewSchoolDetailCtrl',
-				function($rootScope, $scope, $stateParams, $http, $window) {
+				function($rootScope, $scope, $stateParams, $http, $window,$state) {
 			
 				$scope.deleteSchool = function(schoolId){
 					

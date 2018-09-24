@@ -99,10 +99,10 @@
 								<div class="form-group" ng-class="{ 'has-error' :addArticleForm.schoollist.$invalid && !addArticleForm.schoollist.$pristine || addArticleForm.schoollist.$invalid && submitted, 'has-success' : addArticleForm.schoollist.$valid && !addArticleForm.schoollist.$pristine || addArticleForm.schoollist.$valid && submitted}">
 									<label class="col-sm-3 control-label">Post for School / Public</label>
 									<div class="col-sm-9">
-									  <select class="form-control" multiple chosen="{width: '100%'}" ng-model="article.schools" name="schoollist" id="schoollist">
+									  <select class="form-control" multiple ng-model="article.schools" name="schoollist" id="schoollist" >
 									  	<option value="PUBLIC">Public</option>
 									  	<option value="ALL">All School</option>
-										<option ng-repeat="s in schoolList" value="{{s.schoolId}}">{{s.schoolName}}</option>
+									  	<option ng-repeat="s in schoolList" value="s.schoolId">{{s.schoolName}}</option>
 									  </select>
 									</div>
 								  </div>

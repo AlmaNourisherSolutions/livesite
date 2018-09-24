@@ -128,7 +128,7 @@
                             <a ui-sref="administrator.createDocument"><i class="fa fa-plus fa-2x"></i> Create</a>
                         </div>
                         <div class="col-xs-6">
-                            <a ui-sref="administrator.listArticle"><i class="fa fa-eye fa-2x"></i> View All</a>
+                            <a ui-sref="administrator.listArticle({'tag':'noFilter'})"><i class="fa fa-eye fa-2x"></i> View All</a>
                         </div>
                     </div>
                 </div>
@@ -156,7 +156,7 @@
                             <a ui-sref="administrator.createDocument"><i class="fa fa-plus fa-2x"></i> Create</a>
                         </div>
                         <div class="col-xs-6">
-                            <a ui-sref="administrator.listRecipe"><i class="fa fa-eye fa-2x"></i> View All</a>
+                            <a ui-sref="administrator.listRecipe({'tag':'noFilter'})"><i class="fa fa-eye fa-2x"></i> View All</a>
                         </div>
                     </div>
                 </div>
@@ -221,16 +221,16 @@
 			  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 m20">
 				<label class="col-sm-6 control-label">Select School</label>
 					<div class="col-sm-6">
-						<select class="form-control" chosen="{width: '100%'}" ng-model="school" name="schoollist" id="schoollist" ng-change="getBranchList()">
-											<option ng-repeat="s in schoolList" value="{{s.schoolId}}">{{s.schoolName}}</option>
+						<select class="form-control" chosen="{width: '100%'}" ng-model="school" name="schoollist" id="schoollist" ng-change="getBranchList()" ng-options="s.schoolId as s.schoolName for s in schoolList">
+											<option value=""></option>
 						</select>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 m20">
 				<label class="col-sm-6 control-label">Select Branch</label>
 					<div class="col-sm-6">
-						<select class="form-control" chosen="{width: '100%'}" ng-model="branch" name="branchlist" id="branchlist">
-											<option ng-repeat="b in branchList" value="{{b.branchId}}">{{b.branchName}}</option>
+						<select class="form-control" chosen="{width: '100%'}" ng-model="branch" name="branchlist" id="branchlist" ng-options="b.branchId as b.branchName for b in branchList">
+											<option value=""></option>
 						</select>
 					</div>
 				</div>
